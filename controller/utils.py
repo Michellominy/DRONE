@@ -1,5 +1,5 @@
 from pynq_i2c import pynq_i2c_instance
-from controller.constant import *
+from constant import *
 
 
 def TCA_channel_select(channel):

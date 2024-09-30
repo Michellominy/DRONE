@@ -1,12 +1,13 @@
 from pynq.lib import MicroblazeLibrary
 from pynq.overlays.base import BaseOverlay
 
-from controller.constant import *
+from constant import *
+
+base = BaseOverlay("base.bit")
+lib = MicroblazeLibrary(base.PMODB, ['i2c'])
 
 class pynq_i2c:
     def __init__(self):
-        base = BaseOverlay("base.bit")
-        lib = MicroblazeLibrary(base.PMODB, ['i2c'])
         self.i2c_device = lib.i2c_open(PMOD_SDA_PIN, PMOD_SCL_PIN)
     
     def iic_writeByte(self, devAddr, regAddr, data):
