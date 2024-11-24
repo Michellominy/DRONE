@@ -4,7 +4,7 @@ from controller.utils import normalize
 from controller.constant import MIN_MOTOR_FREQ_HZ, MAX_MOTOR_FREQ_HZ
 """
 FRONT
-       1        2
+       3        1
      +---+    +---+
      | o |    | o |
      +---+    +---+
@@ -25,7 +25,7 @@ FRONT
      +---+    +---+
      | o |    | o |
      +---+    +---+
-       3        4
+       4        2
 BACK
 """
 
