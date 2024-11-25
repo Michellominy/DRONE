@@ -1,7 +1,7 @@
 from pynq.lib import MicroblazeLibrary
 from pynq.overlays.base import BaseOverlay
 
-from constant import *
+from constant import PMOD_SDA_PIN, PMOD_SCL_PIN
 
 base = BaseOverlay("base.bit")
 lib = MicroblazeLibrary(base.PMODB, ['i2c'])

@@ -1,7 +1,8 @@
 from pynq.overlays.base import BaseOverlay
 from pynq import Overlay
 from time import *
-import controller.drone as drone
+import drone as drone
+from time import sleep
 
 # https://timhanewich.medium.com/how-i-developed-the-scout-flight-controller-part-7-full-flight-controller-code-4269c83b3b48
 
@@ -38,25 +39,35 @@ throttle_idle:float = 0.14 # the minumum throttle needed to apply to the four mo
 throttle_max:float = 0.22
 throttle_range:float = throttle_max - throttle_idle
 
+input("Press key to start ...")
+
 drone.init()
 
 try:
     while True:
+        print("===================================================")
+        sleep(2)
         input_throttle:float = 0.0  # between 0.0 and 1.0
         input_pitch:float = 0.0 # between -1.0 and 1.0
         input_roll:float = 0.0  # between -1.0 and 1.0
         input_yaw:float = 0.0   # between -1.0 and 1.0
-
-        loop_begin_us:int = time.ticks_us()
+        
+        # loop_begin_us:int = time.ticks_us()
 
         adj_throttle:float = throttle_idle + (throttle_range * input_throttle)
-
+        print(f"adj_throttle : {adj_throttle}")
+        
         gyro_x, gyro_y, gyro_z = drone.read_gyro()
+        gyro_y = gyro_y * -1    # gyro sensor is flipped upside down
+        gyro_z = gyro_z * -1    # gyro sensor is flipped upside down
+        print(f"gyro_x, gyro_y, gyro_z: {gyro_x}, {gyro_y}, {gyro_z}")
+        
         # calculate errors - diff between the actual rate of change in that axis (gyro_*) and the desired rate of change in that axis (input_* * max_rate_*)
-        error_rate_roll:float = (input_roll * max_rate_roll) - gyro_x
-        error_rate_pitch:float = (input_pitch * max_rate_pitch) - gyro_y
+        error_rate_roll:float = (input_roll * max_rate_roll) - gyro_y
+        error_rate_pitch:float = (input_pitch * max_rate_pitch) - gyro_x
         error_rate_yaw:float = (input_yaw * max_rate_yaw) - gyro_z
-
+        print(f"error_rate_roll, error_rate_pitch, error_rate_yaw: {error_rate_roll}, {error_rate_pitch}, {error_rate_yaw}")
+        
         # roll PID calc
         roll_p:float = error_rate_roll * pid_roll_kp
         roll_i:float = roll_last_integral + (error_rate_roll * pid_roll_ki * cycle_time_seconds)
@@ -89,14 +100,15 @@ try:
         t2:float = adj_throttle + pid_pitch - pid_roll + pid_yaw
         t3:float = adj_throttle - pid_pitch + pid_roll + pid_yaw
         t4:float = adj_throttle - pid_pitch - pid_roll - pid_yaw
-
+        print(f"t1, t2, t3, t4: {t1}, {t2}, {t3}, {t4}")
+        
         # Adjust throttle according to input
         motor_to_speed_dict = {
             1: t1,
             2: t2,
             3: t3,
             4: t4
-        }
+        }MPU6050
         drone.start_motors(motor_to_speed_dict)
 
         # Save state values for next loop
@@ -108,9 +120,9 @@ try:
         yaw_last_integral = yaw_i
 
         
-        elapsed_us: int = int(time() * 1000000) - loop_begin_us
-        if elapsed_us < cycle_time_us:
-            sleep((cycle_time_us - elapsed_us) / 1000000)
+        # elapsed_us: int = int(time() * 1000000) - loop_begin_us
+        # if elapsed_us < cycle_time_us:
+        #     sleep((cycle_time_us - elapsed_us) / 1000000)
 
 except Exception as e:
     motor_to_speed_dict = {
@@ -120,4 +132,4 @@ except Exception as e:
             4: 0
         }
     drone.start_motors(motor_to_speed_dict)
-    
+    print(e)

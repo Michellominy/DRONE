@@ -1,19 +1,23 @@
-import controller.sensor.motor as motor
-import controller.sensor.MPU as mpu
-from controller.utils import normalize
-from controller.constant import MIN_MOTOR_FREQ_HZ, MAX_MOTOR_FREQ_HZ
+import sensor.motor as motor
+import sensor.MPU as mpu
+from utils import normalize
+from constant import MIN_MOTOR_FREQ_HZ, MAX_MOTOR_FREQ_HZ
 """
+Positive Pitch: motor 1,3 push more
+Positive Yaw: motor 2,3 push more
+Positive Roll: motor 3,4 push more
+
 FRONT
        3        1
      +---+    +---+
-     | o |    | o |
+     | ↺ |    | ↻ |
      +---+    +---+
         \      /
          \    /
           \  /
            ||
        +-------+
-       | DRONE |
+       | DRONE |      
        | BODY  |
        | FROM  |
        | ABOVE |
@@ -23,10 +27,18 @@ FRONT
          /    \
         /      \
      +---+    +---+
-     | o |    | o |
+     | ↻ |    | ↺ |
      +---+    +---+
        4        2
 BACK
+        ^(y)
+        |
+        |
+        |
+        |
+        |
+        o ----------> (x)
+        (z)
 """
 
 

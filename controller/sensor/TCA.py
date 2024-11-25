@@ -1,6 +1,6 @@
 # Interface for the TCA9548A
-from controller.pynq_i2c import pynq_i2c_instance
-from controller.constant import TCA_DEVICE_ADDRESS
+from pynq_i2c import pynq_i2c_instance
+from constant import TCA_DEVICE_ADDRESS
 
 def channel_select(channel):
     """Select an individual channel."""

@@ -1,4 +1,4 @@
-from controller.constant import *
+from constant import *
 
 
 def normalize(value:float, original_min:float, original_max:float, new_min:float, new_max:float) -> float:

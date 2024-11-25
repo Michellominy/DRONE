@@ -1,10 +1,10 @@
 # Interface for the T-Motor F80 PRO KV2200
 
-import controller.sensor.PCA as PCA
-from controller.constant import MIN_MOTOR_FREQ_HZ, MAX_MOTOR_FREQ_HZ, TCA_MOTOR_CHANNEL
-import controller.utils as utils
+import sensor.PCA as PCA
+from constant import MIN_MOTOR_FREQ_HZ, MAX_MOTOR_FREQ_HZ, TCA_MOTOR_CHANNEL
+import utils as utils
 from time import sleep
-import controller.sensor.TCA as TCA
+import sensor.TCA as TCA
 
 def select():
     TCA.channel_select(TCA_MOTOR_CHANNEL)
