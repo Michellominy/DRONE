@@ -1,7 +1,7 @@
 from pynq.overlays.base import BaseOverlay
 from pynq import Overlay
 from time import *
-import drone as drone
+from drone import Drone
 from time import sleep
 
 # https://timhanewich.medium.com/how-i-developed-the-scout-flight-controller-part-7-full-flight-controller-code-4269c83b3b48
@@ -10,7 +10,6 @@ from time import sleep
 max_rate_roll:float = 30.0
 max_rate_pitch:float = 30.0 
 max_rate_yaw:float = 50.0 
-
 
 # PID Controller values
 pid_roll_kp:float = 0.00043714285
@@ -41,12 +40,11 @@ throttle_range:float = throttle_max - throttle_idle
 
 input("Press key to start ...")
 
-drone.init()
-
+drone = Drone()
 try:
     while True:
-        print("===================================================")
         sleep(2)
+        print("===================================================")
         input_throttle:float = 0.0  # between 0.0 and 1.0
         input_pitch:float = 0.0 # between -1.0 and 1.0
         input_roll:float = 0.0  # between -1.0 and 1.0
@@ -58,8 +56,6 @@ try:
         print(f"adj_throttle : {adj_throttle}")
         
         gyro_x, gyro_y, gyro_z = drone.read_gyro()
-        gyro_y = gyro_y * -1    # gyro sensor is flipped upside down
-        gyro_z = gyro_z * -1    # gyro sensor is flipped upside down
         print(f"gyro_x, gyro_y, gyro_z: {gyro_x}, {gyro_y}, {gyro_z}")
         
         # calculate errors - diff between the actual rate of change in that axis (gyro_*) and the desired rate of change in that axis (input_* * max_rate_*)
@@ -75,7 +71,7 @@ try:
         roll_d:float = pid_roll_kd * (error_rate_roll - roll_last_error) / cycle_time_seconds
         pid_roll:float = roll_p + roll_i + roll_d
         print(f"roll PID: {pid_roll} = {roll_p} + {roll_i} + {roll_d}")
-        sleep(1)
+        sleep(0.5)
         
         # pitch PID calc
         pitch_p:float = error_rate_pitch * pid_pitch_kp
@@ -84,7 +80,7 @@ try:
         pitch_d:float = pid_pitch_kd * (error_rate_pitch - pitch_last_error) / cycle_time_seconds
         pid_pitch = pitch_p + pitch_i + pitch_d
         print(f"pitch PID: {pid_pitch} = {pitch_p} + {pitch_i} + {pitch_d}")
-        sleep(1)
+        sleep(0.5)
         
         # yaw PID calc
         yaw_p:float = error_rate_yaw * pid_yaw_kp
@@ -93,13 +89,13 @@ try:
         yaw_d:float = pid_yaw_kd * (error_rate_yaw - yaw_last_error) / cycle_time_seconds
         pid_yaw = yaw_p + yaw_i + yaw_d
         print(f"yaw PID: {pid_yaw} = {yaw_p} + {yaw_i} + {yaw_d}")
-        sleep(1)
+        sleep(0.5)
         
         # calculate throttle values
-        t1:float = adj_throttle + pid_pitch + pid_roll - pid_yaw
-        t2:float = adj_throttle + pid_pitch - pid_roll + pid_yaw
-        t3:float = adj_throttle - pid_pitch + pid_roll + pid_yaw
-        t4:float = adj_throttle - pid_pitch - pid_roll - pid_yaw
+        t1:float = adj_throttle + pid_pitch - pid_roll - pid_yaw
+        t2:float = adj_throttle - pid_pitch - pid_roll + pid_yaw
+        t3:float = adj_throttle + pid_pitch + pid_roll + pid_yaw
+        t4:float = adj_throttle - pid_pitch + pid_roll - pid_yaw
         print(f"t1, t2, t3, t4: {t1}, {t2}, {t3}, {t4}")
         
         # Adjust throttle according to input
@@ -108,7 +104,7 @@ try:
             2: t2,
             3: t3,
             4: t4
-        }MPU6050
+        }
         drone.start_motors(motor_to_speed_dict)
 
         # Save state values for next loop
