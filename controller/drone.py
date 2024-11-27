@@ -2,7 +2,7 @@ import sensor.motor as motor
 import sensor.MPU as mpu
 from utils import normalize
 from constant import MIN_MOTOR_FREQ_HZ, MAX_MOTOR_FREQ_HZ
-from time import *
+import time
 
 """
 Positive Pitch: motor 1,3 push more
@@ -47,17 +47,18 @@ class Drone:
     def __init__(self):
         mpu.select()
         mpu.init()
+        self.set_gyro_bias()
         motor.select()
         motor.arm_all()
-        self.set_gyro_bias()
+        print("DRONE INITIALISATION DONE")
         print(f"Gyro Bias: x: {self.gyro_bias_x}, y: {self.gyro_bias_y}, z: {self.gyro_bias_z}")
 
     def set_gyro_bias(self):
         gxs:list[float] = []
         gys:list[float] = []
         gzs:list[float] = []
-        started_at_ticks_ms:int = time.ticks_ms()
-        while ((time.ticks_ms() - started_at_ticks_ms) / 1000) < 3.0:
+        started_at_ms = time.time() * 1000  # Start time in milliseconds
+        while ((time.time() * 1000 - started_at_ms) / 1000) < 3.0:            
             gyro_x, gyro_y, gyro_z = mpu.read_gyro()
             gyro_y = gyro_y * -1    # gyro sensor is flipped upside down
             gyro_z = gyro_z * -1    # gyro sensor is flipped upside down
@@ -90,4 +91,4 @@ class Drone:
         motor.select()
         for motor_channel in motor_to_speed_dict:
             speed_percentage = motor_to_speed_dict.get(motor_channel)
-            motor.start_motor(motor_channel, normalize(speed_percentage, 0, 100, MIN_MOTOR_FREQ_HZ, MAX_MOTOR_FREQ_HZ))
+            motor.start_motor(motor_channel, normalize(speed_percentage, 0, 1, MIN_MOTOR_FREQ_HZ, MAX_MOTOR_FREQ_HZ))

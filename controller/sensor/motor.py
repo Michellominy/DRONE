@@ -19,6 +19,7 @@ def arm_all():
     max_pwm = utils.us_to_pwm(MAX_MOTOR_FREQ_HZ)
     
     for motor in motors:
+        print(f"Arming motor: {motor}")
         sleep(0.5)
         PCA.set_pwm(motor, 0, min_pwm)
         sleep(1)
