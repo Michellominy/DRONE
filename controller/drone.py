@@ -3,6 +3,10 @@ import sensor.MPU as mpu
 from utils import normalize
 from constant import MIN_MOTOR_FREQ_HZ, MAX_MOTOR_FREQ_HZ
 import time
+from zeroMQManager import ZeroMQManager
+from zeroMQlogger import ZeroMQLogger
+
+MAX_ALLOWED_MOTOR_PERCENTAGE = 0.5
 
 """
 Positive Pitch: motor 1,3 push more
@@ -45,14 +49,22 @@ BACK
 
 class Drone:
     def __init__(self):
+        self.publisher = ZeroMQManager(role="server", address=address, mode="PUBSUB")
+        self.logger = ZeroMQLogger()
+        self.last_gyro_x, self.last_gyro_y, self.last_gyro_z = 0.0, 0.0, 0.0
+        self.gyro_reading_fail = 0
+        self.gyro_max_consecutive_attempt = 10
+        self.motor_fail = 0
+        self.motor_max_consecutive_fail = 5
+        self.logger.info("Initialising MPU")
         mpu.select()
         mpu.init()
         self.set_gyro_bias()
         motor.select()
+        self.logger.info("Arming Motor")
         motor.arm_all()
-        print("DRONE INITIALISATION DONE")
-        print(f"Gyro Bias: x: {self.gyro_bias_x}, y: {self.gyro_bias_y}, z: {self.gyro_bias_z}")
-
+        self.logger.info(f"Gyro Bias: x: {self.gyro_bias_x}, y: {self.gyro_bias_y}, z: {self.gyro_bias_z}")
+        
     def set_gyro_bias(self):
         gxs:list[float] = []
         gys:list[float] = []
@@ -77,18 +89,55 @@ class Drone:
 
 
     def read_gyro(self)-> tuple[float, float, float]:
-        mpu.select()
-        gyro_x, gyro_y, gyro_z = mpu.read_gyro()
-        gyro_y = gyro_y * -1    # gyro sensor is flipped upside down
-        gyro_z = gyro_z * -1    # gyro sensor is flipped upside down
-        gyro_x -= self.gyro_bias_x
-        gyro_y -= self.gyro_bias_y
-        gyro_z -= self.gyro_bias_z
+        try:
+            mpu.select()
+            gyro_x, gyro_y, gyro_z = mpu.read_gyro()
+            gyro_y = gyro_y * -1    # gyro sensor is flipped upside down
+            gyro_z = gyro_z * -1    # gyro sensor is flipped upside down
+            gyro_x -= self.gyro_bias_x
+            gyro_y -= self.gyro_bias_y
+            gyro_z -= self.gyro_bias_z
+            self.last_gyro_x, self.last_gyro_y, self.last_gyro_z = gyro_x, gyro_y, gyro_z
+            self.gyro_reading_fail = 0
+        except Exception as e:
+            logging.error(f"Error when reading gyro: {e}")
+            gyro_x, gyro_y, gyro_z = self.last_gyro_x, self.last_gyro_y, self.last_gyro_z
+            self.gyro_reading_fail += 1
+            if self.gyro_reading_fail >= self.gyro_max_consecutive_attempt:
+                raise Exception("Maximum consecutive gyro reading attempts reached")
+        
+        self.publisher.send("Gyro", {"data": f"({gyro_x}, {gyro_y}, {gyro_z})"})
         return gyro_x, gyro_y, gyro_z
 
 
     def start_motors(self, motor_to_speed_dict: dict[int, float]): 
-        motor.select()
-        for motor_channel in motor_to_speed_dict:
-            speed_percentage = motor_to_speed_dict.get(motor_channel)
-            motor.start_motor(motor_channel, normalize(speed_percentage, 0, 1, MIN_MOTOR_FREQ_HZ, MAX_MOTOR_FREQ_HZ))
+        try:
+            motor.select()
+            for motor_channel in motor_to_speed_dict:
+                speed_percentage = self.clamp_motor_percentage(motor_to_speed_dict.get(motor_channel))
+                motor.start_motor(motor_channel, normalize(speed_percentage, 0, 1, MIN_MOTOR_FREQ_HZ, MAX_MOTOR_FREQ_HZ))
+            self.motor_fail = 0  # Reset the fail counter on success
+        except Exception as e:
+            logging.error(f"Error when starting motor: {e}")
+            self.motor_fail += 1
+            if self.motor_fail >= self.motor_max_consecutive_fail:
+                raise Exception("Maximum consecutive motor start attempts reached")
+    
+    def clamp_motor_percentage(self, speed_percentage):
+        if speed_percentage > MAX_ALLOWED_MOTOR_PERCENTAGE:
+            return MAX_ALLOWED_MOTOR_PERCENTAGE
+        elif speed_percentage < 0:
+            return 0
+        return speed_percentage
+                
+    
+    def turn_off_all(self):
+        while True:
+            try:
+                motor.select()
+                motors = [1,2,3,4]
+                for motor_channel in motors:
+                    motor.turn_off(motor_channel)
+                break
+            except BaseException as e:
+                logging.error(f"Error when trying to turn off drone : {e}")
