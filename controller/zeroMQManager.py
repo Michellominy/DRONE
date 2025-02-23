@@ -3,27 +3,29 @@ import threading
 import json
 
 class ZeroMQManager:
-    def __init__(self, role, address="tcp://*:5555", mode="PUBSUB"):
+    def __init__(self, role, mode="PUBSUB"):
         self.context = zmq.Context()
         self.role = role
         self.mode = mode
-        self.address = address
+        host = "127.0.0.1"
+        port = "5001"
+        self.address = "tcp://{}:{}".format(host, port)
         
         if mode == "PUBSUB":
             if role == "server":
                 self.socket = self.context.socket(zmq.PUB)
-                self.socket.bind(address)
+                self.socket.bind(self.address)
             else:
                 self.socket = self.context.socket(zmq.SUB)
-                self.socket.connect(address)
+                self.socket.connect(self.address)
                 self.socket.setsockopt_string(zmq.SUBSCRIBE, "")
         elif mode == "REQREP":
             if role == "server":
                 self.socket = self.context.socket(zmq.REP)
-                self.socket.bind(address)
+                self.socket.bind(self.address)
             else:
                 self.socket = self.context.socket(zmq.REQ)
-                self.socket.connect(address)
+                self.socket.connect(self.address)
     
     def send(self, message, topic):
         to_send = f"{topic} {json.dumps(message)}"

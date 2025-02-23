@@ -49,7 +49,7 @@ BACK
 
 class Drone:
     def __init__(self):
-        self.publisher = ZeroMQManager(role="server", address=address, mode="PUBSUB")
+        self.publisher = ZeroMQManager(role="server", mode="PUBSUB")
         self.logger = ZeroMQLogger()
         self.last_gyro_x, self.last_gyro_y, self.last_gyro_z = 0.0, 0.0, 0.0
         self.gyro_reading_fail = 0
@@ -100,7 +100,7 @@ class Drone:
             self.last_gyro_x, self.last_gyro_y, self.last_gyro_z = gyro_x, gyro_y, gyro_z
             self.gyro_reading_fail = 0
         except Exception as e:
-            logging.error(f"Error when reading gyro: {e}")
+            self.logger.error(f"Error when reading gyro: {e}")
             gyro_x, gyro_y, gyro_z = self.last_gyro_x, self.last_gyro_y, self.last_gyro_z
             self.gyro_reading_fail += 1
             if self.gyro_reading_fail >= self.gyro_max_consecutive_attempt:
@@ -118,7 +118,7 @@ class Drone:
                 motor.start_motor(motor_channel, normalize(speed_percentage, 0, 1, MIN_MOTOR_FREQ_HZ, MAX_MOTOR_FREQ_HZ))
             self.motor_fail = 0  # Reset the fail counter on success
         except Exception as e:
-            logging.error(f"Error when starting motor: {e}")
+            self.logger.error(f"Error when starting motor: {e}")
             self.motor_fail += 1
             if self.motor_fail >= self.motor_max_consecutive_fail:
                 raise Exception("Maximum consecutive motor start attempts reached")
@@ -140,4 +140,4 @@ class Drone:
                     motor.turn_off(motor_channel)
                 break
             except BaseException as e:
-                logging.error(f"Error when trying to turn off drone : {e}")
+                self.logger.error(f"Error when trying to turn off drone : {e}")

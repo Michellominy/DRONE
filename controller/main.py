@@ -87,10 +87,10 @@ try:
             sleep((cycle_time_us - elapsed_us) / 1000000)
 
 except BaseException as e:
-    logging.error(f"An exception occurred: {e}")
-    logging.error(traceback.format_exc())
+    logger.error(f"An exception occurred: {e}")
+    logger.error(traceback.format_exc())
     
 finally:
     drone.turn_off_all()
-    logging.info("".join(output_logs))
+    logger.info("Turning motor off")
     
