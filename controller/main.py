@@ -4,8 +4,13 @@ from drone import Drone
 from time import time, sleep
 import traceback
 from pid import PID
-from zeroMQlogger import ZeroMQLogger
+import logging
+from zmq.log.handlers import PUBHandler
 
+zmq_log_handler = PUBHandler('tcp://0.0.0.0:5001')
+logger = logging.getLogger()
+logger.setLevel(logging.DEBUG)
+logger.addHandler(zmq_log_handler)
 
 # https://timhanewich.medium.com/how-i-developed-the-scout-flight-controller-part-7-full-flight-controller-code-4269c83b3b48
 
@@ -28,7 +33,7 @@ pitch_pid = PID(kp=0.004, ki=0.0001, kd=0.0, i_limit=150.0, cycle_time_seconds=c
 
 
 input("Press key to start ...")
-logger = ZeroMQLogger()
+# logger = ZeroMQLogger()
 logger.info("Initializing Drone")
 drone = Drone()
 
@@ -79,7 +84,7 @@ try:
             3: t3,
             4: t4
         }
-        drone.start_motors(motor_to_speed_dict)
+        # drone.start_motors(motor_to_speed_dict)
         
         elapsed_us: int = int(time() * 1000000) - loop_begin_us
         if elapsed_us < cycle_time_us:
@@ -91,6 +96,6 @@ except BaseException as e:
     logger.error(traceback.format_exc())
     
 finally:
-    drone.turn_off_all()
+    # drone.turn_off_all()
     logger.info("Turning motor off")
     

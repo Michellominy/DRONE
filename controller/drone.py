@@ -4,7 +4,8 @@ from utils import normalize
 from constant import MIN_MOTOR_FREQ_HZ, MAX_MOTOR_FREQ_HZ
 import time
 from zeroMQManager import ZeroMQManager
-from zeroMQlogger import ZeroMQLogger
+# from zeroMQlogger import ZeroMQLogger
+import logging
 
 MAX_ALLOWED_MOTOR_PERCENTAGE = 0.5
 
@@ -49,8 +50,8 @@ BACK
 
 class Drone:
     def __init__(self):
-        self.publisher = ZeroMQManager(role="server", mode="PUBSUB")
-        self.logger = ZeroMQLogger()
+        # self.publisher = ZeroMQManager(role="server", mode="PUBSUB")
+        self.logger = logging.getLogger()
         self.last_gyro_x, self.last_gyro_y, self.last_gyro_z = 0.0, 0.0, 0.0
         self.gyro_reading_fail = 0
         self.gyro_max_consecutive_attempt = 10
@@ -60,9 +61,9 @@ class Drone:
         mpu.select()
         mpu.init()
         self.set_gyro_bias()
-        motor.select()
+        # motor.select()
         self.logger.info("Arming Motor")
-        motor.arm_all()
+        # motor.arm_all()
         self.logger.info(f"Gyro Bias: x: {self.gyro_bias_x}, y: {self.gyro_bias_y}, z: {self.gyro_bias_z}")
         
     def set_gyro_bias(self):
@@ -106,7 +107,7 @@ class Drone:
             if self.gyro_reading_fail >= self.gyro_max_consecutive_attempt:
                 raise Exception("Maximum consecutive gyro reading attempts reached")
         
-        self.publisher.send("Gyro", {"data": f"({gyro_x}, {gyro_y}, {gyro_z})"})
+        # self.publisher.send("Gyro", {"data": f"({gyro_x}, {gyro_y}, {gyro_z})"})
         return gyro_x, gyro_y, gyro_z
 
 

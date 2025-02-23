@@ -5,6 +5,8 @@ from constant import MIN_MOTOR_FREQ_HZ, MAX_MOTOR_FREQ_HZ, TCA_MOTOR_CHANNEL
 import utils as utils
 from time import sleep
 import sensor.TCA as TCA
+import logging
+logger = logging.getLogger()
 
 def select():
     TCA.channel_select(TCA_MOTOR_CHANNEL)
@@ -19,7 +21,7 @@ def arm_all():
     max_pwm = utils.us_to_pwm(MAX_MOTOR_FREQ_HZ)
     
     for motor in motors:
-        # logging.info(f"Arming motor: {motor}")
+        logger.info(f"Arming motor: {motor}")
         sleep(0.5)
         PCA.set_pwm(motor, 0, min_pwm)
         sleep(1)
@@ -29,7 +31,7 @@ def arm_all():
         sleep(0.5)
     
     sleep(1)
-    # logging.info("ARMING SEQUENCE DONE")
+    logger.info("ARMING SEQUENCE DONE")
 
 def start_motor(motor, speed_us):
     # Don't need to clamp speed, because it is normalize

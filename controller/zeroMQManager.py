@@ -7,7 +7,7 @@ class ZeroMQManager:
         self.context = zmq.Context()
         self.role = role
         self.mode = mode
-        host = "127.0.0.1"
+        host = "0.0.0.0" # CHANGE ADDRESS IF NOT SERVER
         port = "5001"
         self.address = "tcp://{}:{}".format(host, port)
         
