@@ -5,12 +5,11 @@ from time import time, sleep
 import traceback
 from pid import PID
 import logging
-from zmq.log.handlers import PUBHandler
+from zeroMQManager import ZeroMQManager
 
-zmq_log_handler = PUBHandler('tcp://0.0.0.0:5001')
+ZeroMQManager().setLogger()
 logger = logging.getLogger()
 logger.setLevel(logging.DEBUG)
-logger.addHandler(zmq_log_handler)
 
 # https://timhanewich.medium.com/how-i-developed-the-scout-flight-controller-part-7-full-flight-controller-code-4269c83b3b48
 

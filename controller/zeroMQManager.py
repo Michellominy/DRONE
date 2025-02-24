@@ -1,6 +1,21 @@
 import zmq
 import threading
 import json
+from zmq.log.handlers import PUBHandler
+import logging
+
+class TopicPUBHandler(PUBHandler):
+    def __init__(self, socket, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.socket = socket
+
+    def emit(self, record):
+        try:
+            msg = self.format(record).encode()
+            self.socket.send_multipart([b"logs", msg])  
+        except Exception:
+            self.handleError(record)
+
 
 class ZeroMQManager:
     def __init__(self, role, mode="PUBSUB"):
@@ -33,8 +48,7 @@ class ZeroMQManager:
             self.socket.send(to_send)
             return self.socket.recv_json()
         else:
-            self.socket.send(to_send)
-    
+            self.socket.send_multipart([f"{topic}".encode('UTF-8'), json.dumps(message).encode()])
     def receive(self, callback):
         def listen():
             while True:
@@ -43,6 +57,12 @@ class ZeroMQManager:
         
         thread = threading.Thread(target=listen, daemon=True)
         thread.start()
+    
+    
+    def setLogger(self):
+        zmq_log_handler = TopicPUBHandler(self.socket)
+        logger = logging.getLogger()
+        logger.addHandler(zmq_log_handler)
     
     def close(self):
         self.socket.close()
