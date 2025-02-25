@@ -1,8 +1,8 @@
 # Interface for the MPU6050
-from pynq_i2c import pynq_i2c_instance
+from controller.pynq_i2c import pynq_i2c_instance
 from time import sleep
-from constant import *
-import sensor.TCA as tca
+from controller.constant import *
+import controller.sensor.TCA as tca
 
 def select():
      tca.channel_select(TCA_MPU_CHANNEL)

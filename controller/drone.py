@@ -1,11 +1,11 @@
-import sensor.motor as motor
-import sensor.MPU as mpu
-from utils import normalize
-from constant import MIN_MOTOR_FREQ_HZ, MAX_MOTOR_FREQ_HZ
 import time
-from zeroMQManager import ZeroMQManager
-# from zeroMQlogger import ZeroMQLogger
 import logging
+
+from common.zeroMQManager import zeroMQServer
+import controller.sensor.motor as motor
+import controller.sensor.MPU as mpu
+from controller.utils import normalize
+from controller.constant import MIN_MOTOR_FREQ_HZ, MAX_MOTOR_FREQ_HZ
 
 MAX_ALLOWED_MOTOR_PERCENTAGE = 0.5
 
@@ -107,7 +107,7 @@ class Drone:
             if self.gyro_reading_fail >= self.gyro_max_consecutive_attempt:
                 raise Exception("Maximum consecutive gyro reading attempts reached")
         
-        # self.publisher.send("Gyro", {"data": f"({gyro_x}, {gyro_y}, {gyro_z})"})
+        zeroMQServer.send("gyro", {"x": gyro_x, "y": gyro_y, "z": gyro_z})
         return gyro_x, gyro_y, gyro_z
 
 

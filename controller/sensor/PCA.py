@@ -1,6 +1,6 @@
 # Interface for the PCA9685
-from constant import *
-from pynq_i2c import pynq_i2c_instance
+from controller.constant import *
+from controller.pynq_i2c import pynq_i2c_instance
 from time import sleep
 import math
 

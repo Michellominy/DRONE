@@ -1,13 +1,18 @@
 from pynq.overlays.base import BaseOverlay
 from pynq import Overlay
-from drone import Drone
 from time import time, sleep
 import traceback
-from pid import PID
 import logging
-from zeroMQManager import ZeroMQManager
+import sys
+import os
 
-ZeroMQManager().setLogger()
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+from common.zeroMQManager import zeroMQServer
+from controller.drone import Drone
+from controller.pid import PID
+
+zeroMQServer.setLogger()
 logger = logging.getLogger()
 logger.setLevel(logging.DEBUG)
 
@@ -32,7 +37,6 @@ pitch_pid = PID(kp=0.004, ki=0.0001, kd=0.0, i_limit=150.0, cycle_time_seconds=c
 
 
 input("Press key to start ...")
-# logger = ZeroMQLogger()
 logger.info("Initializing Drone")
 drone = Drone()
 
