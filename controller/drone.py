@@ -7,12 +7,12 @@ import controller.sensor.MPU as mpu
 from controller.utils import normalize
 from controller.constant import MIN_MOTOR_FREQ_HZ, MAX_MOTOR_FREQ_HZ
 
-MAX_ALLOWED_MOTOR_PERCENTAGE = 0.3
+MAX_ALLOWED_MOTOR_PERCENTAGE = 0.40
 
 """
-Positive Pitch: motor 1,3 push more
-Positive Yaw: motor 2,3 push more
-Positive Roll: motor 3,4 push more
+if Positive Pitch ==> motor 1,3 need to push more
+if Positive Yaw ==> motor 2,3 need to push more
+if Positive Roll ==> motor 3,4 need to push more
 
 FRONT
        3        1
@@ -115,6 +115,7 @@ class Drone:
             motor.select()
             for motor_channel in motor_to_speed_dict:
                 speed_percentage = self.clamp_motor_percentage(motor_to_speed_dict.get(motor_channel))
+                self.logger.info(f"Starting motor {motor_channel} at {speed_percentage}")
                 motor.start_motor(motor_channel, normalize(speed_percentage, 0, 1, MIN_MOTOR_FREQ_HZ, MAX_MOTOR_FREQ_HZ))
             self.motor_fail = 0  # Reset the fail counter on success
         except Exception as e:

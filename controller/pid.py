@@ -14,7 +14,7 @@ class PID:
         i = max(min(i, self.i_limit), -self.i_limit) # constraint withing I-term limit
         d:float = self.kd * (error - self.last_error) / self.cycle_time_seconds
         
-        last_error = error
-        last_integral = i
+        self.last_integral = error
+        self.last_integral = i
         
         return p + i + d
