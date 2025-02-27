@@ -5,12 +5,14 @@ import traceback
 import logging
 import sys
 import os
+import json
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from common.zeroMQManager import zeroMQServer
+from common.zeroMQManager import zeroMQServer, ZeroMQSubscriber
 from controller.drone import Drone
 from controller.pid import PID
+from common.constants import BASE_STATION_IP
 
 zeroMQServer.setLogger()
 logger = logging.getLogger()
@@ -27,9 +29,9 @@ target_cycle_hz:float = 15
 cycle_time_seconds:float = 1.0 / target_cycle_hz
 cycle_time_us:int = int(round(cycle_time_seconds * 1000000, 0)) 
 
-throttle_idle:float = 0.25 # the minumum throttle needed to apply to the four motors for them all to spin up, but not provide lift (idling on the ground). 
-throttle_max:float = 0.35
-throttle_range:float = throttle_max - throttle_idle
+throttle_idle:float = 0.1 # the minumum throttle needed to apply to the four motors for them all to spin up, but not provide lift (idling on the ground). 
+# throttle_max:float = 0.35
+# throttle_range:float = throttle_max - throttle_idle
 
 roll_pid = PID(kp=0.0, ki=0.0, kd=0.0, i_limit=150.0, cycle_time_seconds=cycle_time_seconds)
 yaw_pid = PID(kp=0.0, ki=0.0, kd=0.0, i_limit=150.0, cycle_time_seconds=cycle_time_seconds)
@@ -40,19 +42,29 @@ input("Press key to start ...")
 logger.info("Initializing Drone")
 drone = Drone()
 
+input_throttle:float = 0.0  # between 0.0 and 1.0
+input_pitch:float = 0.0 # between -1.0 and 1.0
+input_roll:float = 0.0  # between -1.0 and 1.0
+input_yaw:float = 0.0   # between -1.0 and 1.0
+
+
+def update_input_throttle(json_message):
+    global input_throttle
+    message = json.loads(json_message.decode())
+    input_throttle = message["data"]
+
+input_throttle_subscriber = ZeroMQSubscriber(host=BASE_STATION_IP, topic="throttle", callback=update_input_throttle)
+    
 try:
     while True:
-        input_throttle:float = 0.0  # between 0.0 and 1.0
-        input_pitch:float = 0.0 # between -1.0 and 1.0
-        input_roll:float = 0.0  # between -1.0 and 1.0
-        input_yaw:float = 0.0   # between -1.0 and 1.0
-        
         loop_begin_us = int(time() * 1000000)
 
-        adj_throttle:float = throttle_idle + (throttle_range * input_throttle)
-                
+        # adj_throttle:float = throttle_idle + (throttle_range * input_throttle)
+        adj_throttle:float = throttle_idle + input_throttle
+        logger.info(f"Adjusted Throttle: {adj_throttle}")
+        
         gyro_x, gyro_y, gyro_z = drone.read_gyro()
-        logger.info(f"Drone gyro data: gyro_x(pitch), gyro_y(roll), gyro_z(yaw): {gyro_x}, {gyro_y}, {gyro_z}")
+        # logger.info(f"Drone gyro data: gyro_x(pitch), gyro_y(roll), gyro_z(yaw): {gyro_x}, {gyro_y}, {gyro_z}")
         
         # calculate errors - diff between the actual rate of change in that axis (gyro_*) and the desired rate of change in that axis (input_* * max_rate_*)
         error_rate_roll:float = (input_roll * max_rate_roll) - gyro_y
@@ -75,10 +87,7 @@ try:
         t3:float = adj_throttle + pitch_calculated_PID + roll_calculated_PID + yaw_calculated_PID
         t4:float = adj_throttle - pitch_calculated_PID + roll_calculated_PID - yaw_calculated_PID
         logger.info("Updating Motor Thrust")
-        logger.info(f"t1: {t1}")
-        logger.info(f"t2: {t2}")
-        logger.info(f"t3: {t3}")
-        logger.info(f"t4: {t4}")
+        logger.info(f"t1: {t1}, t2: {t2}, t3: {t3}, t4: {t4}")
         
         # Adjust throttle according to input
         motor_to_speed_dict = {
@@ -87,7 +96,7 @@ try:
             3: t3,
             4: t4
         }
-        # drone.start_motors(motor_to_speed_dict)
+        drone.start_motors(motor_to_speed_dict)
         
         elapsed_us: int = int(time() * 1000000) - loop_begin_us
         if elapsed_us < cycle_time_us:
@@ -99,6 +108,6 @@ except BaseException as e:
     logger.error(traceback.format_exc())
     
 finally:
-    # drone.turn_off_all()
+    drone.turn_off_all()
     logger.info("Turning motor off")
     

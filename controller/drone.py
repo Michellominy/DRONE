@@ -7,7 +7,7 @@ import controller.sensor.MPU as mpu
 from controller.utils import normalize
 from controller.constant import MIN_MOTOR_FREQ_HZ, MAX_MOTOR_FREQ_HZ
 
-MAX_ALLOWED_MOTOR_PERCENTAGE = 0.5
+MAX_ALLOWED_MOTOR_PERCENTAGE = 0.3
 
 """
 Positive Pitch: motor 1,3 push more
@@ -50,7 +50,6 @@ BACK
 
 class Drone:
     def __init__(self):
-        # self.publisher = ZeroMQManager(role="server", mode="PUBSUB")
         self.logger = logging.getLogger()
         self.last_gyro_x, self.last_gyro_y, self.last_gyro_z = 0.0, 0.0, 0.0
         self.gyro_reading_fail = 0
@@ -61,9 +60,9 @@ class Drone:
         mpu.select()
         mpu.init()
         self.set_gyro_bias()
-        # motor.select()
+        motor.select()
         self.logger.info("Arming Motor")
-        # motor.arm_all()
+        motor.arm_all()
         self.logger.info(f"Gyro Bias: x: {self.gyro_bias_x}, y: {self.gyro_bias_y}, z: {self.gyro_bias_z}")
         
     def set_gyro_bias(self):
