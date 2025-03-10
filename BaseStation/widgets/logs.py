@@ -11,5 +11,5 @@ class Logs:
         root.rowconfigure(0, weight=1)
 
     def update_log(self, message):
-        self.log_text.insert(tk.END, message + "\n")
+        self.log_text.insert(tk.END, message)
         self.log_text.yview(tk.END)

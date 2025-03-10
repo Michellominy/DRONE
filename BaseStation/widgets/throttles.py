@@ -2,7 +2,7 @@ import tkinter as tk
 
 
 class Throttles:
-    def __init__(self, root):
+    def __init__(self, root, onHeightThrottleChange):
         self.height_throttle = tk.IntVar()
         self.yaw_throttle = tk.IntVar()
         self.pitch_throttle = tk.IntVar()
@@ -17,10 +17,12 @@ class Throttles:
         self.pitch_slider.grid(column=1, row=0, columnspan=1, rowspan=2)
         self.roll_slider = tk.Scale(root, from_=-100, to=100, orient=tk.HORIZONTAL, length=200, variable=self.roll_throttle, command=self.on_roll_throttle_change)
         self.roll_slider.grid(column=1, row=2, columnspan=1, rowspan=1)
-    
+
+        self.onHeightThrottleChange = onHeightThrottleChange
     
     def update_height_throttle(self, new_val):
         self.height_throttle.set(new_val * 100)
+        self.onHeightThrottleChange(new_val)
         print(f"udpated height: {self.height_throttle}, new_val: {new_val}")
         
     def update_yaw_throttle(self, new_val):
