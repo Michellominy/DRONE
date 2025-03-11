@@ -1,6 +1,6 @@
 from pynq.overlays.base import BaseOverlay
 from pynq import Overlay
-from time import time, sleep
+from time import time, perf_counter, sleep
 import traceback
 import logging
 import sys
@@ -29,13 +29,15 @@ target_cycle_hz:float = 15
 cycle_time_seconds:float = 1.0 / target_cycle_hz
 cycle_time_us:int = int(round(cycle_time_seconds * 1000000, 0)) 
 
-throttle_idle:float = 0.2 #the minumum throttle needed to apply to the four motors for them all to spin up, but not provide lift (idling on the ground). 
+throttle_idle:float = 0.2 # the minumum throttle needed to apply to the four motors for them all to spin up, but not provide lift (idling on the ground). 
 throttle_max:float = 0.30
 throttle_range:float = throttle_max - throttle_idle
 
 roll_pid = PID(kp=0.0, ki=0.0, kd=0.0, i_limit=150.0, cycle_time_seconds=cycle_time_seconds)
 yaw_pid = PID(kp=0.0, ki=0.0, kd=0.0, i_limit=150.0, cycle_time_seconds=cycle_time_seconds)
 pitch_pid = PID(kp=0.004, ki=0.0001, kd=0.0, i_limit=25.0, cycle_time_seconds=cycle_time_seconds) # kp [0.002, 0.005]
+                                                                                                  # i_limit start low, Increase the throttle and observe if the drone stabilizes well. 
+                                                                                                  # If it appears sluggish or takes too long to correct an error, increase i_limit
 
 
 input("Press key to start ...")
@@ -58,10 +60,9 @@ input_throttle_subscriber = ZeroMQSubscriber(host=BASE_STATION_IP, topic="thrott
     
 try:
     while True:
-        loop_begin_us = int(time() * 1000000)
+        loop_start = perf_counter()
 
         adj_throttle:float = throttle_idle + (throttle_range * input_throttle)
-        # adj_throttle:float = throttle_idle + input_throttle
         logger.info(f"Adjusted Throttle: {adj_throttle}")
         
         gyro_x, gyro_y, gyro_z = drone.read_gyro()
@@ -98,11 +99,14 @@ try:
             4: t4
         }
         drone.start_motors(motor_to_speed_dict)
-        
-        elapsed_us: int = int(time() * 1000000) - loop_begin_us
-        if elapsed_us < cycle_time_us:
-            logger.info(f"going to sleep: {(cycle_time_us - elapsed_us) / 1000000} seconds")
-            sleep((cycle_time_us - elapsed_us) / 1000000)
+                    
+        elapsed = perf_counter() - loop_start
+        remaining_time = cycle_time_seconds - elapsed
+        if remaining_time > 0:
+            logger.info(f"going to sleep: {remaining_time} seconds")
+            sleep(remaining_time)
+        else:
+            logger.warning("Cycle overran by {:.2f} ms".format(abs(remaining_time)*1000))
 
 except BaseException as e:
     logger.error(f"An exception occurred: {e}")

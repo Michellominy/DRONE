@@ -10,9 +10,15 @@ from controller.constant import MIN_MOTOR_FREQ_HZ, MAX_MOTOR_FREQ_HZ
 MAX_ALLOWED_MOTOR_PERCENTAGE = 0.40
 
 """
-if Positive Pitch ==> motor 1,3 need to push more
-if Positive Yaw ==> motor 2,3 need to push more
-if Positive Roll ==> motor 3,4 need to push more
+M1 => Rotate CW
+M2 => Rotate CCW
+M3 => Rotate CCW
+M4 => Rotate CW
+
+if Positive Pitch ==> To stabilize, motor 1,3 need to increase 
+if Positive Yaw ==> To stabilize, motor 2,3 need to increase
+if Positive Roll ==> To stabilize, motor 3,4 need to increase
+
 
 FRONT
        3        1
@@ -117,7 +123,7 @@ class Drone:
                 speed_percentage = self.clamp_motor_percentage(motor_to_speed_dict.get(motor_channel))
                 self.logger.info(f"Starting motor {motor_channel} at {speed_percentage}")
                 motor.start_motor(motor_channel, normalize(speed_percentage, 0, 1, MIN_MOTOR_FREQ_HZ, MAX_MOTOR_FREQ_HZ))
-            self.motor_fail = 0  # Reset the fail counter on success
+            self.motor_fail = 0 
         except Exception as e:
             self.logger.error(f"Error when starting motor: {e}")
             self.motor_fail += 1
