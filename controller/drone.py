@@ -7,7 +7,7 @@ import controller.sensor.MPU as mpu
 from controller.utils import normalize
 from controller.constant import MIN_MOTOR_FREQ_HZ, MAX_MOTOR_FREQ_HZ
 
-MAX_ALLOWED_MOTOR_PERCENTAGE = 0.40
+MAX_ALLOWED_MOTOR_PERCENTAGE = 0.05
 
 """
 M1 => Rotate CW

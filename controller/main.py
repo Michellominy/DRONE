@@ -25,21 +25,20 @@ max_rate_roll:float = 3.0
 max_rate_pitch:float = 3.0 
 max_rate_yaw:float = 5.0 
 
-target_cycle_hz:float = 15
+target_cycle_hz:float = 13
 cycle_time_seconds:float = 1.0 / target_cycle_hz
 cycle_time_us:int = int(round(cycle_time_seconds * 1000000, 0)) 
 
 throttle_idle:float = 0.2 # the minumum throttle needed to apply to the four motors for them all to spin up, but not provide lift (idling on the ground). 
-throttle_max:float = 0.30
+throttle_max:float = 0.35
 throttle_range:float = throttle_max - throttle_idle
 
-roll_pid = PID(kp=0.0, ki=0.0, kd=0.0, i_limit=150.0, cycle_time_seconds=cycle_time_seconds)
-yaw_pid = PID(kp=0.0, ki=0.0, kd=0.0, i_limit=150.0, cycle_time_seconds=cycle_time_seconds)
-pitch_pid = PID(kp=0.004, ki=0.0001, kd=0.0, i_limit=25.0, cycle_time_seconds=cycle_time_seconds) # kp [0.002, 0.005]
-                                                                                                  # i_limit start low, Increase the throttle and observe if the drone stabilizes well. 
-                                                                                                  # If it appears sluggish or takes too long to correct an error, increase i_limit
+roll_pid = PID(kp=0.001, ki=0.0, kd=0.0, i_limit=50.0, cycle_time_seconds=cycle_time_seconds)
+yaw_pid = PID(kp=0.0001, ki=0.0, kd=0.0, i_limit=25.0, cycle_time_seconds=cycle_time_seconds)
+pitch_pid = PID(kp=0.002, ki=0.0004, kd=0.00004, i_limit=50.0, cycle_time_seconds=cycle_time_seconds) 
 
 
+#pitch_pid = PID(kp=0.002, ki=0.0001, kd=0.0, i_limit=50.0, cycle_time_seconds=cycle_time_seconds)
 input("Press key to start ...")
 logger.info("Initializing Drone")
 drone = Drone()
@@ -66,7 +65,7 @@ try:
         logger.info(f"Adjusted Throttle: {adj_throttle}")
         
         gyro_x, gyro_y, gyro_z = drone.read_gyro()
-        # logger.info(f"Drone gyro data: gyro_x(pitch), gyro_y(roll), gyro_z(yaw): {gyro_x}, {gyro_y}, {gyro_z}")
+        logger.info(f"Drone gyro data: gyro_x(pitch), gyro_y(roll), gyro_z(yaw): {gyro_x}, {gyro_y}, {gyro_z}")
         
         # calculate errors - diff between the actual rate of change in that axis (gyro_*) and the desired rate of change in that axis (input_* * max_rate_*)
         error_rate_roll:float = (input_roll * max_rate_roll) - gyro_y
