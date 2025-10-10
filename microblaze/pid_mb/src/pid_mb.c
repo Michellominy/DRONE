@@ -6,7 +6,6 @@
 /* PYNQ MicroBlaze headers  */
 #include <i2c.h>
 #include <timer.h>
-#include <pyprintf.h>
 
 /* Mailbox addresses  */
 #define MAILBOX_BASE        0xF000
@@ -226,7 +225,6 @@ void arm_all(){
         arm_motor(i);
     }
     delay_ms(1000);
-    pyprintf("ARMING SEQUENCE DONE\n");
 }
 
 void motors_init(){
@@ -297,13 +295,9 @@ q16 pid_step(pid_type *p, q16 setpoint, q16 measurement, q16 dt_q16) {
 }
 
 int main(void) {
-    pyprintf("MB PID starting\n");
     mb_i2c_open();
-    pyprintf("I2C opened\n");
     motors_init();
-    pyprintf("Motors init done\n");
     mpu_init();
-    pyprintf("MPU init done\n");
 
     pid_roll.kp = float_to_q16(1.0f); pid_roll.ki = float_to_q16(0.0f); pid_roll.kd = float_to_q16(0.0f);
     pid_pitch = pid_roll; pid_yaw = pid_roll;
@@ -332,7 +326,6 @@ int main(void) {
                 pid_yaw.ki = (q16)MAILBOX_DATA(7);
                 pid_yaw.kd = (q16)MAILBOX_DATA(8);
                 MAILBOX_CMD_ADDR = CMD_NOP;
-                pyprintf("Gains set\n");
                 break;
 
             case CMD_SET_SETPOINTS:
@@ -340,14 +333,12 @@ int main(void) {
                 set_pitch = (q16)MAILBOX_DATA(1);
                 set_yaw = (q16)MAILBOX_DATA(2);
                 MAILBOX_CMD_ADDR = CMD_NOP;
-                pyprintf("Setpoints set\n");
                 break;
 
             case CMD_START_PID:
                 period_ms = MAILBOX_DATA(0);
                 adj_throttle_q16 = (q16)MAILBOX_DATA(9);
                 MAILBOX_CMD_ADDR = CMD_NOP;
-                pyprintf("Starting PID loop, period=%d ms\n", period_ms);
                 while ((MAILBOX_CMD_ADDR & 0x1) == 0) {
                     q16 gx, gy, gz;
                     mpu_read_gyro(&gx, &gy, &gz);
@@ -371,12 +362,10 @@ int main(void) {
 
                     delay_ms(period_ms);
                 }
-                pyprintf("PID loop ended\n");
                 break;
 
             case CMD_STOP_PID:
                 MAILBOX_CMD_ADDR = CMD_NOP;
-                pyprintf("Stop command acknowledged\n");
                 break;
 
             case CMD_HEARTBEAT:
