@@ -19,6 +19,7 @@ From the PYNQ terminal:
 cd /home/xilinx/pynq/lib/pmod/pid_mb/Debug
 make clean
 make
+```
 
 This script will:
 
