@@ -352,13 +352,20 @@ int main(void) {
                     q16 t2 = adj_throttle_q16 - out_pitch - out_roll + out_yaw;
                     q16 t3 = adj_throttle_q16 + out_pitch + out_roll + out_yaw;
                     q16 t4 = adj_throttle_q16 - out_pitch + out_roll - out_yaw;
-
+                    
                     /* write motors: ensure TCA selects motor channel first */
-                    tca_select_channel(TCA_MOTOR_CHANNEL);
-                    mb_write_motor_pwm_from_q16(1, t1, MIN_MOTOR_US, MAX_MOTOR_US);
+                    
+		    tca_select_channel(TCA_MOTOR_CHANNEL);
+                    /*
+		    mb_write_motor_pwm_from_q16(1, t1, MIN_MOTOR_US, MAX_MOTOR_US);
                     mb_write_motor_pwm_from_q16(2, t2, MIN_MOTOR_US, MAX_MOTOR_US);
                     mb_write_motor_pwm_from_q16(3, t3, MIN_MOTOR_US, MAX_MOTOR_US);
                     mb_write_motor_pwm_from_q16(4, t4, MIN_MOTOR_US, MAX_MOTOR_US);
+                    */
+                    
+		    MAILBOX_DATA(10) = (uint32_t)gx;
+                    MAILBOX_DATA(11) = (uint32_t)gy;
+                    MAILBOX_DATA(12) = (uint32_t)gz;
 
                     delay_ms(period_ms);
                 }

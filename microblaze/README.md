@@ -23,7 +23,7 @@ make
 
 This script will:
 
-* Create the destination project directory under /home/xilinx/pynq/lib/pynqmicroblaze/pmod/pid_mb
+* Create the destination project directory under cd /home/xilinx/pynq/lib/pmod/pid_mb
 
 * Copy all necessary files (pid_mb.c, linker script, makefiles)
 
@@ -31,6 +31,6 @@ This script will:
 
 If successful, it will generate:
 
-* pid_mb.elf
-* pid_mb.bin
+* /home/xilinx/pynq/lib/pmod/pid_mb/Debug/pid_mb.elf
+* /home/xilinx/pynq/lib/pmod/pid_mb.bin
 
