@@ -10,7 +10,8 @@ import time
 class microblaze_driver:
     def __init__(self):
         base = BaseOverlay("base.bit")
-        mb_info = base.iop_pmodb.mb_info
+        base.select_rpi()
+        mb_info = base.iop_rpi.mb_info
         self.mb = PynqMicroblaze(mb_info, "/home/xilinx/pynq/lib/pmod/pid_mb.bin")
 
     def mailbox_read_signed_q16(self, index):
@@ -39,3 +40,4 @@ class microblaze_driver:
             time.sleep(0.01)
 
 mb_instance = microblaze_driver()
+

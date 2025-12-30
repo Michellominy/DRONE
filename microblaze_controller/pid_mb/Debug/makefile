@@ -39,7 +39,7 @@ pid_mb.elf: $(OBJS) ../src/lscript.ld $(USER_OBJS)
 	@echo 'Invoking: MicroBlaze gcc linker'
 	mb-gcc -Wl,-gc-sections \
 	       -Wl,-T -Wl,../src/lscript.ld \
-	       -L../../bsp_iop_pmod/iop_pmoda_mb/lib \
+	       -L../../../rpi/bsp_iop_rpi/iop_rpi_mb/lib \
 	       -mlittle-endian -mcpu=v11.0 -mxl-soft-mul \
 	       -Wl,--no-relax \
 	       -o "pid_mb.elf" $(OBJS) $(USER_OBJS) $(LIBS)

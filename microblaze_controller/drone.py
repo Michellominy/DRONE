@@ -3,20 +3,26 @@ import json
 from microblaze_controller.constant import *
 from microblaze_controller.microblaze import mb_instance
 
+# the smallest positive representable value is 2^{-16} (about 0.0000152)
 init_gains = [
-    int(1.0 * Q16_ONE),  # Roll Kp
-    int(0.0 * Q16_ONE),  # Roll Ki
-    int(0.0 * Q16_ONE),  # Roll Kd
-    int(1.0 * Q16_ONE),  # Pitch Kp
-    int(0.0 * Q16_ONE),  # Pitch Ki
-    int(0.0 * Q16_ONE),  # Pitch Kd
-    int(1.0 * Q16_ONE),  # Yaw Kp
-    int(0.0 * Q16_ONE),  # Yaw Ki
-    int(0.0 * Q16_ONE),  # Yaw Kd
+    # ROLL
+    int(0.008 * Q16_ONE),   # Kp (Proportional)
+    int(0.1 * Q16_ONE),    # Ki (Integral)
+    int(0.0001 * Q16_ONE),  # Kd (Derivative)
+
+    # PITCH
+    int(0.008 * Q16_ONE),   # Kp
+    int(0.2 * Q16_ONE),    # Ki 0.12
+    int(0.0002 * Q16_ONE),  # Kd
+
+    # YAW
+    int(0.015 * Q16_ONE),   # Kp
+    int(0.08 * Q16_ONE),    # Ki
+    int(0.0 * Q16_ONE),    # Kd
 ]
 
-throttle_idle:float = 0.1 # the minumum throttle needed to apply to the four motors for them all to spin up, but not provide lift (idling on the ground). 
-throttle_max:float = 0.35 # Max throttle that can be applied by user
+throttle_idle:float = 0.2 # the minumum throttle needed to apply to the four motors for them all to spin up, but not provide lift (idling on the ground). 
+throttle_max:float = 0.4 # Max throttle that can be applied by user
 throttle_range:float = throttle_max - throttle_idle
 
 class Drone:
@@ -25,11 +31,12 @@ class Drone:
         self.input_pitch:float = 0.0 # between -1.0 and 1.0
         self.input_roll:float = 0.0  # between -1.0 and 1.0
         self.input_yaw:float = 0.0   # between -1.0 and 1.0
+        print("Initializing sensors...")
+        self.init_sensors() 
+        print("Sensors initialized.")
         print("Setting initial PID gains...")
         self.set_gains()
-        print("Gains set. Initializing sensors...")
-        self.init_sensors()
-        print("Sensors initialized.")
+        print("Gains set.")
         
     def init_sensors(self):
         mb_instance.mailbox_write_cmd(CMD_INIT)
@@ -37,6 +44,7 @@ class Drone:
         
     def update_input_throttle_callback(self, json_message):
         message = json.loads(json_message.decode())
+        print("Received throttle input: {}".format(message["data"]))
         if (message["data"] >= 0):
             self.input_throttle = message["data"]
             self.set_throttle()
@@ -85,8 +93,13 @@ class Drone:
         
         elapsed_time_ms = mb_instance.mailbox_read_unsigned(11)
         print("Elapsed time for PID loop: {} ms".format(elapsed_time_ms))
+        
+        nb_hard_reset = mb_instance.mailbox_read_unsigned(18)
+        print(f"Number of Hard Reset Performed = {nb_hard_reset}")
 
-            
-            
-            
-            
+        xiic_status = mb_instance.mailbox_read_unsigned(19)
+        print(f"Failed Gyro Read = {xiic_status}")
+        
+        for i in range(12, 18):
+            v = mb_instance.mailbox_read_unsigned(i)
+            print(f"MAILBOX_DATA[{i}] = {v}")

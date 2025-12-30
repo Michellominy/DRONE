@@ -1,9 +1,9 @@
 #include <stdint.h>
 #include <string.h>
 #include "xio_switch.h"
-
-#include <i2c.h>
-#include "xparameters.h"
+#include "xparameters.h" 
+#include "xiic_l.h"
+#include "xiic.h"
 
 /* Motor layout and rotation directions:
 M1 => Rotate CW
@@ -65,14 +65,6 @@ BACK
 #define TMR_CSR_ENT_MASK 0x00000080  // Enable Timer (set bit 7)
 #define TMR_CSR_GENT_MASK 0x00000004 // Generate Event (set bit 2)
 #define TMR_CSR_UDT_MASK 0x00000002  // Up/Down Timer (set bit 1)
-#define MAILBOX_BASE 0xF000
-#define MAILBOX_CMD_ADDR (*(volatile unsigned int *)(0xFFFC))
-#define MAILBOX_DATA(i) (*(volatile unsigned int *)(MAILBOX_BASE + ((i) * 4)))
-#define CMD_NOP 0x0
-#define CMD_INIT 0x1
-#define CMD_SET_GAINS 0x2
-#define CMD_START_PID 0x3
-#define CMD_STOP_PID 0x4
 
 #define MAILBOX_BASE 0xF000
 #define MAILBOX_CMD_ADDR (*(volatile unsigned int *)(0xFFFC))
@@ -104,8 +96,7 @@ BACK
 
 /* Constants from constant.py */
 #define TCA_DEVICE_ADDRESS 0x70
-#define TCA_MOTOR_CHANNEL 0
-#define TCA_MPU_CHANNEL 1
+#define TCA_MPU_CHANNEL 0
 
 #define MPU_DEVICE_ADDRESS 0x68
 #define MPU_PWR_MGMT_1 0x6B
@@ -131,15 +122,26 @@ BACK
 #define PCA9685_SLEEP 0x10
 #define PCA9685_ALLCALL 0x01
 #define PCA9685_OUTDRV 0x04
-#define PCA9685_AI 0x20  // Auto-Increment Bit (Bit 5 of MODE1)
+#define PCA9685_AI 0x20 // Auto-Increment Bit (Bit 5 of MODE1)
 
-#define PMOD_SDA_PIN 6
-#define PMOD_SCL_PIN 7
+#define PMOD_TCA_SDA_PIN 3
+#define PMOD_TCA_SCL_PIN 2
+#define PMOD_MOTOR_SDA_PIN 1
+#define PMOD_MOTOR_SCL_PIN 0
 
 #define MIN_MOTOR_US 1000
 #define MAX_MOTOR_US 2000
-#define MAX_ALLOWED_MOTOR_PERCENTAGE 0.4
+#define MAX_ALLOWED_MOTOR_PERCENTAGE 0.5
 #define MIN_ALLOWED_MOTOR_PERCENTAGE 0.05
+#define MOTOR_UPDATE_DEADBAND_Q16 (Q16_ONE / 200) // ≈ 0.5%
+
+#define XPAR_IO_SWITCH_0_I2C0_BASEADDR 0x40800000 // From: /home/xilinx/pynq/lib/rpi/bsp_iop_rpi/iop_rpi_mb/include/xparameters.h
+#define XPAR_IO_SWITCH_0_I2C1_BASEADDR 0x40810000
+
+#define IIC_TIMEOUT_MAX  100000
+#define MOTOR_IIC_BASE   XPAR_IO_SWITCH_0_I2C0_BASEADDR
+#define TCA_IIC_BASE     XPAR_IO_SWITCH_0_I2C1_BASEADDR
+
 
 /* Q16.16 helpers */
 typedef int32_t q16;
@@ -148,6 +150,9 @@ static inline q16 float_to_q16(float f) { return (q16)(f * (float)Q16_ONE); }
 static inline float q16_to_float(q16 q) { return ((float)q) / (float)Q16_ONE; }
 static inline q16 q16_mul(q16 a, q16 b) { return (q16)(((int64_t)a * (int64_t)b) >> 16); }
 static inline q16 q16_div(q16 a, q16 b) { return (q16)((((int64_t)a << 16) / (int64_t)b)); }
+static inline q16 q16_abs(q16 x) { return (x < 0) ? -x : x; }
+
+int global_i = 0;
 
 typedef struct
 {
@@ -157,20 +162,22 @@ typedef struct
     q16 out_min, out_max;
 } pid_type;
 
-i2c i2c_dev;
-
 pid_type pid_roll, pid_pitch, pid_yaw;
 
 q16 gyro_bias_x = 0;
 q16 gyro_bias_y = 0;
 q16 gyro_bias_z = 0;
 
+static q16 last_motor_q16[4] = {0, 0, 0, 0};
+
 void timer_init_ms();
 uint32_t get_timer_ms(void);
 void mb_delay_ms(uint32_t ms);
-void mb_i2c_open(void);
-int i2c_write_reg(uint8_t dev_addr, uint8_t reg, const uint8_t *data, int len);
-int i2c_read_reg(uint8_t dev_addr, uint8_t reg, uint8_t *buf, int len);
+void setup_hardware(void);
+int i2c_tca_write_reg(uint8_t dev, uint8_t reg, uint8_t val);
+int i2c_tca_read_reg(uint8_t dev, uint8_t reg, uint8_t* val, int len);
+int i2c_motor_write_reg(uint8_t reg, uint8_t* data, int len);
+int i2c_motor_read_reg( uint8_t reg, uint8_t *buf, int len);
 
 void tca_select_channel(uint8_t channel);
 
@@ -186,11 +193,175 @@ void arm_all();
 void motors_init();
 
 void mpu_init(void);
-int16_t mpu_read_raw16(uint8_t reg);
 void mpu_read_gyro(q16 *gx, q16 *gy, q16 *gz);
 
 void mb_write_motor_pwm_from_q16(int motor, q16 norm_q16, int min_us, int max_us);
 q16 pid_step(pid_type *p, q16 setpoint, q16 measurement, q16 dt_q16);
+
+
+/* =========================================================================
+   2. NON-BLOCKING LOW-LEVEL DRIVERS (Integrated directly)
+   ========================================================================= */
+
+/* Helper: RecvData (Internal) */
+static unsigned MyRecvData(UINTPTR BaseAddress, u8 *BufferPtr, unsigned ByteCount, u8 Option) {
+    u32 CntlReg;
+    u32 IntrStatusMask;
+    volatile u32 IntrStatus;
+    volatile int Timeout;
+
+    while (ByteCount > 0) {
+        if (ByteCount == 1) IntrStatusMask = XIIC_INTR_ARB_LOST_MASK | XIIC_INTR_BNB_MASK;
+        else IntrStatusMask = XIIC_INTR_ARB_LOST_MASK | XIIC_INTR_TX_ERROR_MASK | XIIC_INTR_BNB_MASK;
+
+        /* Wait for FIFO with Timeout */
+        Timeout = IIC_TIMEOUT_MAX;
+        while (1) {
+            IntrStatus = XIic_ReadIisr(BaseAddress);
+            if (IntrStatus & XIIC_INTR_RX_FULL_MASK) break;
+            if (IntrStatus & IntrStatusMask) return ByteCount;
+            if (Timeout-- == 0) return ByteCount; // TIMEOUT
+        }
+
+        CntlReg = XIic_ReadReg(BaseAddress, XIIC_CR_REG_OFFSET);
+        if (ByteCount == 1 && Option == XIIC_STOP) {
+            XIic_WriteReg(BaseAddress, XIIC_CR_REG_OFFSET, XIIC_CR_ENABLE_DEVICE_MASK);
+        }
+        if (ByteCount == 2) {
+            XIic_WriteReg(BaseAddress, XIIC_CR_REG_OFFSET, CntlReg | XIIC_CR_NO_ACK_MASK);
+        }
+
+        *BufferPtr++ = (u8) XIic_ReadReg(BaseAddress, XIIC_DRR_REG_OFFSET);
+
+        if ((ByteCount == 1) && (Option == XIIC_REPEATED_START)) {
+            XIic_WriteReg(BaseAddress, XIIC_CR_REG_OFFSET,
+                 XIIC_CR_ENABLE_DEVICE_MASK | XIIC_CR_MSMS_MASK | XIIC_CR_REPEATED_START_MASK);
+        }
+
+        XIic_ClearIisr(BaseAddress, XIIC_INTR_RX_FULL_MASK | XIIC_INTR_TX_ERROR_MASK | XIIC_INTR_ARB_LOST_MASK);
+        ByteCount--;
+    }
+
+    if (Option == XIIC_STOP) {
+        Timeout = IIC_TIMEOUT_MAX;
+        while (1) {
+            if (XIic_ReadIisr(BaseAddress) & XIIC_INTR_BNB_MASK) break;
+            if (Timeout-- == 0) break; 
+        }
+    }
+    return ByteCount;
+}
+
+/* Helper: SendData (Internal) */
+static unsigned MySendData(UINTPTR BaseAddress, u8 *BufferPtr, unsigned ByteCount, u8 Option) {
+    volatile u32 IntrStatus;
+    volatile int Timeout;
+
+    while (ByteCount > 0) {
+        Timeout = IIC_TIMEOUT_MAX;
+        while (1) {
+            IntrStatus = XIic_ReadIisr(BaseAddress);
+            if (IntrStatus & (XIIC_INTR_TX_ERROR_MASK | XIIC_INTR_ARB_LOST_MASK | XIIC_INTR_BNB_MASK)) return ByteCount;
+            if (IntrStatus & XIIC_INTR_TX_EMPTY_MASK) break;
+            if (Timeout-- == 0) return ByteCount; // TIMEOUT
+        }
+
+        if (ByteCount > 1) {
+            XIic_WriteReg(BaseAddress, XIIC_DTR_REG_OFFSET, *BufferPtr++);
+        } else {
+            if (Option == XIIC_STOP) {
+                XIic_WriteReg(BaseAddress, XIIC_CR_REG_OFFSET, XIIC_CR_ENABLE_DEVICE_MASK | XIIC_CR_DIR_IS_TX_MASK);
+            }
+            XIic_WriteReg(BaseAddress, XIIC_DTR_REG_OFFSET, *BufferPtr++);
+        }
+        XIic_ClearIisr(BaseAddress, XIIC_INTR_TX_EMPTY_MASK);
+        ByteCount--;
+    }
+
+    if (Option == XIIC_STOP) {
+        Timeout = IIC_TIMEOUT_MAX;
+        while (1) {
+            if (XIic_ReadIisr(BaseAddress) & XIIC_INTR_BNB_MASK) break;
+            if (Timeout-- == 0) break;
+        }
+    }
+    return ByteCount;
+}
+
+/* Main Receive Function (Non-Blocking) */
+int MyXIic_Recv(UINTPTR BaseAddress, u8 Address, u8 *BufferPtr, unsigned ByteCount) {
+    u32 CntlReg;
+    volatile u32 StatusReg;
+    volatile int Timeout = IIC_TIMEOUT_MAX;
+
+    // Reset FIFO
+    XIic_WriteReg(BaseAddress, XIIC_RFD_REG_OFFSET, 0);
+    
+    // Clear Interrupts
+    XIic_ClearIisr(BaseAddress, XIIC_INTR_RX_FULL_MASK | XIIC_INTR_TX_ERROR_MASK | XIIC_INTR_ARB_LOST_MASK);
+
+    // Send Address
+    XIic_Send7BitAddress(BaseAddress, Address, XIIC_READ_OPERATION);
+
+    // Start
+    CntlReg = XIIC_CR_MSMS_MASK | XIIC_CR_ENABLE_DEVICE_MASK;
+    if (ByteCount == 1) CntlReg |= XIIC_CR_NO_ACK_MASK;
+    XIic_WriteReg(BaseAddress, XIIC_CR_REG_OFFSET, CntlReg);
+
+    // Wait for Bus Busy
+    while ((XIic_ReadReg(BaseAddress, XIIC_SR_REG_OFFSET) & XIIC_SR_BUS_BUSY_MASK) == 0) {
+        if (Timeout-- == 0) return 0;
+    }
+    XIic_ClearIisr(BaseAddress, XIIC_INTR_BNB_MASK);
+
+    // Read Data
+    if (MyRecvData(BaseAddress, BufferPtr, ByteCount, XIIC_STOP) != 0) return 0; // Error if remaining != 0
+
+    // Cleanup
+    XIic_WriteReg(BaseAddress, XIIC_CR_REG_OFFSET, 0);
+    return ByteCount;
+}
+
+/* Main Send Function (Non-Blocking) */
+int MyXIic_Send(UINTPTR BaseAddress, u8 Address, u8 *BufferPtr, unsigned ByteCount) {
+    volatile u32 StatusReg;
+    volatile int Timeout = IIC_TIMEOUT_MAX;
+
+    // Wait Bus Free
+    while (XIic_ReadReg(BaseAddress, XIIC_SR_REG_OFFSET) & XIIC_SR_BUS_BUSY_MASK) {
+        if (Timeout-- == 0) return 0;
+    }
+
+    // Send Address
+    XIic_Send7BitAddress(BaseAddress, Address, XIIC_WRITE_OPERATION);
+    XIic_ClearIisr(BaseAddress, XIIC_INTR_TX_EMPTY_MASK | XIIC_INTR_TX_ERROR_MASK | XIIC_INTR_ARB_LOST_MASK);
+
+    // Start
+    XIic_WriteReg(BaseAddress, XIIC_CR_REG_OFFSET, XIIC_CR_MSMS_MASK | XIIC_CR_DIR_IS_TX_MASK | XIIC_CR_ENABLE_DEVICE_MASK);
+
+    // Wait Bus Busy
+    Timeout = IIC_TIMEOUT_MAX;
+    while ((XIic_ReadReg(BaseAddress, XIIC_SR_REG_OFFSET) & XIIC_SR_BUS_BUSY_MASK) == 0) {
+        if (Timeout-- == 0) return 0;
+    }
+    XIic_ClearIisr(BaseAddress, XIIC_INTR_BNB_MASK);
+
+    // Send Data
+    if (MySendData(BaseAddress, BufferPtr, ByteCount, XIIC_STOP) != 0) return 0; // Error if remaining != 0
+
+    // Cleanup
+    StatusReg = XIic_ReadReg(BaseAddress, XIIC_SR_REG_OFFSET);
+    while ((StatusReg & XIIC_SR_BUS_BUSY_MASK) != 0) {
+        StatusReg = XIic_ReadReg(BaseAddress, XIIC_SR_REG_OFFSET);
+        // No timeout here usually needed, but good practice to allow system to proceed
+    }
+    return ByteCount; 
+}
+
+/* ========================================================================= */
+
+
+
 
 void mb_delay_ms(uint32_t ms)
 {
@@ -213,69 +384,97 @@ uint32_t get_timer_ms(void)
     return elapsed_ms;
 }
 
-void mb_i2c_open(void)
-{
-    init_io_switch();
-    set_pin(PMOD_SCL_PIN, SCL0);
-    set_pin(PMOD_SDA_PIN, SDA0);
-    mb_delay_ms(10);
-    i2c_dev = i2c_open(PMOD_SDA_PIN, PMOD_SCL_PIN);
-    uint8_t mask = (1 << TCA_MPU_CHANNEL);
-    i2c_write(i2c_dev, TCA_DEVICE_ADDRESS, &mask, 1);
+void setup_hardware() {
+    init_io_switch(); 
+    
+    set_pin(PMOD_MOTOR_SCL_PIN, SCL0);
+    set_pin(PMOD_MOTOR_SDA_PIN, SDA0);
+
+    set_pin(PMOD_TCA_SCL_PIN, SCL1);
+    set_pin(PMOD_TCA_SDA_PIN, SDA1);
+    
+    //XIic_Initialize((XIic*)NULL, 0); 
+    //XIic_Initialize((XIic*)NULL, 1);
 }
 
-int i2c_write_reg(uint8_t dev_addr, uint8_t reg, const uint8_t *data, int len)
-{
-    unsigned char buf[32];
-    if (len + 1 > (int)sizeof(buf))
-        return -1;
+int i2c_tca_write_reg(uint8_t dev, uint8_t reg, uint8_t val) {
+    // set_pin(PMOD_TCA_SCL_PIN, SCL1);
+    // set_pin(PMOD_TCA_SDA_PIN, SDA1);
+    uint8_t buf[2];
+    buf[0] = reg;
+    buf[1] = val;
+    return MyXIic_Send(TCA_IIC_BASE, dev, buf, 2); 
+}
+
+int i2c_tca_read_reg(uint8_t dev, uint8_t reg, uint8_t* val, int len) {
+    // set_pin(PMOD_TCA_SCL_PIN, SCL1);
+    // set_pin(PMOD_TCA_SDA_PIN, SDA1);
+    // MPU is on I2C 1
+    // Write Reg Address
+    if(MyXIic_Send(TCA_IIC_BASE, dev, &reg, 1) == 0) return 0; 
+    // Read Data
+    return MyXIic_Recv(TCA_IIC_BASE, dev, val, len);
+}
+
+int i2c_motor_write_reg(uint8_t reg, uint8_t* data, int len) {
+    // set_pin(PMOD_MOTOR_SCL_PIN, SCL0);
+    // set_pin(PMOD_MOTOR_SDA_PIN, SDA0);
+    uint8_t buf[32];
     buf[0] = reg;
     memcpy(&buf[1], data, len);
-    return i2c_write(i2c_dev, dev_addr, buf, len + 1);
+    return MyXIic_Send(MOTOR_IIC_BASE, PCA9685_ADDRESS, buf, len+1);
 }
 
-int i2c_read_reg(uint8_t dev_addr, uint8_t reg, uint8_t *buf, int len)
-{
-    uint8_t tx = reg;
-    i2c_write(i2c_dev, dev_addr, (unsigned char *)&tx, 1);
-    return i2c_read(i2c_dev, dev_addr, (unsigned char *)buf, len);
+int i2c_motor_read_reg(uint8_t reg, uint8_t* buffer, int length) {
+    // set_pin(PMOD_MOTOR_SCL_PIN, SCL0);
+    // set_pin(PMOD_MOTOR_SDA_PIN, SDA0);
+    // 1. Send the register address we want to read (Write operation)
+    // Motors are on MOTOR_IIC_BASE (I2C 0)
+    if (MyXIic_Send(MOTOR_IIC_BASE, PCA9685_ADDRESS, &reg, 1) == 0) {
+        return 0; // Timeout or NACK
+    }
+    
+    // 2. Read the data from the device (Read operation)
+    return MyXIic_Recv(MOTOR_IIC_BASE, PCA9685_ADDRESS, buffer, length);
 }
 
-void tca_select_channel(uint8_t channel)
-{
-    if (channel > 7)
-        return;
-    uint8_t mask = (uint8_t)(1 << channel);
-    uint8_t reg = 0x00;
-    i2c_write_reg(TCA_DEVICE_ADDRESS, reg, &mask, 1);
+void tca_select_channel(uint8_t channel) {
+    if (channel > 7) return;
+    uint8_t mask = (1 << channel);
+    MyXIic_Send(TCA_IIC_BASE, TCA_DEVICE_ADDRESS, &mask, 1);
 }
+
 
 void pca9685_set_pwm(int motor, uint16_t on, uint16_t off)
 {
     int ch;
     switch (motor)
     {
-    case 1: ch = 3; break;
-    case 2: ch = 4; break;
-    case 3: ch = 7; break;
-    case 4: ch = 8; break;
-    default: return;
+    case 1:
+        ch = 3;
+        break;
+    case 2:
+        ch = 4;
+        break;
+    case 3:
+        ch = 7;
+        break;
+    case 4:
+        ch = 8;
+        break;
+    default:
+        return;
     }
 
     uint8_t ON_L = LED0_ON_L + 4 * ch;
-    
-    // Create a buffer with all 4 bytes
+
     uint8_t payload[4];
     payload[0] = on & 0xFF;
     payload[1] = (on >> 8) & 0x0F;
     payload[2] = off & 0xFF;
     payload[3] = (off >> 8) & 0x0F;
 
-    // Write all 4 bytes in ONE transaction
-    // i2c_write_reg automatically sends the Register address (ON_L)
-    // followed by the 4 bytes of data. The PCA9685 auto-increments the 
-    // internal pointer to ON_H, OFF_L, OFF_H automatically.
-    i2c_write_reg(PCA9685_ADDRESS, ON_L, payload, 4);
+    i2c_motor_write_reg( ON_L, payload, 4);
 }
 uint16_t us_to_pca_value(int us)
 {
@@ -293,20 +492,18 @@ void pca9685_set_pwm_us(int motor, int us)
 
 void pca_write8(uint8_t reg, uint8_t value)
 {
-    i2c_write_reg(PCA9685_ADDRESS, reg, &value, 1);
+    i2c_motor_write_reg(reg, &value, 1);
 }
 
 uint8_t pca_read8(uint8_t reg)
 {
     uint8_t v = 0;
-    i2c_read_reg(PCA9685_ADDRESS, reg, &v, 1);
+    i2c_motor_read_reg( reg, &v, 1);
     return v;
 }
 void pca9685_init(void)
 {
-    tca_select_channel(TCA_MOTOR_CHANNEL);
-    
-    pca_write8(PCA9685_MODE1, PCA9685_OUTDRV); 
+    pca_write8(PCA9685_MODE1, PCA9685_OUTDRV);
     pca_write8(PCA9685_MODE1, PCA9685_ALLCALL);
     mb_delay_ms(5);
 
@@ -324,13 +521,13 @@ void pca9685_init(void)
     uint8_t newmode = (oldmode & 0x7F) | 0x10; // Sleep to set prescale
     pca_write8(PCA9685_MODE1, newmode);
     pca_write8(PCA9685_PRESCALE, (uint8_t)prescale);
-    
+
     pca_write8(PCA9685_MODE1, oldmode);
     mb_delay_ms(5);
 
     // IMPORTANT: Enable Auto-Increment (PCA9685_AI) here
     // This sets bit 5 HIGH, allowing us to write sequential registers in one go
-    pca_write8(PCA9685_MODE1, oldmode | 0x80 | PCA9685_AI); 
+    pca_write8(PCA9685_MODE1, oldmode | 0x80 | PCA9685_AI);
 }
 
 void arm_motor(int ch)
@@ -341,18 +538,6 @@ void arm_motor(int ch)
     mb_delay_ms(1000);
     pca9685_set_pwm_us(ch, MIN_MOTOR_US);
     mb_delay_ms(1000);
-}
-
-void init_pid()
-{
-    pid_roll.kp = float_to_q16(1.0f);
-    pid_roll.ki = float_to_q16(0.0f);
-    pid_roll.kd = float_to_q16(0.0f);
-    pid_roll.integ = pid_roll.last_err = 0;
-    pid_roll.out_min = float_to_q16(-1.0f);
-    pid_roll.out_max = float_to_q16(1.0f);
-    pid_pitch = pid_roll;
-    pid_yaw = pid_roll;
 }
 
 void arm_all()
@@ -375,19 +560,19 @@ void mpu_init(void)
     tca_select_channel(TCA_MPU_CHANNEL);
     uint8_t tmp;
     tmp = 7;
-    i2c_write_reg(MPU_DEVICE_ADDRESS, MPU_SMPLRT_DIV, &tmp, 1);
+    i2c_tca_write_reg(MPU_DEVICE_ADDRESS, MPU_SMPLRT_DIV, tmp);
     mb_delay_ms(100);
     tmp = 1;
-    i2c_write_reg(MPU_DEVICE_ADDRESS, MPU_PWR_MGMT_1, &tmp, 1);
+    i2c_tca_write_reg(MPU_DEVICE_ADDRESS, MPU_PWR_MGMT_1, tmp);
     mb_delay_ms(100);
-    tmp = 0;
-    i2c_write_reg(MPU_DEVICE_ADDRESS, MPU_CONFIG, &tmp, 1);
+    tmp = 4;
+    i2c_tca_write_reg(MPU_DEVICE_ADDRESS, MPU_CONFIG, tmp);
     mb_delay_ms(100);
     tmp = 24;
-    i2c_write_reg(MPU_DEVICE_ADDRESS, MPU_GYRO_CONFIG, &tmp, 1);
+    i2c_tca_write_reg(MPU_DEVICE_ADDRESS, MPU_GYRO_CONFIG,tmp);
     mb_delay_ms(100);
     tmp = 1;
-    i2c_write_reg(MPU_DEVICE_ADDRESS, MPU_INT_ENABLE, &tmp, 1);
+    i2c_tca_write_reg(MPU_DEVICE_ADDRESS, MPU_INT_ENABLE, tmp);
     mb_delay_ms(100);
 }
 
@@ -411,31 +596,26 @@ void set_gyro_bias(void)
     gyro_bias_z = sum_z / count;
 }
 
-int16_t mpu_read_raw16(uint8_t reg)
-{
-    uint8_t buf[2];
-    i2c_read_reg(MPU_DEVICE_ADDRESS, reg, buf, 2);
-    return (int16_t)((buf[0] << 8) | buf[1]);
-}
-
 void mpu_read_gyro(q16 *gx, q16 *gy, q16 *gz)
 {
-    tca_select_channel(TCA_MPU_CHANNEL);
-    int16_t rx = mpu_read_raw16(MPU_GYRO_XOUT_H);
-    int16_t ry = mpu_read_raw16(MPU_GYRO_YOUT_H);
-    int16_t rz = mpu_read_raw16(MPU_GYRO_ZOUT_H);
+    uint8_t buf[6];
+
+    if(i2c_tca_read_reg(MPU_DEVICE_ADDRESS, MPU_GYRO_XOUT_H, buf, 6) != 6) {
+        // READ FAILED (TIMEOUT) - Keep old values or zero
+        mb_delay_ms(5);
+        MAILBOX_DATA(19) += 1; // Increment error counter
+        return; 
+    }
+
+    int16_t rx = (int16_t)((buf[0] << 8) | buf[1]);
+    int16_t ry = (int16_t)((buf[2] << 8) | buf[3]);
+    int16_t rz = (int16_t)((buf[4] << 8) | buf[5]);
+
     const int32_t GYRO_SCALE_DIV = 131;
-    float fx = ((float)rx) / GYRO_SCALE_DIV;
-    float fy = ((float)ry) / GYRO_SCALE_DIV;
-    float fz = ((float)rz) / GYRO_SCALE_DIV;
-    fy = fy * -1; // Invert Y axis
-    fz = fz * -1; // Invert Z axis
-    *gx = float_to_q16(fx);
-    *gy = float_to_q16(fy);
-    *gz = float_to_q16(fz);
-    *gx -= gyro_bias_x;
-    *gy -= gyro_bias_y;
-    *gz -= gyro_bias_z;
+
+    *gx = float_to_q16((float)rx / GYRO_SCALE_DIV) - gyro_bias_x;
+    *gy = float_to_q16(-(float)ry / GYRO_SCALE_DIV) - gyro_bias_y; // Invert Y axis
+    *gz = float_to_q16(-(float)rz / GYRO_SCALE_DIV) - gyro_bias_z; // Invert Z axis
 }
 
 void mb_write_motor_pwm_from_q16(int motor, q16 norm_q16, int min_us, int max_us)
@@ -445,8 +625,29 @@ void mb_write_motor_pwm_from_q16(int motor, q16 norm_q16, int min_us, int max_us
         f = MIN_ALLOWED_MOTOR_PERCENTAGE;
     if (f > MAX_ALLOWED_MOTOR_PERCENTAGE)
         f = MAX_ALLOWED_MOTOR_PERCENTAGE;
+
+    // q16 clamped_q16 = float_to_q16(f);
+
+    // if (q16_abs(clamped_q16 - last_motor_q16[motor - 1]) < MOTOR_UPDATE_DEADBAND_Q16)
+    //     return;
+
     int us = (int)(min_us + f * (max_us - min_us));
+
     pca9685_set_pwm_us(motor, us);
+
+    // last_motor_q16[motor - 1] = clamped_q16;
+}
+
+void init_pid()
+{
+    pid_roll.kp = float_to_q16(1.0f);
+    pid_roll.ki = float_to_q16(0.0f);
+    pid_roll.kd = float_to_q16(0.0f);
+    pid_roll.integ = pid_roll.last_err = 0;
+    pid_roll.out_min = float_to_q16(-1.0f);
+    pid_roll.out_max = float_to_q16(1.0f);
+    pid_pitch = pid_roll;
+    pid_yaw = pid_roll;
 }
 
 q16 pid_step(pid_type *p, q16 setpoint, q16 measurement, q16 dt_q16)
@@ -489,7 +690,7 @@ int main(void)
         switch (cmd)
         {
         case CMD_INIT:
-            mb_i2c_open();
+            setup_hardware();
             motors_init();
             mpu_init();
             set_gyro_bias();
@@ -516,9 +717,9 @@ int main(void)
             uint32_t period_ms = 10;
             q16 adj_throttle_q16 = 0;
             const q16 dt_q16 = (period_ms * Q16_ONE) / 1000;
-
             while (MAILBOX_CMD_ADDR == CMD_START_PID)
             {
+                MAILBOX_DATA(12) = global_i;
                 uint32_t start_ms = get_timer_ms();
 
                 set_roll = (q16)MAILBOX_DATA(0);
@@ -528,23 +729,24 @@ int main(void)
 
                 q16 gx, gy, gz;
                 mpu_read_gyro(&gx, &gy, &gz);
+                MAILBOX_DATA(13) = global_i;
 
                 q16 out_roll = pid_step(&pid_roll, set_roll, gy, dt_q16);
                 q16 out_pitch = pid_step(&pid_pitch, set_pitch, gx, dt_q16);
                 q16 out_yaw = pid_step(&pid_yaw, set_yaw, gz, dt_q16);
 
-                q16 t1 = adj_throttle_q16 + out_pitch - out_roll - out_yaw;
-                q16 t2 = adj_throttle_q16 - out_pitch - out_roll + out_yaw;
-                q16 t3 = adj_throttle_q16 + out_pitch + out_roll + out_yaw;
-                q16 t4 = adj_throttle_q16 - out_pitch + out_roll - out_yaw;
+                q16 t1 = adj_throttle_q16 + out_pitch - out_roll + out_yaw;
+                q16 t2 = adj_throttle_q16 - out_pitch - out_roll - out_yaw;
+                q16 t3 = adj_throttle_q16 + out_pitch + out_roll - out_yaw;
+                q16 t4 = adj_throttle_q16 - out_pitch + out_roll + out_yaw;
 
-                tca_select_channel(TCA_MOTOR_CHANNEL);
+                MAILBOX_DATA(14) = global_i;
                 mb_write_motor_pwm_from_q16(1, t1, MIN_MOTOR_US, MAX_MOTOR_US);
-// 		mb_delay_ms(5); // Small delay to ensure I2C bus stability
+                MAILBOX_DATA(15) = global_i;
                 mb_write_motor_pwm_from_q16(2, t2, MIN_MOTOR_US, MAX_MOTOR_US);
-// 		mb_delay_ms(5); // Small delay to ensure I2C bus stability
+                MAILBOX_DATA(16) = global_i;
                 mb_write_motor_pwm_from_q16(3, t3, MIN_MOTOR_US, MAX_MOTOR_US);
-// 		mb_delay_ms(5); // Small delay to ensure I2C bus stability
+                MAILBOX_DATA(17) = global_i;
                 mb_write_motor_pwm_from_q16(4, t4, MIN_MOTOR_US, MAX_MOTOR_US);
 
                 MAILBOX_DATA(4) = t1;
@@ -556,9 +758,10 @@ int main(void)
                 MAILBOX_DATA(10) = gz;
 
                 uint32_t elapsed_ms = get_timer_ms() - start_ms;
-		MAILBOX_DATA(11) = elapsed_ms;
+                MAILBOX_DATA(11) = elapsed_ms;
                 if (elapsed_ms < period_ms)
                     mb_delay_ms(period_ms - elapsed_ms);
+                global_i++;
             }
             MAILBOX_CMD_ADDR = CMD_STOP_PID;
             break;
