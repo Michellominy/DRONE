@@ -617,8 +617,8 @@ void mpu_read_accel(q16 *ax, q16 *ay, q16 *az)
     const int32_t ACCEL_SCALE_DIV = 16384;
 
     *ax = float_to_q16((float)rx / ACCEL_SCALE_DIV);
-    *ay = float_to_q16((float)ry / ACCEL_SCALE_DIV);
-    *az = float_to_q16((float)rz / ACCEL_SCALE_DIV);
+    *ay = float_to_q16(-(float)ry / ACCEL_SCALE_DIV); // Invert Y axis
+    *az = float_to_q16(-(float)rz / ACCEL_SCALE_DIV); // Invert Z axis
 }
 
 void mb_write_motor_pwm_from_q16(int motor, q16 norm_q16, int min_us, int max_us)
