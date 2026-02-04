@@ -2,7 +2,7 @@ import tkinter as tk
 
 
 class Throttles:
-    def __init__(self, root, onHeightThrottleChange):
+    def __init__(self, root, onHeightThrottleChange, onYawThrottleChange, onPitchThrottleChange, onRollThrottleChange):
         self.height_throttle = tk.IntVar()
         self.yaw_throttle = tk.IntVar()
         self.pitch_throttle = tk.IntVar()
@@ -19,31 +19,22 @@ class Throttles:
         self.roll_slider.grid(column=1, row=2, columnspan=1, rowspan=1)
 
         self.onHeightThrottleChange = onHeightThrottleChange
-    
-    def update_height_throttle(self, new_val):
-        self.height_throttle.set(new_val * 100)
-        self.onHeightThrottleChange(new_val)
-        print(f"udpated height: {self.height_throttle}, new_val: {new_val}")
-        
-    def update_yaw_throttle(self, new_val):
-        self.yaw_throttle.set(new_val * 100)
-        print(f"udpated yaw: {self.yaw_throttle}, new_val: {new_val}")
-    
-    def update_pitch_throttle(self, new_val):
-        self.pitch_throttle.set(new_val * 100)
-        
-    def update_roll_throttle(self, new_val):
-        self.roll_throttle.set(new_val * 100)
-
+        self.onYawThrottleChange = onYawThrottleChange
+        self.onPitchThrottleChange = onPitchThrottleChange
+        self.onRollThrottleChange = onRollThrottleChange
     
     def on_height_throttle_change(self, val):
         print(f"Height Throttle changed to: {val}")
+        self.onHeightThrottleChange(val)
         
     def on_yaw_throttle_change(self, val):
         print(f"Yaw Throttle changed to: {val}")
+        self.onYawThrottleChange(val)
     
     def on_pitch_throttle_change(self, val):
         print(f"Pitch Throttle changed to: {val}")
+        self.onPitchThrottleChange(val)
         
     def on_roll_throttle_change(self, val):
         print(f"Roll Throttle changed to: {val}")
+        self.onRollThrottleChange(val)

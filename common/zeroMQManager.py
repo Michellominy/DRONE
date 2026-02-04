@@ -47,3 +47,28 @@ class ZeroMQServer:
         self.context.term()
 
 zeroMQServer = ZeroMQServer()
+
+"""
+TOPICS:
+- logs: for log messages
+    * DRONE => BASESTATION
+    * data: string log message
+- gyro: for receiving gyro data
+    * DRONE => BASESTATION
+    * data: {yaw: float, pitch: float, roll: float}
+- accel: for receiving accelerometer data
+    * DRONE => BASESTATION
+    * data: {x: float, y: float, z: float}
+- throttle: for sending throttle commands
+    * BASESTATION => DRONE
+    * data: int motor throttle value
+- yaw: for sending yaw commands
+    * BASESTATION => DRONE
+    * data: int yaw value
+- pitch: for sending pitch commands
+    * BASESTATION => DRONE
+    * data: int pitch value
+- roll: for sending roll commands
+    * BASESTATION => DRONE
+    * data: int roll value
+"""

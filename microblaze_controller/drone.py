@@ -2,6 +2,8 @@
 import json
 from microblaze_controller.constant import *
 from microblaze_controller.microblaze import mb_instance
+from common.zeroMQManager import zeroMQServer
+import logging
 
 # the smallest positive representable value is 2^{-16} (about 0.0000152)
 init_gains = [
@@ -27,16 +29,17 @@ throttle_range:float = throttle_max - throttle_idle
 
 class Drone:
     def __init__(self):
+        self.logger = logging.getLogger()
         self.input_throttle:float = 0.0  # between 0.0 and 1.0
         self.input_pitch:float = 0.0 # between -1.0 and 1.0
         self.input_roll:float = 0.0  # between -1.0 and 1.0
         self.input_yaw:float = 0.0   # between -1.0 and 1.0
-        print("Initializing sensors...")
+        self.logger.info("Initializing sensors...")
         self.init_sensors() 
-        print("Sensors initialized.")
-        print("Setting initial PID gains...")
+        self.logger.info("Sensors initialized.")
+        self.logger.info("Setting initial PID gains...")
         self.set_gains()
-        print("Gains set.")
+        self.logger.info("Gains set.")
         
     def init_sensors(self):
         mb_instance.mailbox_write_cmd(CMD_INIT)
@@ -73,33 +76,33 @@ class Drone:
         self.set_yaw()
         self.set_throttle()
         mb_instance.mailbox_write_cmd(CMD_START_PID)
-        print("PID loop running.")
+        self.logger.info("PID loop running.")
 
     def stop(self):
         mb_instance.mailbox_write_cmd(CMD_STOP_PID)
         mb_instance.wait_for_cmd(CMD_STOP_PID)
-                
-    def read_debug(self):
+        
+    def read_gyro(self):
         gx = mb_instance.mailbox_read_signed_q16(8)
         gy = mb_instance.mailbox_read_signed_q16(9)
         gz = mb_instance.mailbox_read_signed_q16(10)
+        zeroMQServer.send("gyro", {"x": gx, "y": gy, "z": gz})
+        return gx, gy, gz
+    
+    def read_accel(self):
+        ax = mb_instance.mailbox_read_signed_q16(5)
+        ay = mb_instance.mailbox_read_signed_q16(6)
+        az = mb_instance.mailbox_read_signed_q16(7)
+        zeroMQServer.send("accel", {"x": ax, "y": ay, "z": az})
+        return ax, ay, az
+                
+    def read_debug(self):
+        gx, gy, gz = self.read_gyro()
         print("Gyro rates: gx={:.3f}, gy={:.3f}, gz={:.3f}".format(gx, gy, gz))
                 
-        t1 = mb_instance.mailbox_read_signed_q16(4)
-        t2 = mb_instance.mailbox_read_signed_q16(5)
-        t3 = mb_instance.mailbox_read_signed_q16(6)
-        t4 = mb_instance.mailbox_read_signed_q16(7)
-        print("Motor throttles: {:.3f} {:.3f} {:.3f} {:.3f}".format(t1, t2, t3, t4))
+        ax, ay, az = self.read_accel()
+        print("Accel values: ax={:.3f}, ay={:.3f}, az={:.3f}".format(ax, ay, az))
         
-        elapsed_time_ms = mb_instance.mailbox_read_unsigned(11)
+        elapsed_time_ms = mb_instance.mailbox_read_unsigned(4)
         print("Elapsed time for PID loop: {} ms".format(elapsed_time_ms))
         
-        nb_hard_reset = mb_instance.mailbox_read_unsigned(18)
-        print(f"Number of Hard Reset Performed = {nb_hard_reset}")
-
-        xiic_status = mb_instance.mailbox_read_unsigned(19)
-        print(f"Failed Gyro Read = {xiic_status}")
-        
-        for i in range(12, 18):
-            v = mb_instance.mailbox_read_unsigned(i)
-            print(f"MAILBOX_DATA[{i}] = {v}")

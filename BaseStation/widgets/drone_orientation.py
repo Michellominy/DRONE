@@ -16,3 +16,9 @@ class DroneOrientation:
         self.yaw_meter.set_value(0)
         self.pitch_meter.set_value(0)
         self.roll_meter.set_value(0)
+
+    def update_orientation(self, yaw, pitch, roll):
+        print(f"Updating orientation: Yaw={yaw}, Pitch={pitch}, Roll={roll}")
+        self.yaw_meter.set_value(yaw)
+        self.pitch_meter.set_value(pitch)
+        self.roll_meter.set_value(roll)

@@ -13,12 +13,23 @@ from common.constants import DRONE_IP
 from common.zeroMQManager import ZeroMQSubscriber, zeroMQServer
 
 
+def onHeightThrottleChange(new_height):
+    zeroMQServer.send("throttle", {"data": new_height})
+
+def onYawThrottleChange(new_yaw):
+    zeroMQServer.send("yaw", {"data": new_yaw})
+
+def onPitchThrottleChange(new_pitch):
+    zeroMQServer.send("pitch", {"data": new_pitch})
+
+def onRollThrottleChange(new_roll):
+    zeroMQServer.send("roll", {"data": new_roll})
+
+
 root = tk.Tk()
 root.title("Drone Controller")
 root.geometry("1200x800")
 
-def onHeightThrottleChange(new_height):
-    zeroMQServer.send("throttle", {"data": new_height})
 
 throttle_frame = tk.Frame(root)
 throttle_frame.grid(column=0, row=0, columnspan=1, rowspan=1)
@@ -32,20 +43,10 @@ root.columnconfigure(1, weight=1)
 root.rowconfigure(0, weight=3)
 root.rowconfigure(1, weight=1)
 
-throttles = Throttles(throttle_frame, onHeightThrottleChange)
 logs = Logs(log_frame)
+throttles = Throttles(throttle_frame, onHeightThrottleChange, onYawThrottleChange, onPitchThrottleChange, onRollThrottleChange)
 orientation = DroneOrientation(orientation_frame)
-controlller = Controller(throttles.update_yaw_throttle, throttles.update_height_throttle, throttles.update_roll_throttle, throttles.update_pitch_throttle)
-
-def send_throttle_values():
-    left_x = throttles.left_x_slider.get()
-    left_y = throttles.left_y_slider.get()
-    right_x = throttles.right_x_slider.get()
-    right_y = throttles.right_y_slider.get()
-    
-    log_message = f"Sending Throttle - Left: ({left_x}, {left_y}) | Right: ({right_x}, {right_y})"
-    logs.update_log(log_message)
-
+controller = Controller(throttles.on_yaw_throttle_change, throttles.on_height_throttle_change, throttles.on_roll_throttle_change, throttles.on_pitch_throttle_change)
 
 def log_callback(encoded_message):
     message = encoded_message.decode()
@@ -53,10 +54,14 @@ def log_callback(encoded_message):
 
 def gyro_callback(json_message):
     message = json.loads(json_message.decode())
-    print(f"DATA: {message}")
+    print(f"GYRO DATA: {message}")
+    
+def accel_callback(json_message):
+    message = json.loads(json_message.decode())
+    print(f"ACCEL DATA: {message}")
 
 logs_subscriber = ZeroMQSubscriber(host=DRONE_IP, topic="logs", callback=log_callback)
 gyro_subscriber = ZeroMQSubscriber(host=DRONE_IP, topic="gyro", callback=gyro_callback)
-
+accel_subscriber = ZeroMQSubscriber(host=DRONE_IP, topic="accel", callback=accel_callback)  
 
 root.mainloop()

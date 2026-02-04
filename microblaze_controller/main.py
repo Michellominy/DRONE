@@ -28,6 +28,6 @@ if __name__ == "__main__":
             drone.read_debug()
             time.sleep(0.1)
     except KeyboardInterrupt:
-        print("Stopping PID loop...")
+        logger.info("Stopping PID loop...")
         drone.stop()
-        print("Stopped.")
+        logger.info("Stopped.")

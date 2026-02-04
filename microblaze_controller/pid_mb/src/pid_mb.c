@@ -87,7 +87,8 @@ BACK
  *      MAILBOX_DATA(1): Setpoint pitch (Q16)
  *      MAILBOX_DATA(2): Setpoint yaw (Q16)
  *      MAILBOX_DATA(3): Adjusted throttle (Q16, 0.0 to 1.0)
- *      MAILBOX_DATA(4..7): (output) Motor outputs (Q16) for motors 1 to 4
+ *      MAILBOX_DATA(4): PID loop execution time in ms (output)
+ *      MAILBOX_DATA(5..7): (output) Accel readings (Q16) for ax, ay, az
  *      MAILBOX_DATA(8..10): (output) Gyro readings (Q16) for gx, gy, gz
  *      The PID loop continues until MAILBOX_CMD_ADDR is changed to a different command.
  * CMD_STOP_PID: Stop PID control loop and stop motors. No MAILBOX_DATA used.
@@ -152,7 +153,6 @@ static inline q16 q16_mul(q16 a, q16 b) { return (q16)(((int64_t)a * (int64_t)b)
 static inline q16 q16_div(q16 a, q16 b) { return (q16)((((int64_t)a << 16) / (int64_t)b)); }
 static inline q16 q16_abs(q16 x) { return (x < 0) ? -x : x; }
 
-int global_i = 0;
 
 typedef struct
 {
@@ -358,7 +358,6 @@ int MyXIic_Send(UINTPTR BaseAddress, u8 Address, u8 *BufferPtr, unsigned ByteCou
     return ByteCount; 
 }
 
-/* ========================================================================= */
 
 
 
@@ -392,14 +391,9 @@ void setup_hardware() {
 
     set_pin(PMOD_TCA_SCL_PIN, SCL1);
     set_pin(PMOD_TCA_SDA_PIN, SDA1);
-    
-    //XIic_Initialize((XIic*)NULL, 0); 
-    //XIic_Initialize((XIic*)NULL, 1);
 }
 
 int i2c_tca_write_reg(uint8_t dev, uint8_t reg, uint8_t val) {
-    // set_pin(PMOD_TCA_SCL_PIN, SCL1);
-    // set_pin(PMOD_TCA_SDA_PIN, SDA1);
     uint8_t buf[2];
     buf[0] = reg;
     buf[1] = val;
@@ -407,8 +401,6 @@ int i2c_tca_write_reg(uint8_t dev, uint8_t reg, uint8_t val) {
 }
 
 int i2c_tca_read_reg(uint8_t dev, uint8_t reg, uint8_t* val, int len) {
-    // set_pin(PMOD_TCA_SCL_PIN, SCL1);
-    // set_pin(PMOD_TCA_SDA_PIN, SDA1);
     // MPU is on I2C 1
     // Write Reg Address
     if(MyXIic_Send(TCA_IIC_BASE, dev, &reg, 1) == 0) return 0; 
@@ -417,8 +409,6 @@ int i2c_tca_read_reg(uint8_t dev, uint8_t reg, uint8_t* val, int len) {
 }
 
 int i2c_motor_write_reg(uint8_t reg, uint8_t* data, int len) {
-    // set_pin(PMOD_MOTOR_SCL_PIN, SCL0);
-    // set_pin(PMOD_MOTOR_SDA_PIN, SDA0);
     uint8_t buf[32];
     buf[0] = reg;
     memcpy(&buf[1], data, len);
@@ -426,8 +416,6 @@ int i2c_motor_write_reg(uint8_t reg, uint8_t* data, int len) {
 }
 
 int i2c_motor_read_reg(uint8_t reg, uint8_t* buffer, int length) {
-    // set_pin(PMOD_MOTOR_SCL_PIN, SCL0);
-    // set_pin(PMOD_MOTOR_SDA_PIN, SDA0);
     // 1. Send the register address we want to read (Write operation)
     // Motors are on MOTOR_IIC_BASE (I2C 0)
     if (MyXIic_Send(MOTOR_IIC_BASE, PCA9685_ADDRESS, &reg, 1) == 0) {
@@ -603,7 +591,6 @@ void mpu_read_gyro(q16 *gx, q16 *gy, q16 *gz)
     if(i2c_tca_read_reg(MPU_DEVICE_ADDRESS, MPU_GYRO_XOUT_H, buf, 6) != 6) {
         // READ FAILED (TIMEOUT) - Keep old values or zero
         mb_delay_ms(5);
-        MAILBOX_DATA(19) += 1; // Increment error counter
         return; 
     }
 
@@ -618,6 +605,22 @@ void mpu_read_gyro(q16 *gx, q16 *gy, q16 *gz)
     *gz = float_to_q16(-(float)rz / GYRO_SCALE_DIV) - gyro_bias_z; // Invert Z axis
 }
 
+void mpu_read_accel(q16 *ax, q16 *ay, q16 *az)
+{
+    uint8_t buf[6];
+    i2c_tca_read_reg(MPU_DEVICE_ADDRESS, MPU_ACCEL_XOUT_H, buf, 6);
+
+    int16_t rx = (int16_t)((buf[0] << 8) | buf[1]);
+    int16_t ry = (int16_t)((buf[2] << 8) | buf[3]);
+    int16_t rz = (int16_t)((buf[4] << 8) | buf[5]);
+
+    const int32_t ACCEL_SCALE_DIV = 16384;
+
+    *ax = float_to_q16((float)rx / ACCEL_SCALE_DIV);
+    *ay = float_to_q16((float)ry / ACCEL_SCALE_DIV);
+    *az = float_to_q16((float)rz / ACCEL_SCALE_DIV);
+}
+
 void mb_write_motor_pwm_from_q16(int motor, q16 norm_q16, int min_us, int max_us)
 {
     float f = q16_to_float(norm_q16);
@@ -626,16 +629,10 @@ void mb_write_motor_pwm_from_q16(int motor, q16 norm_q16, int min_us, int max_us
     if (f > MAX_ALLOWED_MOTOR_PERCENTAGE)
         f = MAX_ALLOWED_MOTOR_PERCENTAGE;
 
-    // q16 clamped_q16 = float_to_q16(f);
-
-    // if (q16_abs(clamped_q16 - last_motor_q16[motor - 1]) < MOTOR_UPDATE_DEADBAND_Q16)
-    //     return;
-
     int us = (int)(min_us + f * (max_us - min_us));
 
     pca9685_set_pwm_us(motor, us);
 
-    // last_motor_q16[motor - 1] = clamped_q16;
 }
 
 void init_pid()
@@ -719,7 +716,6 @@ int main(void)
             const q16 dt_q16 = (period_ms * Q16_ONE) / 1000;
             while (MAILBOX_CMD_ADDR == CMD_START_PID)
             {
-                MAILBOX_DATA(12) = global_i;
                 uint32_t start_ms = get_timer_ms();
 
                 set_roll = (q16)MAILBOX_DATA(0);
@@ -727,9 +723,9 @@ int main(void)
                 set_yaw = (q16)MAILBOX_DATA(2);
                 adj_throttle_q16 = (q16)MAILBOX_DATA(3);
 
-                q16 gx, gy, gz;
+                q16 gx, gy, gz, ax, ay, az;
                 mpu_read_gyro(&gx, &gy, &gz);
-                MAILBOX_DATA(13) = global_i;
+                mpu_read_accel(&ax, &ay, &az);
 
                 q16 out_roll = pid_step(&pid_roll, set_roll, gy, dt_q16);
                 q16 out_pitch = pid_step(&pid_pitch, set_pitch, gx, dt_q16);
@@ -740,28 +736,22 @@ int main(void)
                 q16 t3 = adj_throttle_q16 + out_pitch + out_roll - out_yaw;
                 q16 t4 = adj_throttle_q16 - out_pitch + out_roll + out_yaw;
 
-                MAILBOX_DATA(14) = global_i;
                 mb_write_motor_pwm_from_q16(1, t1, MIN_MOTOR_US, MAX_MOTOR_US);
-                MAILBOX_DATA(15) = global_i;
                 mb_write_motor_pwm_from_q16(2, t2, MIN_MOTOR_US, MAX_MOTOR_US);
-                MAILBOX_DATA(16) = global_i;
                 mb_write_motor_pwm_from_q16(3, t3, MIN_MOTOR_US, MAX_MOTOR_US);
-                MAILBOX_DATA(17) = global_i;
                 mb_write_motor_pwm_from_q16(4, t4, MIN_MOTOR_US, MAX_MOTOR_US);
 
-                MAILBOX_DATA(4) = t1;
-                MAILBOX_DATA(5) = t2;
-                MAILBOX_DATA(6) = t3;
-                MAILBOX_DATA(7) = t4;
+                MAILBOX_DATA(5) = ax;
+                MAILBOX_DATA(6) = ay;
+                MAILBOX_DATA(7) = az;
                 MAILBOX_DATA(8) = gx;
                 MAILBOX_DATA(9) = gy;
                 MAILBOX_DATA(10) = gz;
 
                 uint32_t elapsed_ms = get_timer_ms() - start_ms;
-                MAILBOX_DATA(11) = elapsed_ms;
+                MAILBOX_DATA(4) = elapsed_ms;
                 if (elapsed_ms < period_ms)
                     mb_delay_ms(period_ms - elapsed_ms);
-                global_i++;
             }
             MAILBOX_CMD_ADDR = CMD_STOP_PID;
             break;
