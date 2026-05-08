@@ -1,0 +1,47 @@
+{
+  "0": {
+    "basicblocks": 1,
+    "calls": "1 1 1",
+    "control_depth": 0,
+    "def_use_depth": 1,
+    "file": "pid.cpp",
+    "fileloc": 34,
+    "instructions": 22,
+    "memory_accesses": 0,
+    "name": "hardware_pid_engine",
+    "stores": {
+      "T": 3
+    },
+    "total_instructions": 205
+  },
+  "1": {
+    "basicblocks": 8,
+    "calls": "2 2 2 2",
+    "control_depth": 0,
+    "def_use_depth": 5,
+    "file": "pid.cpp",
+    "fileloc": 15,
+    "instructions": 37,
+    "loads": {
+      "L": 3
+    },
+    "memory_accesses": 0,
+    "name": "run_pid",
+    "stores": {
+      "L": 2
+    },
+    "total_instructions": 61
+  },
+  "2": {
+    "basicblocks": 1,
+    "calls": "",
+    "control_depth": 0,
+    "def_use_depth": 3,
+    "file": "pid.cpp",
+    "fileloc": 6,
+    "instructions": 6,
+    "memory_accesses": 0,
+    "name": "q16_mul_hls",
+    "total_instructions": 6
+  }
+}

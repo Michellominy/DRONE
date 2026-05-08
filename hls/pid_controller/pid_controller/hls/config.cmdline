@@ -1,0 +1,3 @@
+relativeroot=C:/Users/lomin/Documents/git/DRONE/hls/pid_controller
+original_argv=--mode hls --package --config C:\Users\lomin\Documents\git\DRONE\hls\pid_controller\hls_config.cfg --work_dir pid_controller 
+

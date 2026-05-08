@@ -1,0 +1,203 @@
+
+
+================================================================
+== Synthesis Summary Report of 'hardware_pid_engine'
+================================================================
++ General Information: 
+    * Date:           Thu May  7 15:44:04 2026
+    * Version:        2025.2 (Build 6295257 on Nov 14 2025)
+    * Project:        pid_controller
+    * Solution:       hls (Vivado IP Flow Target)
+    * Product family: zynq
+    * Target device:  xc7z020-clg400-1
+    
+
+* Performance & Resource Estimates: 
++-----------------------+------+---------------+----------+---------+------+----------+---------+---------+------+------+----------+-----------+-----------+-----+
+|        Modules        | Issue|               | Iteration|         | Trip |          |      Latency      |      |      |          |           |           |     |
+|        & Loops        | Type | Violation Type|  Latency | Interval| Count| Pipelined| (cycles)|   (ns)  | Slack| BRAM |    DSP   |     FF    |    LUT    | URAM|
++-----------------------+------+---------------+----------+---------+------+----------+---------+---------+------+------+----------+-----------+-----------+-----+
+|+ hardware_pid_engine  |     -|              -|         -|       61|     -|        no|       60|  600.000|  0.38|     -|  24 (10%)|  4485 (4%)|  3673 (6%)|    -|
++-----------------------+------+---------------+----------+---------+------+----------+---------+---------+------+------+----------+-----------+-----------+-----+
+    Name Prefix: '+' for module, 'o' for loop, '*' for dataflow
+
+
+================================================================
+== HW Interfaces
+================================================================
+* S_AXILITE Interfaces
++----------------+------------+---------------+--------+----------+
+| Interface      | Data Width | Address Width | Offset | Register |
++----------------+------------+---------------+--------+----------+
+| s_axi_CTRL_BUS | 32         | 8             | 16     | 0        |
++----------------+------------+---------------+--------+----------+
+
+* S_AXILITE Registers
++----------------+----------------+--------+-------+--------+----------------------------------+----------------------------------------------------------------------+
+| Interface      | Register       | Offset | Width | Access | Description                      | Bit Fields                                                           |
++----------------+----------------+--------+-------+--------+----------------------------------+----------------------------------------------------------------------+
+| s_axi_CTRL_BUS | CTRL           | 0x00   | 32    | RW     | Control signals                  | 0=AP_START 1=AP_DONE 2=AP_IDLE 3=AP_READY 7=AUTO_RESTART 9=INTERRUPT |
+| s_axi_CTRL_BUS | GIER           | 0x04   | 32    | RW     | Global Interrupt Enable Register | 0=Enable                                                             |
+| s_axi_CTRL_BUS | IP_IER         | 0x08   | 32    | RW     | IP Interrupt Enable Register     | 0=CHAN0_INT_EN 1=CHAN1_INT_EN                                        |
+| s_axi_CTRL_BUS | IP_ISR         | 0x0c   | 32    | RW     | IP Interrupt Status Register     | 0=CHAN0_INT_ST 1=CHAN1_INT_ST                                        |
+| s_axi_CTRL_BUS | set_roll       | 0x10   | 32    | W      | Data signal of set_roll          |                                                                      |
+| s_axi_CTRL_BUS | set_pitch      | 0x18   | 32    | W      | Data signal of set_pitch         |                                                                      |
+| s_axi_CTRL_BUS | set_yaw        | 0x20   | 32    | W      | Data signal of set_yaw           |                                                                      |
+| s_axi_CTRL_BUS | gyro_x         | 0x28   | 32    | W      | Data signal of gyro_x            |                                                                      |
+| s_axi_CTRL_BUS | gyro_y         | 0x30   | 32    | W      | Data signal of gyro_y            |                                                                      |
+| s_axi_CTRL_BUS | gyro_z         | 0x38   | 32    | W      | Data signal of gyro_z            |                                                                      |
+| s_axi_CTRL_BUS | kp             | 0x40   | 32    | W      | Data signal of kp                |                                                                      |
+| s_axi_CTRL_BUS | ki             | 0x48   | 32    | W      | Data signal of ki                |                                                                      |
+| s_axi_CTRL_BUS | kd             | 0x50   | 32    | W      | Data signal of kd                |                                                                      |
+| s_axi_CTRL_BUS | dt             | 0x58   | 32    | W      | Data signal of dt                |                                                                      |
+| s_axi_CTRL_BUS | throttle       | 0x60   | 32    | W      | Data signal of throttle          |                                                                      |
+| s_axi_CTRL_BUS | out_roll       | 0x68   | 32    | R      | Data signal of out_roll          |                                                                      |
+| s_axi_CTRL_BUS | out_roll_ctrl  | 0x6c   | 32    | R      | Control signal of out_roll       | 0=out_roll_ap_vld                                                    |
+| s_axi_CTRL_BUS | out_pitch      | 0x78   | 32    | R      | Data signal of out_pitch         |                                                                      |
+| s_axi_CTRL_BUS | out_pitch_ctrl | 0x7c   | 32    | R      | Control signal of out_pitch      | 0=out_pitch_ap_vld                                                   |
+| s_axi_CTRL_BUS | out_yaw        | 0x88   | 32    | R      | Data signal of out_yaw           |                                                                      |
+| s_axi_CTRL_BUS | out_yaw_ctrl   | 0x8c   | 32    | R      | Control signal of out_yaw        | 0=out_yaw_ap_vld                                                     |
++----------------+----------------+--------+-------+--------+----------------------------------+----------------------------------------------------------------------+
+
+* TOP LEVEL CONTROL
++-----------+------------+-----------+
+| Interface | Type       | Ports     |
++-----------+------------+-----------+
+| ap_clk    | clock      | ap_clk    |
+| ap_rst_n  | reset      | ap_rst_n  |
+| interrupt | interrupt  | interrupt |
+| ap_ctrl   | ap_ctrl_hs |           |
++-----------+------------+-----------+
+
+
+================================================================
+== SW I/O Information
+================================================================
+* Top Function Arguments
++-----------+-----------+----------+
+| Argument  | Direction | Datatype |
++-----------+-----------+----------+
+| set_roll  | in        | int      |
+| set_pitch | in        | int      |
+| set_yaw   | in        | int      |
+| gyro_x    | in        | int      |
+| gyro_y    | in        | int      |
+| gyro_z    | in        | int      |
+| kp        | in        | int      |
+| ki        | in        | int      |
+| kd        | in        | int      |
+| dt        | in        | int      |
+| throttle  | in        | int      |
+| out_roll  | out       | int*     |
+| out_pitch | out       | int*     |
+| out_yaw   | out       | int*     |
++-----------+-----------+----------+
+
+* SW-to-HW Mapping
++-----------+----------------+----------+------------------------------------------+
+| Argument  | HW Interface   | HW Type  | HW Info                                  |
++-----------+----------------+----------+------------------------------------------+
+| set_roll  | s_axi_CTRL_BUS | register | name=set_roll offset=0x10 range=32       |
+| set_pitch | s_axi_CTRL_BUS | register | name=set_pitch offset=0x18 range=32      |
+| set_yaw   | s_axi_CTRL_BUS | register | name=set_yaw offset=0x20 range=32        |
+| gyro_x    | s_axi_CTRL_BUS | register | name=gyro_x offset=0x28 range=32         |
+| gyro_y    | s_axi_CTRL_BUS | register | name=gyro_y offset=0x30 range=32         |
+| gyro_z    | s_axi_CTRL_BUS | register | name=gyro_z offset=0x38 range=32         |
+| kp        | s_axi_CTRL_BUS | register | name=kp offset=0x40 range=32             |
+| ki        | s_axi_CTRL_BUS | register | name=ki offset=0x48 range=32             |
+| kd        | s_axi_CTRL_BUS | register | name=kd offset=0x50 range=32             |
+| dt        | s_axi_CTRL_BUS | register | name=dt offset=0x58 range=32             |
+| throttle  | s_axi_CTRL_BUS | register | name=throttle offset=0x60 range=32       |
+| out_roll  | s_axi_CTRL_BUS | register | name=out_roll offset=0x68 range=32       |
+| out_roll  | s_axi_CTRL_BUS | register | name=out_roll_ctrl offset=0x6c range=32  |
+| out_pitch | s_axi_CTRL_BUS | register | name=out_pitch offset=0x78 range=32      |
+| out_pitch | s_axi_CTRL_BUS | register | name=out_pitch_ctrl offset=0x7c range=32 |
+| out_yaw   | s_axi_CTRL_BUS | register | name=out_yaw offset=0x88 range=32        |
+| out_yaw   | s_axi_CTRL_BUS | register | name=out_yaw_ctrl offset=0x8c range=32   |
++-----------+----------------+----------+------------------------------------------+
+
+
+================================================================
+== Bind Op Report
+================================================================
++--------------------------------+-----+--------+-------------+--------+----------+---------+
+| Name                           | DSP | Pragma | Variable    | Op     | Impl     | Latency |
++--------------------------------+-----+--------+-------------+--------+----------+---------+
+| + hardware_pid_engine          | 24  |        |             |        |          |         |
+|   err_fu_288_p2                |     |        | err         | sub    | fabric   | 0       |
+|   mul_32s_32s_48_2_1_U1        | 4   |        | mul_ln7     | mul    | auto     | 1       |
+|   mul_32s_32s_48_2_1_U2        | 4   |        | mul_ln7_1   | mul    | auto     | 1       |
+|   mul_32s_32s_48_2_1_U1        | 4   |        | mul_ln7_2   | mul    | auto     | 1       |
+|   add_ln20_fu_428_p2           |     |        | add_ln20    | add    | fabric   | 0       |
+|   diff_fu_327_p2               |     |        | diff        | sub    | fabric   | 0       |
+|   icmp_ln23_fu_402_p2          |     |        | icmp_ln23   | seteq  | auto     | 0       |
+|   err_1_fu_294_p2              |     |        | err_1       | sub    | fabric   | 0       |
+|   mul_32s_32s_48_2_1_U3        | 4   |        | mul_ln7_3   | mul    | auto     | 1       |
+|   mul_32s_32s_48_2_1_U4        | 4   |        | mul_ln7_4   | mul    | auto     | 1       |
+|   mul_32s_32s_48_2_1_U2        | 4   |        | mul_ln7_5   | mul    | auto     | 1       |
+|   add_ln20_1_fu_444_p2         |     |        | add_ln20_1  | add    | fabric   | 0       |
+|   diff_1_fu_346_p2             |     |        | diff_1      | sub    | fabric   | 0       |
+|   err_2_fu_300_p2              |     |        | err_2       | sub    | fabric   | 0       |
+|   mul_32s_32s_48_2_1_U5        | 4   |        | mul_ln7_6   | mul    | auto     | 1       |
+|   mul_32s_32s_48_2_1_U6        | 4   |        | mul_ln7_7   | mul    | auto     | 1       |
+|   mul_32s_32s_48_2_1_U3        | 4   |        | mul_ln7_8   | mul    | auto     | 1       |
+|   add_ln20_2_fu_460_p2         |     |        | add_ln20_2  | add    | fabric   | 0       |
+|   diff_2_fu_419_p2             |     |        | diff_2      | sub    | fabric   | 0       |
+|   mul_32s_32s_48_2_1_U1        | 4   |        | mul_ln7_9   | mul    | auto     | 1       |
+|   sdiv_48ns_32s_32_52_seq_1_U7 |     |        | sdiv_ln23   | sdiv   | auto_seq | 51      |
+|   mul_32s_32s_48_2_1_U2        | 4   |        | mul_ln7_10  | mul    | auto     | 1       |
+|   sdiv_48ns_32s_32_52_seq_1_U8 |     |        | sdiv_ln23_1 | sdiv   | auto_seq | 51      |
+|   mul_32s_32s_48_2_1_U3        | 4   |        | mul_ln7_11  | mul    | auto     | 1       |
+|   sdiv_48ns_32s_32_52_seq_1_U9 |     |        | sdiv_ln23_2 | sdiv   | auto_seq | 51      |
+|   icmp_ln28_fu_556_p2          |     |        | icmp_ln28   | setgt  | auto     | 0       |
+|   out_10_fu_594_p3             |     |        | out_10      | select | auto_sel | 0       |
+|   icmp_ln29_fu_604_p2          |     |        | icmp_ln29   | setlt  | auto     | 0       |
+|   out_11_fu_610_p3             |     |        | out_11      | select | auto_sel | 0       |
+|   icmp_ln28_1_fu_572_p2        |     |        | icmp_ln28_1 | setgt  | auto     | 0       |
+|   out_13_fu_623_p3             |     |        | out_13      | select | auto_sel | 0       |
+|   icmp_ln29_1_fu_633_p2        |     |        | icmp_ln29_1 | setlt  | auto     | 0       |
+|   out_14_fu_639_p3             |     |        | out_14      | select | auto_sel | 0       |
+|   icmp_ln28_2_fu_588_p2        |     |        | icmp_ln28_2 | setgt  | auto     | 0       |
+|   out_7_fu_652_p3              |     |        | out_7       | select | auto_sel | 0       |
+|   icmp_ln29_2_fu_662_p2        |     |        | icmp_ln29_2 | setlt  | auto     | 0       |
+|   out_8_fu_668_p3              |     |        | out_8       | select | auto_sel | 0       |
++--------------------------------+-----+--------+-------------+--------+----------+---------+
+
+
+================================================================
+== Storage Report
+================================================================
++-----------------------+-----------+-----------+------+------+--------+----------+------+---------+------------------+
+| Name                  | Usage     | Type      | BRAM | URAM | Pragma | Variable | Impl | Latency | Bitwidth, Depth, |
+|                       |           |           |      |      |        |          |      |         | Banks            |
++-----------------------+-----------+-----------+------+------+--------+----------+------+---------+------------------+
+| + hardware_pid_engine |           |           | 0    | 0    |        |          |      |         |                  |
+|   CTRL_BUS_s_axi_U    | interface | s_axilite |      |      |        |          |      |         |                  |
++-----------------------+-----------+-----------+------+------+--------+----------+------+---------+------------------+
+
+
+================================================================
+== Pragma Report
+================================================================
+* Valid Pragma Syntax
++-----------+------------------------------------------+-------------------------------------+
+| Type      | Options                                  | Location                            |
++-----------+------------------------------------------+-------------------------------------+
+| INTERFACE | s_axilite port=return bundle=CTRL_BUS    | in hardware_pid_engine (pid.cpp:43) |
+| INTERFACE | s_axilite port=set_roll bundle=CTRL_BUS  | in hardware_pid_engine (pid.cpp:44) |
+| INTERFACE | s_axilite port=set_pitch bundle=CTRL_BUS | in hardware_pid_engine (pid.cpp:45) |
+| INTERFACE | s_axilite port=set_yaw bundle=CTRL_BUS   | in hardware_pid_engine (pid.cpp:46) |
+| INTERFACE | s_axilite port=gyro_x bundle=CTRL_BUS    | in hardware_pid_engine (pid.cpp:47) |
+| INTERFACE | s_axilite port=gyro_y bundle=CTRL_BUS    | in hardware_pid_engine (pid.cpp:48) |
+| INTERFACE | s_axilite port=gyro_z bundle=CTRL_BUS    | in hardware_pid_engine (pid.cpp:49) |
+| INTERFACE | s_axilite port=kp bundle=CTRL_BUS        | in hardware_pid_engine (pid.cpp:50) |
+| INTERFACE | s_axilite port=ki bundle=CTRL_BUS        | in hardware_pid_engine (pid.cpp:51) |
+| INTERFACE | s_axilite port=kd bundle=CTRL_BUS        | in hardware_pid_engine (pid.cpp:52) |
+| INTERFACE | s_axilite port=dt bundle=CTRL_BUS        | in hardware_pid_engine (pid.cpp:53) |
+| INTERFACE | s_axilite port=throttle bundle=CTRL_BUS  | in hardware_pid_engine (pid.cpp:54) |
+| INTERFACE | s_axilite port=out_roll bundle=CTRL_BUS  | in hardware_pid_engine (pid.cpp:55) |
+| INTERFACE | s_axilite port=out_pitch bundle=CTRL_BUS | in hardware_pid_engine (pid.cpp:56) |
+| INTERFACE | s_axilite port=out_yaw bundle=CTRL_BUS   | in hardware_pid_engine (pid.cpp:57) |
++-----------+------------------------------------------+-------------------------------------+
+
+
