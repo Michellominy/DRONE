@@ -1,0 +1,24 @@
+#-----------------------------------------------------------
+# Vivado v2025.2 (64-bit)
+# SW Build 6299465 on Fri Nov 14 19:35:11 GMT 2025
+# IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
+# SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
+# Start of session at: Sat Jun 27 21:01:34 2026
+# Process ID         : 4260
+# Current directory  : C:/Users/lomin/Documents/git/DRONE/rtl_controller/drone_overlay/drone_overlay.runs/synth_1
+# Command line       : vivado.exe -log drone_block_design_wrapper.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source drone_block_design_wrapper.tcl
+# Log file           : C:/Users/lomin/Documents/git/DRONE/rtl_controller/drone_overlay/drone_overlay.runs/synth_1/drone_block_design_wrapper.vds
+# Journal file       : C:/Users/lomin/Documents/git/DRONE/rtl_controller/drone_overlay/drone_overlay.runs/synth_1\vivado.jou
+# Running On         : Michel-PC
+# Platform           : Windows Server 2016 or Windows 10
+# Operating System   : 26200
+# Processor Detail   : AMD Ryzen 5 9600X 6-Core Processor             
+# CPU Frequency      : 3900 MHz
+# CPU Physical cores : 6
+# CPU Logical cores  : 12
+# Host memory        : 33462 MB
+# Swap memory        : 5905 MB
+# Total Virtual      : 39367 MB
+# Available Virtual  : 12427 MB
+#-----------------------------------------------------------
+source drone_block_design_wrapper.tcl -notrace
