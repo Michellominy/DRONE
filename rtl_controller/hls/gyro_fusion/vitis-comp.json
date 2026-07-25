@@ -1,12 +1,12 @@
 {
-  "name": "pid_controller",
+  "name": "gyro_fusion",
   "type": "HLS",
   "configuration": {
     "componentType": "HLS",
     "configFiles": [
-      "hls_config.cfg"
+      "gyro_fusion_config.cfg"
     ],
-    "work_dir": "pid_controller"
+    "work_dir": "gyro_fusion"
   },
   "useSysrootToolchain": false,
   "template": "empty_hls_component",
