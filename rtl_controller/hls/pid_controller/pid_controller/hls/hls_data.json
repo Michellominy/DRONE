@@ -1,0 +1,742 @@
+{
+  "Top": "pid_controller",
+  "RtlTop": "pid_controller",
+  "RtlPrefix": "",
+  "RtlSubPrefix": "pid_controller_",
+  "SourceLanguage": "cpp",
+  "HostMachineBits": "64",
+  "FunctionProtocol": "ap_ctrl_hs",
+  "ResetStyle": "control",
+  "Target": {
+    "Family": "zynq",
+    "Device": "xc7z020",
+    "Package": "-clg400",
+    "Speed": "-1",
+    "Triple": "fpga64-xilinx-none"
+  },
+  "Args": {
+    "sensor_in": {
+      "index": "0",
+      "direction": "in",
+      "srcType": "stream<hls::axis<ap_uint<128>, 0UL, 0UL, 0UL, (unsigned char)'8', false>, 0>&",
+      "srcSize": "256",
+      "hwRefs": [{
+          "type": "interface",
+          "interface": "sensor_in",
+          "name": "",
+          "usage": "data",
+          "direction": "in"
+        }]
+    },
+    "correction_out": {
+      "index": "1",
+      "direction": "out",
+      "srcType": "stream<hls::axis<ap_uint<128>, 0UL, 0UL, 0UL, (unsigned char)'8', false>, 0>&",
+      "srcSize": "256",
+      "hwRefs": [{
+          "type": "interface",
+          "interface": "correction_out",
+          "name": "",
+          "usage": "data",
+          "direction": "out"
+        }]
+    },
+    "setpoint_roll": {
+      "index": "2",
+      "direction": "in",
+      "srcType": "ap_fixed<32, 16, (ap_q_mode)5, (ap_o_mode)3, 0>",
+      "srcSize": "32",
+      "hwRefs": [{
+          "type": "port",
+          "interface": "setpoint_roll",
+          "name": "setpoint_roll",
+          "usage": "data",
+          "direction": "in"
+        }]
+    },
+    "setpoint_pitch": {
+      "index": "3",
+      "direction": "in",
+      "srcType": "ap_fixed<32, 16, (ap_q_mode)5, (ap_o_mode)3, 0>",
+      "srcSize": "32",
+      "hwRefs": [{
+          "type": "port",
+          "interface": "setpoint_pitch",
+          "name": "setpoint_pitch",
+          "usage": "data",
+          "direction": "in"
+        }]
+    },
+    "setpoint_yaw": {
+      "index": "4",
+      "direction": "in",
+      "srcType": "ap_fixed<32, 16, (ap_q_mode)5, (ap_o_mode)3, 0>",
+      "srcSize": "32",
+      "hwRefs": [{
+          "type": "port",
+          "interface": "setpoint_yaw",
+          "name": "setpoint_yaw",
+          "usage": "data",
+          "direction": "in"
+        }]
+    },
+    "kp_roll": {
+      "index": "5",
+      "direction": "in",
+      "srcType": "ap_fixed<32, 16, (ap_q_mode)5, (ap_o_mode)3, 0>",
+      "srcSize": "32",
+      "hwRefs": [{
+          "type": "port",
+          "interface": "kp_roll",
+          "name": "kp_roll",
+          "usage": "data",
+          "direction": "in"
+        }]
+    },
+    "ki_roll": {
+      "index": "6",
+      "direction": "in",
+      "srcType": "ap_fixed<32, 16, (ap_q_mode)5, (ap_o_mode)3, 0>",
+      "srcSize": "32",
+      "hwRefs": [{
+          "type": "port",
+          "interface": "ki_roll",
+          "name": "ki_roll",
+          "usage": "data",
+          "direction": "in"
+        }]
+    },
+    "kd_roll": {
+      "index": "7",
+      "direction": "in",
+      "srcType": "ap_fixed<32, 16, (ap_q_mode)5, (ap_o_mode)3, 0>",
+      "srcSize": "32",
+      "hwRefs": [{
+          "type": "port",
+          "interface": "kd_roll",
+          "name": "kd_roll",
+          "usage": "data",
+          "direction": "in"
+        }]
+    },
+    "kp_pitch": {
+      "index": "8",
+      "direction": "in",
+      "srcType": "ap_fixed<32, 16, (ap_q_mode)5, (ap_o_mode)3, 0>",
+      "srcSize": "32",
+      "hwRefs": [{
+          "type": "port",
+          "interface": "kp_pitch",
+          "name": "kp_pitch",
+          "usage": "data",
+          "direction": "in"
+        }]
+    },
+    "ki_pitch": {
+      "index": "9",
+      "direction": "in",
+      "srcType": "ap_fixed<32, 16, (ap_q_mode)5, (ap_o_mode)3, 0>",
+      "srcSize": "32",
+      "hwRefs": [{
+          "type": "port",
+          "interface": "ki_pitch",
+          "name": "ki_pitch",
+          "usage": "data",
+          "direction": "in"
+        }]
+    },
+    "kd_pitch": {
+      "index": "10",
+      "direction": "in",
+      "srcType": "ap_fixed<32, 16, (ap_q_mode)5, (ap_o_mode)3, 0>",
+      "srcSize": "32",
+      "hwRefs": [{
+          "type": "port",
+          "interface": "kd_pitch",
+          "name": "kd_pitch",
+          "usage": "data",
+          "direction": "in"
+        }]
+    },
+    "kp_yaw": {
+      "index": "11",
+      "direction": "in",
+      "srcType": "ap_fixed<32, 16, (ap_q_mode)5, (ap_o_mode)3, 0>",
+      "srcSize": "32",
+      "hwRefs": [{
+          "type": "port",
+          "interface": "kp_yaw",
+          "name": "kp_yaw",
+          "usage": "data",
+          "direction": "in"
+        }]
+    },
+    "ki_yaw": {
+      "index": "12",
+      "direction": "in",
+      "srcType": "ap_fixed<32, 16, (ap_q_mode)5, (ap_o_mode)3, 0>",
+      "srcSize": "32",
+      "hwRefs": [{
+          "type": "port",
+          "interface": "ki_yaw",
+          "name": "ki_yaw",
+          "usage": "data",
+          "direction": "in"
+        }]
+    },
+    "kd_yaw": {
+      "index": "13",
+      "direction": "in",
+      "srcType": "ap_fixed<32, 16, (ap_q_mode)5, (ap_o_mode)3, 0>",
+      "srcSize": "32",
+      "hwRefs": [{
+          "type": "port",
+          "interface": "kd_yaw",
+          "name": "kd_yaw",
+          "usage": "data",
+          "direction": "in"
+        }]
+    },
+    "reset_states": {
+      "index": "14",
+      "direction": "in",
+      "srcType": "bool",
+      "srcSize": "1",
+      "hwRefs": [{
+          "type": "port",
+          "interface": "reset_states",
+          "name": "reset_states",
+          "usage": "data",
+          "direction": "in"
+        }]
+    }
+  },
+  "HlsSolution": {
+    "FlowTarget": "vivado",
+    "ConfigTcl": [
+      "config_export -output=C:\/Users\/lomin\/Documents\/git\/DRONE\/rtl_controller\/ip_repo\/pid_controller",
+      "config_export -format=ip_catalog",
+      "config_export -flow=none"
+    ],
+    "ProfileOption": "0",
+    "ProfileType": "none",
+    "KernelName": "pid_controller"
+  },
+  "ClockInfo": {
+    "ClockName": "ap_clk",
+    "ClockPeriod": "10",
+    "Uncertainty": "2.7",
+    "IsCombinational": "0",
+    "II": "2 ~ 10",
+    "Latency": "1"
+  },
+  "Xdc": {"OocClocks": ["create_clock -name ap_clk -period 10.000 [get_ports ap_clk]"]},
+  "Ipx": {
+    "Vendor": "xilinx.com",
+    "Library": "hls",
+    "Name": "pid_controller",
+    "Version": "1.0",
+    "DisplayName": "Pid_controller",
+    "Revision": "2114825851",
+    "Description": "An IP generated by Vitis HLS",
+    "Taxonomy": "\/VITIS_HLS_IP",
+    "AutoFamilySupport": "",
+    "ZipFile": "xilinx_com_hls_pid_controller_1_0.zip"
+  },
+  "Files": {
+    "CSource": ["..\/..\/pid_controller.cpp"],
+    "Vhdl": [
+      "impl\/vhdl\/pid_controller_mul_20s_32s_48_2_1.vhd",
+      "impl\/vhdl\/pid_controller_mul_21s_32s_48_2_1.vhd",
+      "impl\/vhdl\/pid_controller_mul_32s_32s_48_2_1.vhd",
+      "impl\/vhdl\/pid_controller_mul_33s_24ns_48_2_1.vhd",
+      "impl\/vhdl\/pid_controller_regslice_both.vhd",
+      "impl\/vhdl\/pid_controller.vhd"
+    ],
+    "Verilog": [
+      "impl\/verilog\/pid_controller_hls_deadlock_idx0_monitor.v",
+      "impl\/verilog\/pid_controller_hls_deadlock_kernel_monitor_top.vh",
+      "impl\/verilog\/pid_controller_mul_20s_32s_48_2_1.v",
+      "impl\/verilog\/pid_controller_mul_21s_32s_48_2_1.v",
+      "impl\/verilog\/pid_controller_mul_32s_32s_48_2_1.v",
+      "impl\/verilog\/pid_controller_mul_33s_24ns_48_2_1.v",
+      "impl\/verilog\/pid_controller_regslice_both.v",
+      "impl\/verilog\/pid_controller.v"
+    ],
+    "IpMisc": ["impl\/misc\/logo.png"],
+    "CsynthXml": "syn\/report\/csynth.xml",
+    "DebugDir": ".debug",
+    "KernelXml": ".autopilot\/db\/kernel.internal.xml",
+    "Xo": "",
+    "XoHlsDir": "",
+    "ProtoInst": [".debug\/pid_controller.protoinst"]
+  },
+  "SubcoreInfo": {
+    "HasXpmMemory": false,
+    "HasClockedDsp": false,
+    "Ip": [
+      
+    ]
+  },
+  "Interfaces": {
+    "ap_clk": {
+      "type": "clock",
+      "busTypeName": "clock",
+      "mode": "slave",
+      "busParams": {
+        "ASSOCIATED_BUSIF": "sensor_in:correction_out",
+        "ASSOCIATED_RESET": "ap_rst_n"
+      },
+      "portMap": {"ap_clk": "CLK"},
+      "ports": ["ap_clk"]
+    },
+    "ap_rst_n": {
+      "type": "reset",
+      "busTypeName": "reset",
+      "mode": "slave",
+      "busParams": {"POLARITY": "ACTIVE_LOW"},
+      "portMap": {"ap_rst_n": "RST"},
+      "ports": ["ap_rst_n"]
+    },
+    "ap_ctrl": {
+      "type": "ap_ctrl",
+      "busTypeName": "acc_handshake",
+      "mode": "slave",
+      "portMap": {
+        "ap_start": "start",
+        "ap_done": "done",
+        "ap_idle": "idle",
+        "ap_ready": "ready"
+      },
+      "ports": [
+        "ap_done",
+        "ap_idle",
+        "ap_ready",
+        "ap_start"
+      ]
+    },
+    "sensor_in": {
+      "type": "axi4stream",
+      "busTypeName": "axis",
+      "mode": "slave",
+      "direction": "in",
+      "dataWidth": "128",
+      "portPrefix": "sensor_in_",
+      "ports": [
+        "sensor_in_TDATA",
+        "sensor_in_TKEEP",
+        "sensor_in_TLAST",
+        "sensor_in_TREADY",
+        "sensor_in_TSTRB",
+        "sensor_in_TVALID"
+      ],
+      "constraints": [{
+          "constraint_type": "pragma interface",
+          "mode": "axis",
+          "register_option": "1",
+          "register_mode": "both",
+          "argName": "sensor_in"
+        }]
+    },
+    "correction_out": {
+      "type": "axi4stream",
+      "busTypeName": "axis",
+      "mode": "master",
+      "direction": "out",
+      "dataWidth": "128",
+      "portPrefix": "correction_out_",
+      "ports": [
+        "correction_out_TDATA",
+        "correction_out_TKEEP",
+        "correction_out_TLAST",
+        "correction_out_TREADY",
+        "correction_out_TSTRB",
+        "correction_out_TVALID"
+      ],
+      "constraints": [{
+          "constraint_type": "pragma interface",
+          "mode": "axis",
+          "register_option": "1",
+          "register_mode": "both",
+          "argName": "correction_out"
+        }]
+    },
+    "setpoint_roll": {
+      "type": "data",
+      "busTypeName": "data",
+      "protocol": "ap_none",
+      "mode": "slave",
+      "dataWidth": "32",
+      "portMap": {"setpoint_roll": "DATA"},
+      "ports": ["setpoint_roll"],
+      "constraints": [{
+          "constraint_type": "pragma interface",
+          "mode": "ap_none",
+          "register_option": "0",
+          "argName": "setpoint_roll"
+        }]
+    },
+    "setpoint_pitch": {
+      "type": "data",
+      "busTypeName": "data",
+      "protocol": "ap_none",
+      "mode": "slave",
+      "dataWidth": "32",
+      "portMap": {"setpoint_pitch": "DATA"},
+      "ports": ["setpoint_pitch"],
+      "constraints": [{
+          "constraint_type": "pragma interface",
+          "mode": "ap_none",
+          "register_option": "0",
+          "argName": "setpoint_pitch"
+        }]
+    },
+    "setpoint_yaw": {
+      "type": "data",
+      "busTypeName": "data",
+      "protocol": "ap_none",
+      "mode": "slave",
+      "dataWidth": "32",
+      "portMap": {"setpoint_yaw": "DATA"},
+      "ports": ["setpoint_yaw"],
+      "constraints": [{
+          "constraint_type": "pragma interface",
+          "mode": "ap_none",
+          "register_option": "0",
+          "argName": "setpoint_yaw"
+        }]
+    },
+    "kp_roll": {
+      "type": "data",
+      "busTypeName": "data",
+      "protocol": "ap_none",
+      "mode": "slave",
+      "dataWidth": "32",
+      "portMap": {"kp_roll": "DATA"},
+      "ports": ["kp_roll"],
+      "constraints": [{
+          "constraint_type": "pragma interface",
+          "mode": "ap_none",
+          "register_option": "0",
+          "argName": "kp_roll"
+        }]
+    },
+    "ki_roll": {
+      "type": "data",
+      "busTypeName": "data",
+      "protocol": "ap_none",
+      "mode": "slave",
+      "dataWidth": "32",
+      "portMap": {"ki_roll": "DATA"},
+      "ports": ["ki_roll"],
+      "constraints": [{
+          "constraint_type": "pragma interface",
+          "mode": "ap_none",
+          "register_option": "0",
+          "argName": "ki_roll"
+        }]
+    },
+    "kd_roll": {
+      "type": "data",
+      "busTypeName": "data",
+      "protocol": "ap_none",
+      "mode": "slave",
+      "dataWidth": "32",
+      "portMap": {"kd_roll": "DATA"},
+      "ports": ["kd_roll"],
+      "constraints": [{
+          "constraint_type": "pragma interface",
+          "mode": "ap_none",
+          "register_option": "0",
+          "argName": "kd_roll"
+        }]
+    },
+    "kp_pitch": {
+      "type": "data",
+      "busTypeName": "data",
+      "protocol": "ap_none",
+      "mode": "slave",
+      "dataWidth": "32",
+      "portMap": {"kp_pitch": "DATA"},
+      "ports": ["kp_pitch"],
+      "constraints": [{
+          "constraint_type": "pragma interface",
+          "mode": "ap_none",
+          "register_option": "0",
+          "argName": "kp_pitch"
+        }]
+    },
+    "ki_pitch": {
+      "type": "data",
+      "busTypeName": "data",
+      "protocol": "ap_none",
+      "mode": "slave",
+      "dataWidth": "32",
+      "portMap": {"ki_pitch": "DATA"},
+      "ports": ["ki_pitch"],
+      "constraints": [{
+          "constraint_type": "pragma interface",
+          "mode": "ap_none",
+          "register_option": "0",
+          "argName": "ki_pitch"
+        }]
+    },
+    "kd_pitch": {
+      "type": "data",
+      "busTypeName": "data",
+      "protocol": "ap_none",
+      "mode": "slave",
+      "dataWidth": "32",
+      "portMap": {"kd_pitch": "DATA"},
+      "ports": ["kd_pitch"],
+      "constraints": [{
+          "constraint_type": "pragma interface",
+          "mode": "ap_none",
+          "register_option": "0",
+          "argName": "kd_pitch"
+        }]
+    },
+    "kp_yaw": {
+      "type": "data",
+      "busTypeName": "data",
+      "protocol": "ap_none",
+      "mode": "slave",
+      "dataWidth": "32",
+      "portMap": {"kp_yaw": "DATA"},
+      "ports": ["kp_yaw"],
+      "constraints": [{
+          "constraint_type": "pragma interface",
+          "mode": "ap_none",
+          "register_option": "0",
+          "argName": "kp_yaw"
+        }]
+    },
+    "ki_yaw": {
+      "type": "data",
+      "busTypeName": "data",
+      "protocol": "ap_none",
+      "mode": "slave",
+      "dataWidth": "32",
+      "portMap": {"ki_yaw": "DATA"},
+      "ports": ["ki_yaw"],
+      "constraints": [{
+          "constraint_type": "pragma interface",
+          "mode": "ap_none",
+          "register_option": "0",
+          "argName": "ki_yaw"
+        }]
+    },
+    "kd_yaw": {
+      "type": "data",
+      "busTypeName": "data",
+      "protocol": "ap_none",
+      "mode": "slave",
+      "dataWidth": "32",
+      "portMap": {"kd_yaw": "DATA"},
+      "ports": ["kd_yaw"],
+      "constraints": [{
+          "constraint_type": "pragma interface",
+          "mode": "ap_none",
+          "register_option": "0",
+          "argName": "kd_yaw"
+        }]
+    },
+    "reset_states": {
+      "type": "data",
+      "busTypeName": "data",
+      "protocol": "ap_none",
+      "mode": "slave",
+      "dataWidth": "1",
+      "portMap": {"reset_states": "DATA"},
+      "ports": ["reset_states"],
+      "constraints": [{
+          "constraint_type": "pragma interface",
+          "mode": "ap_none",
+          "register_option": "0",
+          "argName": "reset_states"
+        }]
+    }
+  },
+  "RtlPorts": {
+    "ap_clk": {
+      "dir": "in",
+      "width": "1"
+    },
+    "ap_rst_n": {
+      "dir": "in",
+      "width": "1"
+    },
+    "ap_start": {
+      "dir": "in",
+      "width": "1"
+    },
+    "ap_done": {
+      "dir": "out",
+      "width": "1"
+    },
+    "ap_idle": {
+      "dir": "out",
+      "width": "1"
+    },
+    "ap_ready": {
+      "dir": "out",
+      "width": "1"
+    },
+    "sensor_in_TDATA": {
+      "dir": "in",
+      "width": "128"
+    },
+    "sensor_in_TVALID": {
+      "dir": "in",
+      "width": "1"
+    },
+    "sensor_in_TREADY": {
+      "dir": "out",
+      "width": "1"
+    },
+    "sensor_in_TLAST": {
+      "dir": "in",
+      "width": "1",
+      "isVector": "true"
+    },
+    "sensor_in_TKEEP": {
+      "dir": "in",
+      "width": "16"
+    },
+    "sensor_in_TSTRB": {
+      "dir": "in",
+      "width": "16"
+    },
+    "correction_out_TDATA": {
+      "dir": "out",
+      "width": "128"
+    },
+    "correction_out_TVALID": {
+      "dir": "out",
+      "width": "1"
+    },
+    "correction_out_TREADY": {
+      "dir": "in",
+      "width": "1"
+    },
+    "correction_out_TLAST": {
+      "dir": "out",
+      "width": "1",
+      "isVector": "true"
+    },
+    "correction_out_TKEEP": {
+      "dir": "out",
+      "width": "16"
+    },
+    "correction_out_TSTRB": {
+      "dir": "out",
+      "width": "16"
+    },
+    "setpoint_roll": {
+      "dir": "in",
+      "width": "32"
+    },
+    "setpoint_pitch": {
+      "dir": "in",
+      "width": "32"
+    },
+    "setpoint_yaw": {
+      "dir": "in",
+      "width": "32"
+    },
+    "kp_roll": {
+      "dir": "in",
+      "width": "32"
+    },
+    "ki_roll": {
+      "dir": "in",
+      "width": "32"
+    },
+    "kd_roll": {
+      "dir": "in",
+      "width": "32"
+    },
+    "kp_pitch": {
+      "dir": "in",
+      "width": "32"
+    },
+    "ki_pitch": {
+      "dir": "in",
+      "width": "32"
+    },
+    "kd_pitch": {
+      "dir": "in",
+      "width": "32"
+    },
+    "kp_yaw": {
+      "dir": "in",
+      "width": "32"
+    },
+    "ki_yaw": {
+      "dir": "in",
+      "width": "32"
+    },
+    "kd_yaw": {
+      "dir": "in",
+      "width": "32"
+    },
+    "reset_states": {
+      "dir": "in",
+      "width": "1"
+    }
+  },
+  "ModuleInfo": {
+    "Hierarchy": {
+      "ModuleName": "pid_controller",
+      "BindInstances": "select_ln121_fu_514_p3 select_ln121_1_fu_522_p3 select_ln121_2_fu_530_p3 select_ln121_3_fu_538_p3 select_ln121_4_fu_546_p3 select_ln121_5_fu_554_p3 xor_ln121_fu_562_p2 and_ln121_fu_568_p2 xor_ln136_fu_1405_p2 or_ln136_fu_1410_p2 select_ln136_fu_606_p3 angle_fu_614_p2 icmp_ln17_fu_620_p2 add_ln18_fu_626_p2 icmp_ln19_fu_632_p2 add_ln20_fu_638_p2 select_ln19_fu_684_p3 setpoint_fu_689_p3 error_fu_644_p2 icmp_ln46_fu_879_p2 icmp_ln48_fu_885_p2 select_ln48_fu_1014_p3 empty_14_fu_1021_p2 storemerge1986_0_0_02546_fu_1025_p3 sub_ln55_fu_658_p2 mul_33s_24ns_48_2_1_U6 mul_32s_32s_48_2_1_U4 mul_21s_32s_48_2_1_U2 mul_32s_32s_48_2_1_U4 icmp_ln68_fu_1267_p2 icmp_ln70_fu_1272_p2 select_ln68_fu_1277_p3 or_ln68_fu_1285_p2 final_output_fu_1291_p3 error_1_fu_664_p2 icmp_ln46_1_fu_926_p2 icmp_ln48_1_fu_932_p2 select_ln48_1_fu_1051_p3 empty_15_fu_1058_p2 storemerge1977_0_0_02547_fu_1062_p3 sub_ln55_1_fu_678_p2 mul_33s_24ns_48_2_1_U7 mul_32s_32s_48_2_1_U5 mul_21s_32s_48_2_1_U3 mul_32s_32s_48_2_1_U5 icmp_ln68_1_fu_1302_p2 icmp_ln70_1_fu_1307_p2 select_ln68_2_fu_1312_p3 or_ln68_1_fu_1320_p2 final_output_6_fu_1326_p3 error_4_fu_799_p2 icmp_ln17_1_fu_804_p2 add_ln18_1_fu_810_p2 icmp_ln19_1_fu_816_p2 add_ln20_1_fu_822_p2 select_ln19_1_fu_828_p3 error_3_fu_836_p3 icmp_ln46_2_fu_1113_p2 icmp_ln48_2_fu_1119_p2 select_ln48_2_fu_1170_p3 empty_16_fu_1177_p2 storemerge1944_0_0_02548_fu_1181_p3 sub_ln55_2_fu_999_p2 mul_33s_24ns_48_2_1_U6 mul_32s_32s_48_2_1_U4 mul_20s_32s_48_2_1_U1 mul_32s_32s_48_2_1_U5 icmp_ln68_2_fu_1354_p2 icmp_ln70_2_fu_1359_p2 select_ln68_4_fu_1364_p3 or_ln68_2_fu_1372_p2 final_output_7_fu_1378_p3"
+    },
+    "Info": {"pid_controller": {
+        "FunctionProtocol": "ap_ctrl_hs",
+        "isTaskLevelControl": "0",
+        "isPipelined": "0",
+        "isCombinational": "0",
+        "isOneStateSeq": "0"
+      }},
+    "Metrics": {"pid_controller": {
+        "Latency": {
+          "LatencyBest": "1",
+          "LatencyAvg": "5",
+          "LatencyWorst": "9",
+          "PipelineIIMin": "2",
+          "PipelineIIMax": "10",
+          "PipelineII": "2 ~ 10",
+          "PipelineDepth": "",
+          "PipelineType": "no"
+        },
+        "Timing": {
+          "Target": "10.00",
+          "Uncertainty": "2.70",
+          "Estimate": "7.049"
+        },
+        "Area": {
+          "DSP": "18",
+          "AVAIL_DSP": "220",
+          "UTIL_DSP": "8",
+          "FF": "2959",
+          "AVAIL_FF": "106400",
+          "UTIL_FF": "2",
+          "LUT": "2965",
+          "AVAIL_LUT": "53200",
+          "UTIL_LUT": "5",
+          "BRAM_18K": "0",
+          "AVAIL_BRAM": "280",
+          "UTIL_BRAM": "0",
+          "URAM": "0",
+          "AVAIL_URAM": "0",
+          "UTIL_URAM": "0"
+        }
+      }}
+  },
+  "GenerateBdFiles": "0",
+  "GenData": {
+    "DataVersion": "0.2",
+    "Time": "2026-10-12 12:31:31 -0400",
+    "ToolName": "vitis_hls",
+    "ToolVersion": "2025.2"
+  }
+}

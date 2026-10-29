@@ -1,0 +1,93 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_Layers":"/flight_controller/util_ds_buf_3_IOBUF_IO_O:true|/flight_controller/S_AXI_ARESETN_1:true|/flight_controller/control_manager_0_reset_states:true|/flight_controller/util_ds_buf_2_IOBUF_IO_O:true|/flight_controller/util_ds_buf_0_IOBUF_IO_O:true|/flight_controller/S_AXI_ACLK_1:true|/flight_controller/util_ds_buf_1_IOBUF_IO_O:true|",
+   "Default View_ScaleFactor":"0.619344",
+   "Default View_TopLeft":"1098,-163",
+   "Display-IntfAXI4Lite":"true",
+   "Display-IntfAXIStream":"true",
+   "Display-PortTypeClock":"true",
+   "Display-PortTypeOthers":"true",
+   "Display-PortTypeReset":"true",
+   "ExpandedHierarchyInLayout":"",
+   "Interfaces View_ScaleFactor":"1.0",
+   "Interfaces View_TopLeft":"-193,-349",
+   "Interrupt and AXI-4 Lite_Layers":"/flight_controller/util_ds_buf_3_IOBUF_IO_O:false|/flight_controller/S_AXI_ARESETN_1:false|/flight_controller/control_manager_0_reset_states:false|/flight_controller/util_ds_buf_2_IOBUF_IO_O:false|/flight_controller/util_ds_buf_0_IOBUF_IO_O:false|/flight_controller/S_AXI_ACLK_1:false|/flight_controller/util_ds_buf_1_IOBUF_IO_O:false|",
+   "Interrupt and AXI-4 Lite_ScaleFactor":"1.0",
+   "Interrupt and AXI-4 Lite_TopLeft":"-323,-361",
+   "guistr":"# # String gsaved with Nlview 7.8.0 2024-04-26 e1825d835c VDI=44 GEI=38 GUI=JA:21.0
+#  -string -flagsOSRD
+preplace port S_AXI -pg 1 -lvl 0 -x -10 -y 150 -defaultsOSRD
+preplace port port-id_S_AXI_ACLK -pg 1 -lvl 0 -x -10 -y 170 -defaultsOSRD
+preplace port port-id_S_AXI_ARESETN -pg 1 -lvl 0 -x -10 -y 190 -defaultsOSRD
+preplace port port-id_imu_int_0 -pg 1 -lvl 0 -x -10 -y 830 -defaultsOSRD
+preplace portBus imu_scl -pg 1 -lvl 8 -x 2800 -y 890 -defaultsOSRD
+preplace portBus imu_sda -pg 1 -lvl 8 -x 2800 -y 1040 -defaultsOSRD
+preplace portBus pca_scl -pg 1 -lvl 8 -x 2800 -y 230 -defaultsOSRD
+preplace portBus pca_sda -pg 1 -lvl 8 -x 2800 -y 610 -defaultsOSRD
+preplace inst imu_axis_ip_0 -pg 1 -lvl 2 -x 690 -y 840 -defaultsOSRD
+preplace inst sensor_fusion_0 -pg 1 -lvl 3 -x 1020 -y 670 -defaultsOSRD
+preplace inst pid_controller_0 -pg 1 -lvl 4 -x 1550 -y 240 -defaultsOSRD
+preplace inst mixer_module_0 -pg 1 -lvl 5 -x 1960 -y 420 -defaultsOSRD
+preplace inst util_ds_buf_0 -pg 1 -lvl 7 -x 2630 -y 880 -defaultsOSRD
+preplace inst util_ds_buf_1 -pg 1 -lvl 7 -x 2630 -y 1030 -defaultsOSRD
+preplace inst xlconstant_0 -pg 1 -lvl 6 -x 2350 -y 1040 -defaultsOSRD
+preplace inst xlconstant_1 -pg 1 -lvl 6 -x 2350 -y 890 -defaultsOSRD
+preplace inst util_ds_buf_2 -pg 1 -lvl 7 -x 2630 -y 220 -defaultsOSRD
+preplace inst util_ds_buf_3 -pg 1 -lvl 7 -x 2630 -y 600 -defaultsOSRD
+preplace inst xlconstant_2 -pg 1 -lvl 6 -x 2350 -y 230 -defaultsOSRD
+preplace inst xlconstant_3 -pg 1 -lvl 6 -x 2350 -y 610 -defaultsOSRD
+preplace inst control_manager_0 -pg 1 -lvl 1 -x 270 -y 260 -defaultsOSRD
+preplace inst motor_controller_0 -pg 1 -lvl 6 -x 2350 -y 400 -defaultsOSRD
+preplace netloc Net 1 7 1 NJ 890
+preplace netloc Net1 1 7 1 NJ 1040
+preplace netloc Net2 1 7 1 NJ 230
+preplace netloc Net3 1 7 1 NJ 610
+preplace netloc S_AXI_ACLK_1 1 0 5 30 680 580 690 820 510 1260 510 1740
+preplace netloc S_AXI_ARESETN_1 1 0 5 20 710 590 710 860 520 1280 520 1760
+preplace netloc control_manager_0_adj_throttle_m1 1 1 4 NJ 400 NJ 400 1210J 470 1730
+preplace netloc control_manager_0_adj_throttle_m2 1 1 4 NJ 420 NJ 420 1200J 480 1750
+preplace netloc control_manager_0_adj_throttle_m3 1 1 4 NJ 440 NJ 440 1190J 490 1770
+preplace netloc control_manager_0_adj_throttle_m4 1 1 4 NJ 460 NJ 460 1180J 500 N
+preplace netloc control_manager_0_fusion_ap_start 1 1 2 NJ 40 870
+preplace netloc control_manager_0_imu_start_init 1 1 1 430 100n
+preplace netloc control_manager_0_kd_pitch 1 1 3 NJ 300 NJ 300 1290
+preplace netloc control_manager_0_kd_roll 1 1 3 NJ 240 NJ 240 1320
+preplace netloc control_manager_0_kd_yaw 1 1 3 NJ 360 NJ 360 1230
+preplace netloc control_manager_0_ki_pitch 1 1 3 NJ 280 NJ 280 1300
+preplace netloc control_manager_0_ki_roll 1 1 3 NJ 220 NJ 220 1330
+preplace netloc control_manager_0_ki_yaw 1 1 3 NJ 340 NJ 340 1250
+preplace netloc control_manager_0_kp_pitch 1 1 3 NJ 260 NJ 260 1310
+preplace netloc control_manager_0_kp_roll 1 1 3 NJ 200 NJ 200 1340
+preplace netloc control_manager_0_kp_yaw 1 1 3 NJ 320 NJ 320 1270
+preplace netloc control_manager_0_mixer_ap_start 1 1 4 430J 10 NJ 10 NJ 10 1740
+preplace netloc control_manager_0_pid_ap_start 1 1 3 NJ 60 NJ 60 1370
+preplace netloc control_manager_0_reset_states 1 1 3 NJ 380 NJ 380 1220
+preplace netloc control_manager_0_setpoint_pitch 1 1 3 NJ 160 NJ 160 1360
+preplace netloc control_manager_0_setpoint_roll 1 1 3 NJ 140 NJ 140 1370
+preplace netloc control_manager_0_setpoint_yaw 1 1 3 NJ 180 NJ 180 1350
+preplace netloc imu_axis_ip_0_ready 1 0 3 40 970 NJ 970 790
+preplace netloc imu_axis_ip_0_scl_t 1 2 5 N 830 NJ 830 NJ 830 NJ 830 2450J
+preplace netloc imu_axis_ip_0_sda_t 1 2 5 840J 820 NJ 820 NJ 820 NJ 820 2460
+preplace netloc imu_int_0_1 1 0 2 NJ 830 NJ
+preplace netloc mixer_module_0_motor_1 1 0 6 110 540 NJ 540 NJ 540 1210J 560 NJ 560 2170
+preplace netloc mixer_module_0_motor_2 1 0 6 100 550 NJ 550 NJ 550 1200J 570 NJ 570 2150
+preplace netloc mixer_module_0_motor_3 1 0 6 90 560 NJ 560 NJ 560 1190J 590 NJ 590 2160
+preplace netloc mixer_module_0_motor_4 1 0 6 80 570 NJ 570 NJ 570 1180J 580 NJ 580 2140
+preplace netloc sensor_fusion_0_pitch 1 0 4 60 720 NJ 720 840J 770 1170
+preplace netloc sensor_fusion_0_roll 1 0 4 70 700 NJ 700 850J 780 1310
+preplace netloc sensor_fusion_0_yaw 1 0 4 50 730 NJ 730 790J 790 1180
+preplace netloc util_ds_buf_0_IOBUF_IO_O 1 1 7 590 950 NJ 950 NJ 950 NJ 950 NJ 950 NJ 950 2780
+preplace netloc util_ds_buf_1_IOBUF_IO_O 1 1 7 580 960 NJ 960 NJ 960 NJ 960 NJ 960 NJ 960 2780
+preplace netloc xlconstant_0_dout 1 6 1 NJ 1040
+preplace netloc xlconstant_1_dout 1 6 1 NJ 890
+preplace netloc xlconstant_2_dout 1 6 1 NJ 230
+preplace netloc xlconstant_3_dout 1 6 1 NJ 610
+preplace netloc S_AXI_1 1 0 1 NJ 150
+preplace netloc imu_axis_ip_0_m_axis 1 2 1 830 670n
+preplace netloc pid_controller_0_correction_out 1 4 1 1730 240n
+preplace netloc sensor_fusion_0_fusion_out 1 3 1 1240 110n
+levelinfo -pg 1 -10 270 690 1020 1550 1960 2350 2630 2800
+pagesize -pg 1 -db -bbox -sgen -180 -20 3020 1100
+"
+}
+0

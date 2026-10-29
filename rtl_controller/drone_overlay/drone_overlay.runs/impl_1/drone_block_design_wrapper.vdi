@@ -1,0 +1,1105 @@
+#-----------------------------------------------------------
+# Vivado v2025.2 (64-bit)
+# SW Build 6299465 on Fri Nov 14 19:35:11 GMT 2025
+# IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
+# SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
+# Start of session at: Sat Oct 24 23:08:02 2026
+# Process ID         : 37720
+# Current directory  : C:/Vivado/droneLink/drone_overlay/drone_overlay.runs/impl_1
+# Command line       : vivado.exe -log drone_block_design_wrapper.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source drone_block_design_wrapper.tcl -notrace
+# Log file           : C:/Vivado/droneLink/drone_overlay/drone_overlay.runs/impl_1/drone_block_design_wrapper.vdi
+# Journal file       : C:/Vivado/droneLink/drone_overlay/drone_overlay.runs/impl_1\vivado.jou
+# Running On         : Michel-PC
+# Platform           : Windows Server 2016 or Windows 10
+# Operating System   : 26200
+# Processor Detail   : AMD Ryzen 5 9600X 6-Core Processor             
+# CPU Frequency      : 3900 MHz
+# CPU Physical cores : 6
+# CPU Logical cores  : 12
+# Host memory        : 33462 MB
+# Swap memory        : 19327 MB
+# Total Virtual      : 52789 MB
+# Available Virtual  : 19951 MB
+#-----------------------------------------------------------
+source drone_block_design_wrapper.tcl -notrace
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Vivado/droneLink/ip_repo/motor_controller_1_0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Vivado/droneLink/ip_repo/pca9685_controller_1_0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Vivado/droneLink/ip_repo/control_manager_1_0'. The path is contained within another repository.
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Vivado/droneLink/ip_repo'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/AMDDesignTools/2025.2/Vivado/data/ip'.
+Command: link_design -top drone_block_design_wrapper -part xc7z020clg400-1
+Design is defaulting to srcset: sources_1
+Design is defaulting to constrset: constrs_1
+INFO: [Device 21-403] Loading part xc7z020clg400-1
+INFO: [Project 1-5699] Read binary netlist with skipMacroContent - 1
+INFO: [Project 1-454] Reading design checkpoint 'c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_processing_system7_0_0/drone_block_design_processing_system7_0_0.dcp' for cell 'drone_block_design_i/processing_system7_0'
+INFO: [Project 1-454] Reading design checkpoint 'c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_rst_ps7_0_100M_2/drone_block_design_rst_ps7_0_100M_2.dcp' for cell 'drone_block_design_i/rst_ps7_0_100M'
+INFO: [Project 1-454] Reading design checkpoint 'c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_axi_mem_intercon_imp_xbar_0/drone_block_design_axi_mem_intercon_imp_xbar_0.dcp' for cell 'drone_block_design_i/axi_mem_intercon/xbar'
+INFO: [Project 1-454] Reading design checkpoint 'c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_axi_mem_intercon_imp_auto_pc_0/drone_block_design_axi_mem_intercon_imp_auto_pc_0.dcp' for cell 'drone_block_design_i/axi_mem_intercon/m00_couplers/auto_pc'
+INFO: [Project 1-454] Reading design checkpoint 'c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_axi_mem_intercon_imp_auto_ds_0/drone_block_design_axi_mem_intercon_imp_auto_ds_0.dcp' for cell 'drone_block_design_i/axi_mem_intercon/m01_couplers/auto_ds'
+INFO: [Project 1-454] Reading design checkpoint 'c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_axi_mem_intercon_imp_auto_pc_1/drone_block_design_axi_mem_intercon_imp_auto_pc_1.dcp' for cell 'drone_block_design_i/axi_mem_intercon/m01_couplers/auto_pc'
+INFO: [Project 1-454] Reading design checkpoint 'c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_axi_mem_intercon_imp_auto_pc_2/drone_block_design_axi_mem_intercon_imp_auto_pc_2.dcp' for cell 'drone_block_design_i/axi_mem_intercon/s00_couplers/auto_pc'
+INFO: [Project 1-454] Reading design checkpoint 'c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_axi_mem_intercon_imp_auto_us_0/drone_block_design_axi_mem_intercon_imp_auto_us_0.dcp' for cell 'drone_block_design_i/axi_mem_intercon/s00_couplers/auto_us'
+INFO: [Project 1-454] Reading design checkpoint 'c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_control_manager_0_3/drone_block_design_control_manager_0_3.dcp' for cell 'drone_block_design_i/flight_controller/control_manager_0'
+INFO: [Project 1-454] Reading design checkpoint 'c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_mpu6050_axis_ip_0_0/drone_block_design_mpu6050_axis_ip_0_0.dcp' for cell 'drone_block_design_i/flight_controller/imu_axis_ip_0'
+INFO: [Project 1-454] Reading design checkpoint 'c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_mixer_module_0_0/drone_block_design_mixer_module_0_0.dcp' for cell 'drone_block_design_i/flight_controller/mixer_module_0'
+INFO: [Project 1-454] Reading design checkpoint 'c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_motor_controller_0_0/drone_block_design_motor_controller_0_0.dcp' for cell 'drone_block_design_i/flight_controller/motor_controller_0'
+INFO: [Project 1-454] Reading design checkpoint 'c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_pid_controller_0_1/drone_block_design_pid_controller_0_1.dcp' for cell 'drone_block_design_i/flight_controller/pid_controller_0'
+INFO: [Project 1-454] Reading design checkpoint 'c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_sensor_fusion_0_1/drone_block_design_sensor_fusion_0_1.dcp' for cell 'drone_block_design_i/flight_controller/sensor_fusion_0'
+INFO: [Project 1-454] Reading design checkpoint 'c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_util_ds_buf_0_0/drone_block_design_util_ds_buf_0_0.dcp' for cell 'drone_block_design_i/flight_controller/util_ds_buf_0'
+INFO: [Project 1-454] Reading design checkpoint 'c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_util_ds_buf_1_0/drone_block_design_util_ds_buf_1_0.dcp' for cell 'drone_block_design_i/flight_controller/util_ds_buf_1'
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.445 . Memory (MB): peak = 924.441 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 2890 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+WARNING: [Netlist 29-1115] Found multi-term driver net: drone_block_design_i/flight_controller/util_ds_buf_1/U0/<const0>.
+WARNING: [Netlist 29-1115] Found multi-term driver net: drone_block_design_i/flight_controller/util_ds_buf_0/U0/<const0>.
+INFO: [Project 1-479] Netlist was created with Vivado 2025.2
+INFO: [Project 1-570] Preparing netlist for logic optimization
+WARNING: [Constraints 18-550] Could not create 'DRIVE' constraint because net 'drone_block_design_i/flight_controller/util_ds_buf_0/IOBUF_IO_I[0]' is not directly connected to top level port. 'DRIVE' is ignored for synthesis but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'IBUF_LOW_PWR' constraint because net 'drone_block_design_i/flight_controller/util_ds_buf_0/IOBUF_IO_I[0]' is not directly connected to top level port. 'IBUF_LOW_PWR' is ignored for synthesis but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'SLEW' constraint because net 'drone_block_design_i/flight_controller/util_ds_buf_0/IOBUF_IO_I[0]' is not directly connected to top level port. 'SLEW' is ignored for synthesis but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'DRIVE' constraint because net 'drone_block_design_i/flight_controller/util_ds_buf_0/IOBUF_IO_O[0]' is not directly connected to top level port. 'DRIVE' is ignored for synthesis but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'IBUF_LOW_PWR' constraint because net 'drone_block_design_i/flight_controller/util_ds_buf_0/IOBUF_IO_O[0]' is not directly connected to top level port. 'IBUF_LOW_PWR' is ignored for synthesis but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'SLEW' constraint because net 'drone_block_design_i/flight_controller/util_ds_buf_0/IOBUF_IO_O[0]' is not directly connected to top level port. 'SLEW' is ignored for synthesis but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'DRIVE' constraint because net 'drone_block_design_i/flight_controller/util_ds_buf_0/IOBUF_IO_T[0]' is not directly connected to top level port. 'DRIVE' is ignored for synthesis but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'IBUF_LOW_PWR' constraint because net 'drone_block_design_i/flight_controller/util_ds_buf_0/IOBUF_IO_T[0]' is not directly connected to top level port. 'IBUF_LOW_PWR' is ignored for synthesis but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'SLEW' constraint because net 'drone_block_design_i/flight_controller/util_ds_buf_0/IOBUF_IO_T[0]' is not directly connected to top level port. 'SLEW' is ignored for synthesis but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'DRIVE' constraint because net 'drone_block_design_i/flight_controller/util_ds_buf_1/IOBUF_IO_I[0]' is not directly connected to top level port. 'DRIVE' is ignored for synthesis but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'IBUF_LOW_PWR' constraint because net 'drone_block_design_i/flight_controller/util_ds_buf_1/IOBUF_IO_I[0]' is not directly connected to top level port. 'IBUF_LOW_PWR' is ignored for synthesis but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'SLEW' constraint because net 'drone_block_design_i/flight_controller/util_ds_buf_1/IOBUF_IO_I[0]' is not directly connected to top level port. 'SLEW' is ignored for synthesis but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'DRIVE' constraint because net 'drone_block_design_i/flight_controller/util_ds_buf_1/IOBUF_IO_O[0]' is not directly connected to top level port. 'DRIVE' is ignored for synthesis but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'IBUF_LOW_PWR' constraint because net 'drone_block_design_i/flight_controller/util_ds_buf_1/IOBUF_IO_O[0]' is not directly connected to top level port. 'IBUF_LOW_PWR' is ignored for synthesis but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'SLEW' constraint because net 'drone_block_design_i/flight_controller/util_ds_buf_1/IOBUF_IO_O[0]' is not directly connected to top level port. 'SLEW' is ignored for synthesis but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'DRIVE' constraint because net 'drone_block_design_i/flight_controller/util_ds_buf_1/IOBUF_IO_T[0]' is not directly connected to top level port. 'DRIVE' is ignored for synthesis but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'IBUF_LOW_PWR' constraint because net 'drone_block_design_i/flight_controller/util_ds_buf_1/IOBUF_IO_T[0]' is not directly connected to top level port. 'IBUF_LOW_PWR' is ignored for synthesis but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'SLEW' constraint because net 'drone_block_design_i/flight_controller/util_ds_buf_1/IOBUF_IO_T[0]' is not directly connected to top level port. 'SLEW' is ignored for synthesis but preserved for implementation.
+Parsing XDC File [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_processing_system7_0_0/drone_block_design_processing_system7_0_0.xdc] for cell 'drone_block_design_i/processing_system7_0/inst'
+Finished Parsing XDC File [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_processing_system7_0_0/drone_block_design_processing_system7_0_0.xdc] for cell 'drone_block_design_i/processing_system7_0/inst'
+Parsing XDC File [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_rst_ps7_0_100M_2/drone_block_design_rst_ps7_0_100M_2_board.xdc] for cell 'drone_block_design_i/rst_ps7_0_100M/U0'
+Finished Parsing XDC File [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_rst_ps7_0_100M_2/drone_block_design_rst_ps7_0_100M_2_board.xdc] for cell 'drone_block_design_i/rst_ps7_0_100M/U0'
+Parsing XDC File [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_util_ds_buf_0_0/drone_block_design_util_ds_buf_0_0_board.xdc] for cell 'drone_block_design_i/flight_controller/util_ds_buf_0/U0'
+Finished Parsing XDC File [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_util_ds_buf_0_0/drone_block_design_util_ds_buf_0_0_board.xdc] for cell 'drone_block_design_i/flight_controller/util_ds_buf_0/U0'
+Parsing XDC File [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_util_ds_buf_1_0/drone_block_design_util_ds_buf_1_0_board.xdc] for cell 'drone_block_design_i/flight_controller/util_ds_buf_1/U0'
+Finished Parsing XDC File [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_util_ds_buf_1_0/drone_block_design_util_ds_buf_1_0_board.xdc] for cell 'drone_block_design_i/flight_controller/util_ds_buf_1/U0'
+Parsing XDC File [C:/Vivado/droneLink/drone_overlay/drone_overlay.srcs/constrs_1/new/imu_constraints.xdc]
+Finished Parsing XDC File [C:/Vivado/droneLink/drone_overlay/drone_overlay.srcs/constrs_1/new/imu_constraints.xdc]
+Parsing XDC File [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_axi_mem_intercon_imp_auto_us_0/drone_block_design_axi_mem_intercon_imp_auto_us_0_clocks.xdc] for cell 'drone_block_design_i/axi_mem_intercon/s00_couplers/auto_us/inst'
+Finished Parsing XDC File [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_axi_mem_intercon_imp_auto_us_0/drone_block_design_axi_mem_intercon_imp_auto_us_0_clocks.xdc] for cell 'drone_block_design_i/axi_mem_intercon/s00_couplers/auto_us/inst'
+Parsing XDC File [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_axi_mem_intercon_imp_auto_ds_0/drone_block_design_axi_mem_intercon_imp_auto_ds_0_clocks.xdc] for cell 'drone_block_design_i/axi_mem_intercon/m01_couplers/auto_ds/inst'
+Finished Parsing XDC File [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_axi_mem_intercon_imp_auto_ds_0/drone_block_design_axi_mem_intercon_imp_auto_ds_0_clocks.xdc] for cell 'drone_block_design_i/axi_mem_intercon/m01_couplers/auto_ds/inst'
+INFO: [Project 1-1714] 8 XPM XDC files have been applied to the design.
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.016 . Memory (MB): peak = 1697.855 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 18 instances were transformed.
+  IOBUF => IOBUF (IBUF, OBUFT): 2 instances
+  RAM32M => RAM32M (RAMD32(x6), RAMS32(x2)): 11 instances
+  RAM32X1D => RAM32X1D (RAMD32(x2)): 5 instances
+
+28 Infos, 23 Warnings, 0 Critical Warnings and 0 Errors encountered.
+link_design completed successfully
+link_design: Time (s): cpu = 00:00:15 ; elapsed = 00:00:15 . Memory (MB): peak = 1697.855 ; gain = 1125.031
+Command: opt_design
+Attempting to get a license for feature 'Implementation' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7z020'
+Running DRC as a precondition to command opt_design
+
+Starting DRC Task
+INFO: [DRC 23-27] Running DRC with 2 threads
+INFO: [Project 1-461] DRC finished with 0 Errors
+INFO: [Project 1-462] Please refer to the DRC report (report_drc) for more information.
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.472 . Memory (MB): peak = 1697.855 ; gain = 0.000
+
+Starting Cache Timing Information Task
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+Ending Cache Timing Information Task | Checksum: 1c31c9e85
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 1697.855 ; gain = 0.000
+
+Starting Logic Optimization Task
+
+Phase 1 Initialization
+
+Phase 1.1 Core Generation And Design Setup
+Phase 1.1 Core Generation And Design Setup | Checksum: 1c31c9e85
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.027 . Memory (MB): peak = 2134.641 ; gain = 0.000
+
+Phase 1.2 Setup Constraints And Sort Netlist
+Phase 1.2 Setup Constraints And Sort Netlist | Checksum: 1c31c9e85
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.060 . Memory (MB): peak = 2134.641 ; gain = 0.000
+Phase 1 Initialization | Checksum: 1c31c9e85
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.063 . Memory (MB): peak = 2134.641 ; gain = 0.000
+
+Phase 2 Timer Update And Timing Data Collection
+
+Phase 2.1 Detect if minReqCache needed
+Phase 2.1 Detect if minReqCache needed | Checksum: 1c31c9e85
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.103 . Memory (MB): peak = 2134.641 ; gain = 0.000
+
+Phase 2.2 Timer Update
+Phase 2.2 Timer Update | Checksum: 1c31c9e85
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.714 . Memory (MB): peak = 2134.641 ; gain = 0.000
+
+Phase 2.3 Timing Data Collection
+Phase 2.3 Timing Data Collection | Checksum: 1c31c9e85
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.748 . Memory (MB): peak = 2134.641 ; gain = 0.000
+Phase 2 Timer Update And Timing Data Collection | Checksum: 1c31c9e85
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:00.750 . Memory (MB): peak = 2134.641 ; gain = 0.000
+
+Phase 3 Retarget
+INFO: [Opt 31-1851] Number of loadless carry chains removed were: 0
+INFO: [Opt 31-1834] Total Chains To Be Transformed Were: 0 AND Number of Transformed insts Created are: 0
+INFO: [Opt 31-1566] Pulled 32 inverters resulting in an inversion of 639 pins
+INFO: [Opt 31-138] Pushed 4 inverter(s) to 36 load pin(s).
+INFO: [Opt 31-49] Retargeted 0 cell(s).
+Phase 3 Retarget | Checksum: 161121b08
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 2134.641 ; gain = 0.000
+Retarget | Checksum: 161121b08
+INFO: [Opt 31-389] Phase Retarget created 190 cells and removed 366 cells
+INFO: [Opt 31-1021] In phase Retarget, 54 netlist objects are constrained preventing optimization. Please run opt_design with -debug_log to get more detail. 
+
+Phase 4 Constant propagation
+INFO: [Opt 31-138] Pushed 2 inverter(s) to 7 load pin(s).
+Phase 4 Constant propagation | Checksum: 198335480
+
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:02 . Memory (MB): peak = 2134.641 ; gain = 0.000
+Constant propagation | Checksum: 198335480
+INFO: [Opt 31-389] Phase Constant propagation created 791 cells and removed 2431 cells
+INFO: [Opt 31-1021] In phase Constant propagation, 54 netlist objects are constrained preventing optimization. Please run opt_design with -debug_log to get more detail. 
+
+Phase 5 Sweep
+INFO: [Constraints 18-11670] Building netlist checker database with flags, 0x8
+Done building netlist checker database: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.015 . Memory (MB): peak = 2134.641 ; gain = 0.000
+INFO: [Constraints 18-11670] Building netlist checker database with flags, 0x8
+Done building netlist checker database: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.015 . Memory (MB): peak = 2134.641 ; gain = 0.000
+Phase 5 Sweep | Checksum: 1cdba2edf
+
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 2134.641 ; gain = 0.000
+Sweep | Checksum: 1cdba2edf
+INFO: [Opt 31-389] Phase Sweep created 0 cells and removed 909 cells
+INFO: [Opt 31-1021] In phase Sweep, 192 netlist objects are constrained preventing optimization. Please run opt_design with -debug_log to get more detail. 
+
+Phase 6 BUFG optimization
+Phase 6 BUFG optimization | Checksum: 1cdba2edf
+
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:03 . Memory (MB): peak = 2134.641 ; gain = 0.000
+BUFG optimization | Checksum: 1cdba2edf
+INFO: [Opt 31-662] Phase BUFG optimization created 0 cells of which 0 are BUFGs and removed 0 cells.
+
+Phase 7 Shift Register Optimization
+INFO: [Opt 31-1064] SRL Remap converted 0 SRLs to 0 registers and converted 0 registers of register chains to 0 SRLs
+Phase 7 Shift Register Optimization | Checksum: 169f6f238
+
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:03 . Memory (MB): peak = 2134.641 ; gain = 0.000
+Shift Register Optimization | Checksum: 169f6f238
+INFO: [Opt 31-389] Phase Shift Register Optimization created 3 cells and removed 0 cells
+
+Phase 8 Post Processing Netlist
+INFO: [Opt 31-1566] Pulled 2 inverters resulting in an inversion of 3 pins
+Phase 8 Post Processing Netlist | Checksum: 1246fa68e
+
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:03 . Memory (MB): peak = 2134.641 ; gain = 0.000
+Post Processing Netlist | Checksum: 1246fa68e
+INFO: [Opt 31-389] Phase Post Processing Netlist created 0 cells and removed 2 cells
+INFO: [Opt 31-1021] In phase Post Processing Netlist, 66 netlist objects are constrained preventing optimization. Please run opt_design with -debug_log to get more detail. 
+
+Phase 9 Finalization
+
+Phase 9.1 Finalizing Design Cores and Updating Shapes
+Phase 9.1 Finalizing Design Cores and Updating Shapes | Checksum: 1cc23d716
+
+Time (s): cpu = 00:00:05 ; elapsed = 00:00:04 . Memory (MB): peak = 2134.641 ; gain = 0.000
+
+Phase 9.2 Verifying Netlist Connectivity
+
+Starting Connectivity Check Task
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.054 . Memory (MB): peak = 2134.641 ; gain = 0.000
+Phase 9.2 Verifying Netlist Connectivity | Checksum: 1cc23d716
+
+Time (s): cpu = 00:00:05 ; elapsed = 00:00:04 . Memory (MB): peak = 2134.641 ; gain = 0.000
+Phase 9 Finalization | Checksum: 1cc23d716
+
+Time (s): cpu = 00:00:05 ; elapsed = 00:00:04 . Memory (MB): peak = 2134.641 ; gain = 0.000
+Opt_design Change Summary
+=========================
+
+
+-------------------------------------------------------------------------------------------------------------------------
+|  Phase                        |  #Cells created  |  #Cells Removed  |  #Constrained objects preventing optimizations  |
+-------------------------------------------------------------------------------------------------------------------------
+|  Retarget                     |             190  |             366  |                                             54  |
+|  Constant propagation         |             791  |            2431  |                                             54  |
+|  Sweep                        |               0  |             909  |                                            192  |
+|  BUFG optimization            |               0  |               0  |                                              0  |
+|  Shift Register Optimization  |               3  |               0  |                                              0  |
+|  Post Processing Netlist      |               0  |               2  |                                             66  |
+-------------------------------------------------------------------------------------------------------------------------
+
+
+Ending Logic Optimization Task | Checksum: 1cc23d716
+
+Time (s): cpu = 00:00:05 ; elapsed = 00:00:04 . Memory (MB): peak = 2134.641 ; gain = 0.000
+
+Starting Power Optimization Task
+INFO: [Pwropt 34-132] Skipping clock gating for clocks with a period < 2.00 ns.
+Ending Power Optimization Task | Checksum: 1cc23d716
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.033 . Memory (MB): peak = 2134.641 ; gain = 0.000
+
+Starting Final Cleanup Task
+Ending Final Cleanup Task | Checksum: 1cc23d716
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 2134.641 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.014 . Memory (MB): peak = 2134.641 ; gain = 0.000
+INFO: [Common 17-83] Releasing license: Implementation
+55 Infos, 23 Warnings, 0 Critical Warnings and 0 Errors encountered.
+opt_design completed successfully
+opt_design: Time (s): cpu = 00:00:09 ; elapsed = 00:00:08 . Memory (MB): peak = 2134.641 ; gain = 436.785
+INFO: [Vivado 12-24828] Executing command : report_drc -file drone_block_design_wrapper_drc_opted.rpt -pb drone_block_design_wrapper_drc_opted.pb -rpx drone_block_design_wrapper_drc_opted.rpx
+Command: report_drc -file drone_block_design_wrapper_drc_opted.rpt -pb drone_block_design_wrapper_drc_opted.pb -rpx drone_block_design_wrapper_drc_opted.rpx
+INFO: [IP_Flow 19-1839] IP Catalog is up to date.
+INFO: [DRC 23-27] Running DRC with 2 threads
+INFO: [Vivado_Tcl 2-168] The results of DRC are in file C:/Vivado/droneLink/drone_overlay/drone_overlay.runs/impl_1/drone_block_design_wrapper_drc_opted.rpt.
+report_drc completed successfully
+INFO: [Timing 38-480] Writing timing data to binary archive.
+Wrote PlaceDB: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2134.641 ; gain = 0.000
+Wrote PulsedLatchDB: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2134.641 ; gain = 0.000
+Writing XDEF routing.
+Writing XDEF routing logical nets.
+Write ShapeDB Complete: Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.064 . Memory (MB): peak = 2134.641 ; gain = 0.000
+Writing XDEF routing special nets.
+Wrote RouteStorage: Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.065 . Memory (MB): peak = 2134.641 ; gain = 0.000
+Wrote PlaceStorage: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.009 . Memory (MB): peak = 2134.641 ; gain = 0.000
+Wrote Netlist Cache: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 2134.641 ; gain = 0.000
+Wrote Device Cache: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.009 . Memory (MB): peak = 2134.641 ; gain = 0.000
+Write Physdb Complete: Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.097 . Memory (MB): peak = 2134.641 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'C:/Vivado/droneLink/drone_overlay/drone_overlay.runs/impl_1/drone_block_design_wrapper_opt.dcp' has been generated.
+Command: place_design
+Attempting to get a license for feature 'Implementation' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7z020'
+INFO: [Common 17-83] Releasing license: Implementation
+INFO: [DRC 23-27] Running DRC with 2 threads
+INFO: [Vivado_Tcl 4-198] DRC finished with 0 Errors
+INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more information.
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+Running DRC as a precondition to command place_design
+INFO: [DRC 23-27] Running DRC with 2 threads
+INFO: [Vivado_Tcl 4-198] DRC finished with 0 Errors, 4 Advisories
+INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more information.
+INFO: [Place 30-611] Multithreading enabled for place_design using a maximum of 2 CPUs
+
+Starting Placer Task
+
+Phase 1 Placer Initialization
+
+Phase 1.1 Placer Initialization Netlist Sorting
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.017 . Memory (MB): peak = 2134.641 ; gain = 0.000
+Phase 1.1 Placer Initialization Netlist Sorting | Checksum: df4e51f3
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.023 . Memory (MB): peak = 2134.641 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.015 . Memory (MB): peak = 2134.641 ; gain = 0.000
+
+Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device
+Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device | Checksum: f74046a1
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 2134.641 ; gain = 0.000
+
+Phase 1.3 Build Placer Netlist Model
+Phase 1.3 Build Placer Netlist Model | Checksum: 1dd5c76da
+
+Time (s): cpu = 00:00:11 ; elapsed = 00:00:07 . Memory (MB): peak = 2134.641 ; gain = 0.000
+
+Phase 1.4 Constrain Clocks/Macros
+Phase 1.4 Constrain Clocks/Macros | Checksum: 1dd5c76da
+
+Time (s): cpu = 00:00:11 ; elapsed = 00:00:07 . Memory (MB): peak = 2134.641 ; gain = 0.000
+Phase 1 Placer Initialization | Checksum: 1dd5c76da
+
+Time (s): cpu = 00:00:11 ; elapsed = 00:00:07 . Memory (MB): peak = 2134.641 ; gain = 0.000
+
+Phase 2 Global Placement
+
+Phase 2.1 Floorplanning
+Phase 2.1 Floorplanning | Checksum: 1e73c4608
+
+Time (s): cpu = 00:00:17 ; elapsed = 00:00:11 . Memory (MB): peak = 2134.641 ; gain = 0.000
+
+Phase 2.2 Update Timing before SLR Path Opt
+Phase 2.2 Update Timing before SLR Path Opt | Checksum: 17894fcf5
+
+Time (s): cpu = 00:00:22 ; elapsed = 00:00:13 . Memory (MB): peak = 2134.641 ; gain = 0.000
+
+Phase 2.3 Post-Processing in Floorplanning
+Phase 2.3 Post-Processing in Floorplanning | Checksum: 1e4c852be
+
+Time (s): cpu = 00:00:22 ; elapsed = 00:00:13 . Memory (MB): peak = 2134.641 ; gain = 0.000
+
+Phase 2.4 Global Place Phase1
+Phase 2.4 Global Place Phase1 | Checksum: 1cc6dd515
+
+Time (s): cpu = 00:00:58 ; elapsed = 00:00:34 . Memory (MB): peak = 2134.641 ; gain = 0.000
+
+Phase 2.5 Global Place Phase2
+
+Phase 2.5.1 UpdateTiming Before Physical Synthesis
+Phase 2.5.1 UpdateTiming Before Physical Synthesis | Checksum: 1804840ac
+
+Time (s): cpu = 00:01:02 ; elapsed = 00:00:37 . Memory (MB): peak = 2134.641 ; gain = 0.000
+
+Phase 2.5.2 Physical Synthesis In Placer
+INFO: [Physopt 32-1035] Found 56 LUTNM shape to break, 1872 LUT instances to create LUTNM shape
+INFO: [Physopt 32-1044] Break lutnm for timing: one critical 8, two critical 48, total 56, new lutff created 2
+INFO: [Physopt 32-1138] End 1 Pass. Optimized 799 nets or LUTs. Breaked 56 LUTs, combined 743 existing LUTs and moved 0 existing LUT
+INFO: [Physopt 32-65] No nets found for high-fanout optimization.
+INFO: [Physopt 32-232] Optimized 0 net. Created 0 new instance.
+INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+INFO: [Physopt 32-456] No candidate cells for DSP register optimization found in the design.
+INFO: [Physopt 32-775] End 2 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+INFO: [Physopt 32-1123] No candidate cells found for Shift Register to Pipeline optimization
+INFO: [Physopt 32-775] End 2 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+INFO: [Physopt 32-1401] No candidate cells found for Shift Register optimization.
+INFO: [Physopt 32-677] No candidate cells for Shift Register optimization found in the design
+INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+INFO: [Physopt 32-526] No candidate cells for BRAM register optimization found in the design
+INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+INFO: [Physopt 32-846] No candidate cells for URAM register optimization found in the design
+INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+INFO: [Physopt 32-846] No candidate cells for URAM register optimization found in the design
+INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+INFO: [Physopt 32-949] No candidate nets found for dynamic/static region interface net replication
+INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.019 . Memory (MB): peak = 2134.641 ; gain = 0.000
+
+Summary of Physical Synthesis Optimizations
+============================================
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+|  Optimization                                     |  Added Cells  |  Removed Cells  |  Optimized Cells/Nets  |  Dont Touch  |  Iterations  |  Elapsed   |
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+|  LUT Combining                                    |           56  |            743  |                   799  |           0  |           1  |  00:00:01  |
+|  Retime                                           |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  Very High Fanout                                 |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  DSP Register                                     |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  Shift Register to Pipeline                       |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  Shift Register                                   |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  BRAM Register                                    |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  URAM Register                                    |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  Dynamic/Static Region Interface Net Replication  |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  Total                                            |           56  |            743  |                   799  |           0  |           9  |  00:00:01  |
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Phase 2.5.2 Physical Synthesis In Placer | Checksum: 18e4116e6
+
+Time (s): cpu = 00:01:07 ; elapsed = 00:00:40 . Memory (MB): peak = 2134.641 ; gain = 0.000
+Phase 2.5 Global Place Phase2 | Checksum: 14f16db02
+
+Time (s): cpu = 00:01:08 ; elapsed = 00:00:41 . Memory (MB): peak = 2134.641 ; gain = 0.000
+Phase 2 Global Placement | Checksum: 14f16db02
+
+Time (s): cpu = 00:01:08 ; elapsed = 00:00:41 . Memory (MB): peak = 2134.641 ; gain = 0.000
+
+Phase 3 Detail Placement
+
+Phase 3.1 Commit Multi Column Macros
+Phase 3.1 Commit Multi Column Macros | Checksum: 1bcc4a58a
+
+Time (s): cpu = 00:01:12 ; elapsed = 00:00:43 . Memory (MB): peak = 2134.641 ; gain = 0.000
+
+Phase 3.2 Commit Most Macros & LUTRAMs
+Phase 3.2 Commit Most Macros & LUTRAMs | Checksum: 1ae1b599a
+
+Time (s): cpu = 00:01:18 ; elapsed = 00:00:47 . Memory (MB): peak = 2134.641 ; gain = 0.000
+
+Phase 3.3 Area Swap Optimization
+Phase 3.3 Area Swap Optimization | Checksum: 1a1260413
+
+Time (s): cpu = 00:01:19 ; elapsed = 00:00:47 . Memory (MB): peak = 2134.641 ; gain = 0.000
+
+Phase 3.4 Pipeline Register Optimization
+Phase 3.4 Pipeline Register Optimization | Checksum: 14fb3f709
+
+Time (s): cpu = 00:01:19 ; elapsed = 00:00:47 . Memory (MB): peak = 2134.641 ; gain = 0.000
+
+Phase 3.5 Fast Optimization
+Phase 3.5 Fast Optimization | Checksum: 15587b156
+
+Time (s): cpu = 00:01:26 ; elapsed = 00:00:51 . Memory (MB): peak = 2134.641 ; gain = 0.000
+
+Phase 3.6 Small Shape Detail Placement
+Phase 3.6 Small Shape Detail Placement | Checksum: ff9d1747
+
+Time (s): cpu = 00:01:33 ; elapsed = 00:00:59 . Memory (MB): peak = 2134.641 ; gain = 0.000
+
+Phase 3.7 Re-assign LUT pins
+Phase 3.7 Re-assign LUT pins | Checksum: c08941c0
+
+Time (s): cpu = 00:01:36 ; elapsed = 00:01:01 . Memory (MB): peak = 2134.641 ; gain = 0.000
+
+Phase 3.8 Pipeline Register Optimization
+Phase 3.8 Pipeline Register Optimization | Checksum: e161836b
+
+Time (s): cpu = 00:01:36 ; elapsed = 00:01:01 . Memory (MB): peak = 2134.641 ; gain = 0.000
+
+Phase 3.9 Fast Optimization
+Phase 3.9 Fast Optimization | Checksum: e3c6f851
+
+Time (s): cpu = 00:01:46 ; elapsed = 00:01:07 . Memory (MB): peak = 2134.641 ; gain = 0.000
+Phase 3 Detail Placement | Checksum: e3c6f851
+
+Time (s): cpu = 00:01:46 ; elapsed = 00:01:07 . Memory (MB): peak = 2134.641 ; gain = 0.000
+
+Phase 4 Post Placement Optimization and Clean-Up
+
+Phase 4.1 Post Commit Optimization
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+
+Phase 4.1.1 Post Placement Optimization
+Post Placement Optimization Initialization | Checksum: 19101315c
+
+Phase 4.1.1.1 BUFG Insertion
+
+Starting Physical Synthesis Task
+
+Phase 1 Physical Synthesis Initialization
+INFO: [Physopt 32-721] Multithreading enabled for phys_opt_design using a maximum of 2 CPUs
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-8.851 | TNS=-600.997 |
+Phase 1 Physical Synthesis Initialization | Checksum: 1b8836247
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.390 . Memory (MB): peak = 2168.664 ; gain = 0.000
+INFO: [Place 46-56] BUFG insertion identified 0 candidate nets. Inserted BUFG: 0, Replicated BUFG Driver: 0, Skipped due to Placement/Routing Conflicts: 0, Skipped due to Timing Degradation: 0, Skipped due to netlist editing failed: 0.
+Ending Physical Synthesis Task | Checksum: 2321bcb58
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.481 . Memory (MB): peak = 2168.664 ; gain = 0.000
+Phase 4.1.1.1 BUFG Insertion | Checksum: 19101315c
+
+Time (s): cpu = 00:01:55 ; elapsed = 00:01:13 . Memory (MB): peak = 2168.664 ; gain = 34.023
+
+Phase 4.1.1.2 Post Placement Timing Optimization
+INFO: [Place 30-746] Post Placement Timing Summary WNS=-8.004. For the most accurate timing information please run report_timing.
+Phase 4.1.1.2 Post Placement Timing Optimization | Checksum: 11d6010b7
+
+Time (s): cpu = 00:02:07 ; elapsed = 00:01:22 . Memory (MB): peak = 2176.715 ; gain = 42.074
+
+Time (s): cpu = 00:02:07 ; elapsed = 00:01:22 . Memory (MB): peak = 2176.715 ; gain = 42.074
+Phase 4.1 Post Commit Optimization | Checksum: 11d6010b7
+
+Time (s): cpu = 00:02:07 ; elapsed = 00:01:22 . Memory (MB): peak = 2176.715 ; gain = 42.074
+
+Phase 4.2 Post Placement Cleanup
+Phase 4.2 Post Placement Cleanup | Checksum: 11d6010b7
+
+Time (s): cpu = 00:02:07 ; elapsed = 00:01:22 . Memory (MB): peak = 2176.715 ; gain = 42.074
+
+Phase 4.3 Placer Reporting
+
+Phase 4.3.1 Print Estimated Congestion
+INFO: [Place 30-612] Post-Placement Estimated Congestion 
+ ____________________________________________________
+|           | Global Congestion | Short Congestion  |
+| Direction | Region Size       | Region Size       |
+|___________|___________________|___________________|
+|      North|                1x1|                2x2|
+|___________|___________________|___________________|
+|      South|                2x2|                2x2|
+|___________|___________________|___________________|
+|       East|                1x1|                2x2|
+|___________|___________________|___________________|
+|       West|                1x1|                2x2|
+|___________|___________________|___________________|
+
+Phase 4.3.1 Print Estimated Congestion | Checksum: 11d6010b7
+
+Time (s): cpu = 00:02:08 ; elapsed = 00:01:22 . Memory (MB): peak = 2176.715 ; gain = 42.074
+Phase 4.3 Placer Reporting | Checksum: 11d6010b7
+
+Time (s): cpu = 00:02:08 ; elapsed = 00:01:22 . Memory (MB): peak = 2176.715 ; gain = 42.074
+
+Phase 4.4 Final Placement Cleanup
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.018 . Memory (MB): peak = 2176.715 ; gain = 0.000
+
+Time (s): cpu = 00:02:08 ; elapsed = 00:01:22 . Memory (MB): peak = 2176.715 ; gain = 42.074
+Phase 4 Post Placement Optimization and Clean-Up | Checksum: 1f5d24af2
+
+Time (s): cpu = 00:02:08 ; elapsed = 00:01:22 . Memory (MB): peak = 2176.715 ; gain = 42.074
+Ending Placer Task | Checksum: 19a6e7f9c
+
+Time (s): cpu = 00:02:08 ; elapsed = 00:01:22 . Memory (MB): peak = 2176.715 ; gain = 42.074
+98 Infos, 23 Warnings, 0 Critical Warnings and 0 Errors encountered.
+place_design completed successfully
+place_design: Time (s): cpu = 00:02:11 ; elapsed = 00:01:25 . Memory (MB): peak = 2176.715 ; gain = 42.074
+INFO: [Vivado 12-24838] Running report commands "report_control_sets, report_io, report_utilization" in parallel.
+Running report generation with 2 threads.
+INFO: [Vivado 12-24828] Executing command : report_io -file drone_block_design_wrapper_io_placed.rpt
+report_io: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.052 . Memory (MB): peak = 2176.715 ; gain = 0.000
+INFO: [Vivado 12-24828] Executing command : report_control_sets -verbose -file drone_block_design_wrapper_control_sets_placed.rpt
+report_control_sets: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.065 . Memory (MB): peak = 2176.715 ; gain = 0.000
+INFO: [Vivado 12-24828] Executing command : report_utilization -file drone_block_design_wrapper_utilization_placed.rpt -pb drone_block_design_wrapper_utilization_placed.pb
+INFO: [Timing 38-480] Writing timing data to binary archive.
+Wrote PlaceDB: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2176.715 ; gain = 0.000
+Wrote PulsedLatchDB: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2176.715 ; gain = 0.000
+Writing XDEF routing.
+Writing XDEF routing logical nets.
+Writing XDEF routing special nets.
+Wrote RouteStorage: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.087 . Memory (MB): peak = 2176.715 ; gain = 0.000
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.124 . Memory (MB): peak = 2176.715 ; gain = 0.000
+Wrote PlaceStorage: Time (s): cpu = 00:00:03 ; elapsed = 00:00:00.995 . Memory (MB): peak = 2176.715 ; gain = 0.000
+Wrote Netlist Cache: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.043 . Memory (MB): peak = 2176.715 ; gain = 0.000
+Wrote Device Cache: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.009 . Memory (MB): peak = 2176.715 ; gain = 0.000
+Write Physdb Complete: Time (s): cpu = 00:00:03 ; elapsed = 00:00:01 . Memory (MB): peak = 2176.715 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'C:/Vivado/droneLink/drone_overlay/drone_overlay.runs/impl_1/drone_block_design_wrapper_placed.dcp' has been generated.
+Command: phys_opt_design
+Attempting to get a license for feature 'Implementation' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7z020'
+
+Starting Initial Update Timing Task
+
+Time (s): cpu = 00:00:06 ; elapsed = 00:00:03 . Memory (MB): peak = 2176.715 ; gain = 0.000
+INFO: [Vivado_Tcl 4-1435] PhysOpt_Tcl_Interface Runtime Before Starting Physical Synthesis Task | CPU: 6.00s |  WALL: 3.54s
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.018 . Memory (MB): peak = 2176.715 ; gain = 0.000
+
+Starting Physical Synthesis Task
+
+Phase 1 Physical Synthesis Initialization
+INFO: [Physopt 32-721] Multithreading enabled for phys_opt_design using a maximum of 2 CPUs
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-8.004 | TNS=-560.134 |
+Phase 1 Physical Synthesis Initialization | Checksum: 1e7e23389
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 2176.715 ; gain = 0.000
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-8.004 | TNS=-560.134 |
+
+Phase 2 DSP Register Optimization
+INFO: [Physopt 32-456] No candidate cells for DSP register optimization found in the design.
+INFO: [Physopt 32-775] End 2 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+Phase 2 DSP Register Optimization | Checksum: 1e7e23389
+
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:02 . Memory (MB): peak = 2176.715 ; gain = 0.000
+
+Phase 3 Critical Path Optimization
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-8.004 | TNS=-560.134 |
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/m3_ticks[17]. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/m3_ticks[17]_i_1_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/q16_to_ticks__1_i_15_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/us_target1_inferred__3/i__carry__1_n_3. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/us_target1_inferred__3/i__carry__0_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 16 pins.
+INFO: [Physopt 32-735] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/i__carry__0_i_4__9_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-8.001 | TNS=-557.848 |
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/m2_ticks[0]. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 6 pins.
+INFO: [Physopt 32-735] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/m2_ticks[0]_i_1_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-7.911 | TNS=-557.758 |
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/m2_ticks[0]_i_1_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/q16_to_ticks__0_i_12_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/us_target1_inferred__1/i__carry__1_n_3. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/us_target1_inferred__1/i__carry__0_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 16 pins.
+INFO: [Physopt 32-735] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/i__carry__0_i_4__5_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-7.911 | TNS=-556.552 |
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/m4_ticks[8]. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/m4_ticks[8]_i_1_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-663] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/q16_to_ticks__2_i_8_n_0.  Re-placed instance drone_block_design_i/flight_controller/motor_controller_0/U0/q16_to_ticks__2_i_8
+INFO: [Physopt 32-735] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/q16_to_ticks__2_i_8_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-7.905 | TNS=-551.818 |
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/m1_ticks_reg_n_0_[7]. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/m1_ticks[7]_i_1_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-663] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/A[0].  Re-placed instance drone_block_design_i/flight_controller/motor_controller_0/U0/q16_to_ticks_i_17
+INFO: [Physopt 32-735] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/A[0]. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-7.877 | TNS=-550.918 |
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 18 pins.
+INFO: [Physopt 32-735] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/q16_to_ticks__1_i_16_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-7.874 | TNS=-550.864 |
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 18 pins.
+INFO: [Physopt 32-735] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/q16_to_ticks__1_i_14_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-7.855 | TNS=-550.414 |
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/A[0]. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/us_target1. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/us_target1_carry__0_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/us_target1_carry__0_i_4_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/us_target2_carry__2_n_6. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/us_target2_carry__1_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/us_target2_carry__0_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/us_target2_carry__0_i_3_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/ARG[23]. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/ARG__153_carry__2_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/ARG__153_carry__1_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/ARG__153_carry__0_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/ARG__153_carry__0_i_1_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/ARG__78_carry__0_n_4. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/ARG__78_carry_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/ARG__78_carry_i_4_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/val_int1. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/val_int1_carry__1_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/val_int1_carry__0_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/val_int1_carry_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/val_int1_carry_i_1_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/q16_to_ticks_n_98. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-663] Processed net drone_block_design_i/flight_controller/mixer_module_0/U0/regslice_both_motor_out_V_data_V_U/motor_out_TDATA[1].  Re-placed instance drone_block_design_i/flight_controller/mixer_module_0/U0/regslice_both_motor_out_V_data_V_U/data_p1_reg[1]
+INFO: [Physopt 32-735] Processed net drone_block_design_i/flight_controller/mixer_module_0/U0/regslice_both_motor_out_V_data_V_U/motor_out_TDATA[1]. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-7.849 | TNS=-550.144 |
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/q16_to_ticks__1_i_16_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/i__carry__0_i_4__9_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/us_target2_inferred__1/i__carry__2_n_7. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/us_target2_inferred__1/i__carry__1_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/us_target2_inferred__1/i__carry__0_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/i__carry__0_i_3__9_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/ARG_inferred__1/i___153_carry__3_n_7. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/ARG_inferred__1/i___153_carry__2_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/ARG_inferred__1/i___153_carry__1_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/i___153_carry__1_i_1__0_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/ARG_inferred__1/i__carry__2_n_6. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/ARG_inferred__1/i__carry__1_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/ARG_inferred__1/i__carry__0_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/ARG_inferred__1/i__carry_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/i__carry_i_6__10_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/val_int1_inferred__1/i__carry__2_n_1. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/val_int1_inferred__1/i__carry__1_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/val_int1_inferred__1/i__carry__0_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/val_int1_inferred__1/i__carry_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/i__carry_i_1__14_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/q16_to_ticks__1_n_88. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-81] Processed net drone_block_design_i/flight_controller/mixer_module_0/U0/regslice_both_motor_out_V_data_V_U/motor_out_TDATA[65]. Replicated 1 times.
+INFO: [Physopt 32-735] Processed net drone_block_design_i/flight_controller/mixer_module_0/U0/regslice_both_motor_out_V_data_V_U/motor_out_TDATA[65]. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-7.844 | TNS=-549.624 |
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 9 pins.
+INFO: [Physopt 32-735] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/q16_to_ticks__0_i_15_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-7.840 | TNS=-548.238 |
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 18 pins.
+INFO: [Physopt 32-735] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/val_int1_carry_i_8_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-7.817 | TNS=-546.708 |
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/mixer_module_0/U0/regslice_both_motor_out_V_data_V_U/motor_out_TDATA[65]. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/m3_ticks[17]. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/m3_ticks[17]_i_1_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/q16_to_ticks__1_i_16_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/us_target1_inferred__3/i__carry__1_n_3. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/i__carry__0_i_4__9_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/us_target2_inferred__1/i__carry__2_n_7. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/i__carry__0_i_3__9_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/ARG_inferred__1/i___153_carry__3_n_7. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/i___153_carry__1_i_1__0_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/ARG_inferred__1/i__carry__2_n_6. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/i__carry_i_6__10_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/val_int1_inferred__1/i__carry__2_n_1. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/i__carry_i_1__14_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/q16_to_ticks__1_n_88. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/mixer_module_0/U0/regslice_both_motor_out_V_data_V_U/motor_out_TDATA[65]. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-7.817 | TNS=-546.708 |
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.034 . Memory (MB): peak = 2176.715 ; gain = 0.000
+Phase 3 Critical Path Optimization | Checksum: 1e7e23389
+
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:03 . Memory (MB): peak = 2176.715 ; gain = 0.000
+
+Phase 4 Critical Path Optimization
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-7.817 | TNS=-546.708 |
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/m3_ticks[17]. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/m3_ticks[17]_i_1_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/q16_to_ticks__1_i_16_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/us_target1_inferred__3/i__carry__1_n_3. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/us_target1_inferred__3/i__carry__0_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/i__carry__0_i_4__9_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/us_target2_inferred__1/i__carry__2_n_7. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/us_target2_inferred__1/i__carry__1_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/us_target2_inferred__1/i__carry__0_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/i__carry__0_i_3__9_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/ARG_inferred__1/i___153_carry__3_n_7. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/ARG_inferred__1/i___153_carry__2_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/ARG_inferred__1/i___153_carry__1_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/i___153_carry__1_i_1__0_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/ARG_inferred__1/i__carry__2_n_6. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/ARG_inferred__1/i__carry__1_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/ARG_inferred__1/i__carry__0_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/ARG_inferred__1/i__carry_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/i__carry_i_6__10_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/val_int1_inferred__1/i__carry__2_n_1. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/val_int1_inferred__1/i__carry__1_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/val_int1_inferred__1/i__carry__0_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/val_int1_inferred__1/i__carry_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/i__carry_i_1__14_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/q16_to_ticks__1_n_88. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/mixer_module_0/U0/regslice_both_motor_out_V_data_V_U/motor_out_TDATA[65]. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/m3_ticks[17]. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/m3_ticks[17]_i_1_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/q16_to_ticks__1_i_16_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/us_target1_inferred__3/i__carry__1_n_3. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/i__carry__0_i_4__9_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/us_target2_inferred__1/i__carry__2_n_7. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/i__carry__0_i_3__9_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/ARG_inferred__1/i___153_carry__3_n_7. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/i___153_carry__1_i_1__0_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/ARG_inferred__1/i__carry__2_n_6. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/i__carry_i_6__10_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/val_int1_inferred__1/i__carry__2_n_1. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/i__carry_i_1__14_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/motor_controller_0/U0/q16_to_ticks__1_n_88. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net drone_block_design_i/flight_controller/mixer_module_0/U0/regslice_both_motor_out_V_data_V_U/motor_out_TDATA[65]. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-7.817 | TNS=-546.708 |
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.019 . Memory (MB): peak = 2176.715 ; gain = 0.000
+Phase 4 Critical Path Optimization | Checksum: 1e7e23389
+
+Time (s): cpu = 00:00:05 ; elapsed = 00:00:03 . Memory (MB): peak = 2176.715 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.013 . Memory (MB): peak = 2176.715 ; gain = 0.000
+INFO: [Physopt 32-603] Post Physical Optimization Timing Summary | WNS=-7.817 | TNS=-546.708 |
+
+Summary of Physical Synthesis Optimizations
+============================================
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+|  Optimization   |  WNS Gain (ns)  |  TNS Gain (ns)  |  Added Cells  |  Removed Cells  |  Optimized Cells/Nets  |  Dont Touch  |  Iterations  |  Elapsed   |
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+|  DSP Register   |          0.000  |          0.000  |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  Critical Path  |          0.187  |         13.426  |            1  |              0  |                    11  |           0  |           2  |  00:00:01  |
+|  Total          |          0.187  |         13.426  |            1  |              0  |                    11  |           0  |           3  |  00:00:01  |
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.014 . Memory (MB): peak = 2176.715 ; gain = 0.000
+Ending Physical Synthesis Task | Checksum: 13ed53432
+
+Time (s): cpu = 00:00:05 ; elapsed = 00:00:04 . Memory (MB): peak = 2176.715 ; gain = 0.000
+INFO: [Common 17-83] Releasing license: Implementation
+268 Infos, 23 Warnings, 0 Critical Warnings and 0 Errors encountered.
+phys_opt_design completed successfully
+phys_opt_design: Time (s): cpu = 00:00:11 ; elapsed = 00:00:07 . Memory (MB): peak = 2176.715 ; gain = 0.000
+INFO: [Timing 38-480] Writing timing data to binary archive.
+Wrote PlaceDB: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2176.715 ; gain = 0.000
+Wrote PulsedLatchDB: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2176.715 ; gain = 0.000
+Writing XDEF routing.
+Writing XDEF routing logical nets.
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.054 . Memory (MB): peak = 2176.715 ; gain = 0.000
+Writing XDEF routing special nets.
+Wrote RouteStorage: Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.065 . Memory (MB): peak = 2176.715 ; gain = 0.000
+Wrote PlaceStorage: Time (s): cpu = 00:00:02 ; elapsed = 00:00:00.969 . Memory (MB): peak = 2176.715 ; gain = 0.000
+Wrote Netlist Cache: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.046 . Memory (MB): peak = 2176.715 ; gain = 0.000
+Wrote Device Cache: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.009 . Memory (MB): peak = 2176.715 ; gain = 0.000
+Write Physdb Complete: Time (s): cpu = 00:00:03 ; elapsed = 00:00:01 . Memory (MB): peak = 2176.715 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'C:/Vivado/droneLink/drone_overlay/drone_overlay.runs/impl_1/drone_block_design_wrapper_physopt.dcp' has been generated.
+Command: route_design
+Attempting to get a license for feature 'Implementation' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7z020'
+INFO: [DRC 23-27] Running DRC with 2 threads
+INFO: [Vivado_Tcl 4-198] DRC finished with 0 Errors
+INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more information.
+
+
+Starting Routing Task
+INFO: [Route 35-254] Multithreading enabled for route_design using a maximum of 2 CPUs
+
+Phase 1 Build RT Design
+Checksum: PlaceDB: 8f655bd6 ConstDB: 0 ShapeSum: 510644e8 RouteDB: 15f972f0
+Post Restoration Checksum: NetGraph: ad03e11b | NumContArr: fdba9237 | Constraints: c2a8fa9d | Timing: c2a8fa9d
+Phase 1 Build RT Design | Checksum: 33010688c
+
+Time (s): cpu = 00:00:22 ; elapsed = 00:00:15 . Memory (MB): peak = 2206.004 ; gain = 29.289
+
+Phase 2 Router Initialization
+
+Phase 2.1 Fix Topology Constraints
+Phase 2.1 Fix Topology Constraints | Checksum: 33010688c
+
+Time (s): cpu = 00:00:22 ; elapsed = 00:00:16 . Memory (MB): peak = 2206.133 ; gain = 29.418
+
+Phase 2.2 Pre Route Cleanup
+Phase 2.2 Pre Route Cleanup | Checksum: 33010688c
+
+Time (s): cpu = 00:00:22 ; elapsed = 00:00:16 . Memory (MB): peak = 2206.133 ; gain = 29.418
+ Number of Nodes with overlaps = 0
+
+Phase 2.3 Update Timing
+Phase 2.3 Update Timing | Checksum: 209ba30eb
+
+Time (s): cpu = 00:00:31 ; elapsed = 00:00:21 . Memory (MB): peak = 2280.758 ; gain = 104.043
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=-7.713 | TNS=-518.844| WHS=-0.174 | THS=-253.290|
+
+
+Phase 2.4 Soft Constraint Pins - Fast Budgeting
+Phase 2.4 Soft Constraint Pins - Fast Budgeting | Checksum: 2825858fd
+
+Time (s): cpu = 00:00:35 ; elapsed = 00:00:23 . Memory (MB): peak = 2359.117 ; gain = 182.402
+
+Router Utilization Summary
+  Global Vertical Routing Utilization    = 0 %
+  Global Horizontal Routing Utilization  = 0 %
+  Routable Net Status*
+  *Does not include unroutable nets such as driverless and loadless.
+  Run report_route_status for detailed report.
+  Number of Failed Nets               = 42757
+    (Failed Nets is the sum of unrouted and partially routed nets)
+  Number of Unrouted Nets             = 42757
+  Number of Partially Routed Nets     = 0
+  Number of Node Overlaps             = 0
+
+Phase 2 Router Initialization | Checksum: 28df3b622
+
+Time (s): cpu = 00:00:35 ; elapsed = 00:00:24 . Memory (MB): peak = 2359.117 ; gain = 182.402
+
+Phase 3 Global Routing
+Phase 3 Global Routing | Checksum: 28df3b622
+
+Time (s): cpu = 00:00:35 ; elapsed = 00:00:24 . Memory (MB): peak = 2359.117 ; gain = 182.402
+
+Phase 4 Initial Routing
+
+Phase 4.1 Initial Net Routing Pass
+Phase 4.1 Initial Net Routing Pass | Checksum: 1ed4eaf5c
+
+Time (s): cpu = 00:00:39 ; elapsed = 00:00:25 . Memory (MB): peak = 2359.117 ; gain = 182.402
+Phase 4 Initial Routing | Checksum: 1ed4eaf5c
+
+Time (s): cpu = 00:00:39 ; elapsed = 00:00:26 . Memory (MB): peak = 2359.117 ; gain = 182.402
+INFO: [Route 35-580] Design has 1 pins with tight setup and hold constraints.
+
+The top 5 pins with tight setup and hold constraints:
+
++====================+===================+==============================================================================================================================================================================================================================================================+
+| Launch Setup Clock | Launch Hold Clock | Pin                                                                                                                                                                                                                                                          |
++====================+===================+==============================================================================================================================================================================================================================================================+
+| clk_fpga_0         | clk_fpga_0        | drone_block_design_i/axi_mem_intercon/s00_couplers/auto_us/inst/gen_upsizer.gen_full_upsizer.axi_upsizer_inst/USE_WRITE.gen_non_fifo_w_upsizer.write_data_inst/WORD_LANE[1].USE_ALWAYS_PACKER.BYTE_LANE[3].USE_RTL_DATA.USE_REGISTER.M_AXI_WDATA_I_reg[62]/D |
++--------------------+-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+File with complete list of pins: tight_setup_hold_pins.txt
+
+
+Phase 5 Rip-up And Reroute
+
+Phase 5.1 Global Iteration 0
+ Number of Nodes with overlaps = 3777
+ Number of Nodes with overlaps = 482
+ Number of Nodes with overlaps = 116
+ Number of Nodes with overlaps = 40
+ Number of Nodes with overlaps = 8
+ Number of Nodes with overlaps = 2
+ Number of Nodes with overlaps = 0
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=-8.348 | TNS=-1970.510| WHS=N/A    | THS=N/A    |
+
+Phase 5.1 Global Iteration 0 | Checksum: 2a57e194a
+
+Time (s): cpu = 00:00:58 ; elapsed = 00:00:40 . Memory (MB): peak = 2370.445 ; gain = 193.730
+
+Phase 5.2 Global Iteration 1
+ Number of Nodes with overlaps = 477
+ Number of Nodes with overlaps = 135
+ Number of Nodes with overlaps = 36
+ Number of Nodes with overlaps = 7
+ Number of Nodes with overlaps = 2
+ Number of Nodes with overlaps = 0
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=-8.317 | TNS=-1958.045| WHS=N/A    | THS=N/A    |
+
+Phase 5.2 Global Iteration 1 | Checksum: 287375117
+
+Time (s): cpu = 00:01:05 ; elapsed = 00:00:45 . Memory (MB): peak = 2370.445 ; gain = 193.730
+Phase 5 Rip-up And Reroute | Checksum: 287375117
+
+Time (s): cpu = 00:01:05 ; elapsed = 00:00:45 . Memory (MB): peak = 2370.445 ; gain = 193.730
+
+Phase 6 Delay and Skew Optimization
+
+Phase 6.1 Delay CleanUp
+
+Phase 6.1.1 Update Timing
+Phase 6.1.1 Update Timing | Checksum: 29773c4d9
+
+Time (s): cpu = 00:01:06 ; elapsed = 00:00:46 . Memory (MB): peak = 2370.445 ; gain = 193.730
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=-8.303 | TNS=-1915.097| WHS=N/A    | THS=N/A    |
+
+ Number of Nodes with overlaps = 0
+Phase 6.1 Delay CleanUp | Checksum: 2810f939d
+
+Time (s): cpu = 00:01:07 ; elapsed = 00:00:47 . Memory (MB): peak = 2370.445 ; gain = 193.730
+
+Phase 6.2 Clock Skew Optimization
+Phase 6.2 Clock Skew Optimization | Checksum: 2810f939d
+
+Time (s): cpu = 00:01:07 ; elapsed = 00:00:47 . Memory (MB): peak = 2370.445 ; gain = 193.730
+Phase 6 Delay and Skew Optimization | Checksum: 2810f939d
+
+Time (s): cpu = 00:01:07 ; elapsed = 00:00:47 . Memory (MB): peak = 2370.445 ; gain = 193.730
+
+Phase 7 Post Hold Fix
+
+Phase 7.1 Hold Fix Iter
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=-8.287 | TNS=-788.332| WHS=0.010  | THS=0.000  |
+
+Phase 7.1 Hold Fix Iter | Checksum: 26da13e65
+
+Time (s): cpu = 00:01:08 ; elapsed = 00:00:47 . Memory (MB): peak = 2370.445 ; gain = 193.730
+Phase 7 Post Hold Fix | Checksum: 26da13e65
+
+Time (s): cpu = 00:01:08 ; elapsed = 00:00:47 . Memory (MB): peak = 2370.445 ; gain = 193.730
+
+Phase 8 Route finalize
+
+Router Utilization Summary
+  Global Vertical Routing Utilization    = 8.04313 %
+  Global Horizontal Routing Utilization  = 10.5904 %
+  Routable Net Status*
+  *Does not include unroutable nets such as driverless and loadless.
+  Run report_route_status for detailed report.
+  Number of Failed Nets               = 0
+    (Failed Nets is the sum of unrouted and partially routed nets)
+  Number of Unrouted Nets             = 0
+  Number of Partially Routed Nets     = 0
+  Number of Node Overlaps             = 0
+
+
+--GLOBAL Congestion:
+Utilization threshold used for congestion level computation: 0.85
+Congestion Report
+North Dir 1x1 Area, Max Cong = 72.0721%, No Congested Regions.
+South Dir 1x1 Area, Max Cong = 65.7658%, No Congested Regions.
+East Dir 1x1 Area, Max Cong = 76.4706%, No Congested Regions.
+West Dir 1x1 Area, Max Cong = 72.0588%, No Congested Regions.
+
+------------------------------
+Reporting congestion hotspots
+------------------------------
+Direction: North
+----------------
+Congested clusters found at Level 0
+Effective congestion level: 0 Aspect Ratio: 1 Sparse Ratio: 0
+Direction: South
+----------------
+Congested clusters found at Level 0
+Effective congestion level: 0 Aspect Ratio: 1 Sparse Ratio: 0
+Direction: East
+----------------
+Congested clusters found at Level 0
+Effective congestion level: 0 Aspect Ratio: 1 Sparse Ratio: 0
+Direction: West
+----------------
+Congested clusters found at Level 0
+Effective congestion level: 0 Aspect Ratio: 1 Sparse Ratio: 0
+
+Phase 8 Route finalize | Checksum: 26da13e65
+
+Time (s): cpu = 00:01:09 ; elapsed = 00:00:48 . Memory (MB): peak = 2370.445 ; gain = 193.730
+
+Phase 9 Verifying routed nets
+
+ Verification completed successfully
+Phase 9 Verifying routed nets | Checksum: 26da13e65
+
+Time (s): cpu = 00:01:09 ; elapsed = 00:00:48 . Memory (MB): peak = 2370.445 ; gain = 193.730
+
+Phase 10 Depositing Routes
+Phase 10 Depositing Routes | Checksum: 2560c0e3c
+
+Time (s): cpu = 00:01:12 ; elapsed = 00:00:51 . Memory (MB): peak = 2370.445 ; gain = 193.730
+
+Phase 11 Post Process Routing
+Phase 11 Post Process Routing | Checksum: 2560c0e3c
+
+Time (s): cpu = 00:01:12 ; elapsed = 00:00:51 . Memory (MB): peak = 2370.445 ; gain = 193.730
+
+Phase 12 Post Router Timing
+INFO: [Route 35-57] Estimated Timing Summary | WNS=-8.287 | TNS=-788.332| WHS=0.010  | THS=0.000  |
+
+WARNING: [Route 35-328] Router estimated timing not met.
+Resolution: For a complete and accurate timing signoff, report_timing_summary must be run after route_design. Alternatively, route_design can be run with the -timing_summary option to enable a complete timing signoff at the end of route_design.
+Phase 12 Post Router Timing | Checksum: 2560c0e3c
+
+Time (s): cpu = 00:01:12 ; elapsed = 00:00:51 . Memory (MB): peak = 2370.445 ; gain = 193.730
+Total Elapsed time in route_design: 50.763 secs
+
+Phase 13 Post-Route Event Processing
+Phase 13 Post-Route Event Processing | Checksum: 13c448720
+
+Time (s): cpu = 00:01:13 ; elapsed = 00:00:51 . Memory (MB): peak = 2370.445 ; gain = 193.730
+INFO: [Route 35-16] Router Completed Successfully
+Ending Routing Task | Checksum: 13c448720
+
+Time (s): cpu = 00:01:13 ; elapsed = 00:00:51 . Memory (MB): peak = 2370.445 ; gain = 193.730
+
+Routing Is Done.
+INFO: [Common 17-83] Releasing license: Implementation
+284 Infos, 24 Warnings, 0 Critical Warnings and 0 Errors encountered.
+route_design completed successfully
+route_design: Time (s): cpu = 00:01:13 ; elapsed = 00:00:51 . Memory (MB): peak = 2370.445 ; gain = 193.730
+INFO: [Vivado 12-24828] Executing command : report_drc -file drone_block_design_wrapper_drc_routed.rpt -pb drone_block_design_wrapper_drc_routed.pb -rpx drone_block_design_wrapper_drc_routed.rpx
+Command: report_drc -file drone_block_design_wrapper_drc_routed.rpt -pb drone_block_design_wrapper_drc_routed.pb -rpx drone_block_design_wrapper_drc_routed.rpx
+INFO: [IP_Flow 19-1839] IP Catalog is up to date.
+INFO: [DRC 23-27] Running DRC with 2 threads
+INFO: [Vivado_Tcl 2-168] The results of DRC are in file C:/Vivado/droneLink/drone_overlay/drone_overlay.runs/impl_1/drone_block_design_wrapper_drc_routed.rpt.
+report_drc completed successfully
+INFO: [Vivado 12-24828] Executing command : report_methodology -file drone_block_design_wrapper_methodology_drc_routed.rpt -pb drone_block_design_wrapper_methodology_drc_routed.pb -rpx drone_block_design_wrapper_methodology_drc_routed.rpx
+Command: report_methodology -file drone_block_design_wrapper_methodology_drc_routed.rpt -pb drone_block_design_wrapper_methodology_drc_routed.pb -rpx drone_block_design_wrapper_methodology_drc_routed.rpx
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+INFO: [DRC 23-133] Running Methodology with 2 threads
+INFO: [Vivado_Tcl 2-1520] The results of Report Methodology are in file C:/Vivado/droneLink/drone_overlay/drone_overlay.runs/impl_1/drone_block_design_wrapper_methodology_drc_routed.rpt.
+report_methodology completed successfully
+report_methodology: Time (s): cpu = 00:00:13 ; elapsed = 00:00:07 . Memory (MB): peak = 2370.445 ; gain = 0.000
+INFO: [Vivado 12-24828] Executing command : report_timing_summary -max_paths 10 -routable_nets -report_unconstrained -file drone_block_design_wrapper_timing_summary_routed.rpt -pb drone_block_design_wrapper_timing_summary_routed.pb -rpx drone_block_design_wrapper_timing_summary_routed.rpx -warn_on_violation 
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Delay Type: min_max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 2 CPUs
+CRITICAL WARNING: [Timing 38-282] The design failed to meet the timing requirements. Please see the timing summary report for details on the timing violations.
+INFO: [Vivado 12-24838] Running report commands "report_incremental_reuse, report_route_status" in parallel.
+Running report generation with 2 threads.
+INFO: [Vivado 12-24828] Executing command : report_incremental_reuse -file drone_block_design_wrapper_incremental_reuse_routed.rpt
+INFO: [Vivado_Tcl 4-1062] Incremental flow is disabled. No incremental reuse Info to report.
+INFO: [Vivado 12-24828] Executing command : report_route_status -file drone_block_design_wrapper_route_status.rpt -pb drone_block_design_wrapper_route_status.pb
+INFO: [Vivado 12-24828] Executing command : report_power -file drone_block_design_wrapper_power_routed.rpt -pb drone_block_design_wrapper_power_summary_routed.pb -rpx drone_block_design_wrapper_power_routed.rpx
+Command: report_power -file drone_block_design_wrapper_power_routed.rpt -pb drone_block_design_wrapper_power_summary_routed.pb -rpx drone_block_design_wrapper_power_routed.rpx
+Running Vector-less Activity Propagation...
+
+Finished Running Vector-less Activity Propagation
+301 Infos, 24 Warnings, 1 Critical Warnings and 0 Errors encountered.
+report_power completed successfully
+report_power: Time (s): cpu = 00:00:08 ; elapsed = 00:00:05 . Memory (MB): peak = 2370.445 ; gain = 0.000
+INFO: [Vivado 12-24828] Executing command : report_clock_utilization -file drone_block_design_wrapper_clock_utilization_routed.rpt
+INFO: [Vivado 12-24828] Executing command : report_bus_skew -warn_on_violation -file drone_block_design_wrapper_bus_skew_routed.rpt -pb drone_block_design_wrapper_bus_skew_routed.pb -rpx drone_block_design_wrapper_bus_skew_routed.rpx
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Delay Type: min_max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 2 CPUs
+generate_parallel_reports: Time (s): cpu = 00:00:31 ; elapsed = 00:00:20 . Memory (MB): peak = 2370.445 ; gain = 0.000
+INFO: [Timing 38-480] Writing timing data to binary archive.
+Wrote PlaceDB: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2370.445 ; gain = 0.000
+Wrote PulsedLatchDB: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2370.445 ; gain = 0.000
+Writing XDEF routing.
+Writing XDEF routing logical nets.
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.065 . Memory (MB): peak = 2383.852 ; gain = 13.406
+Writing XDEF routing special nets.
+Wrote RouteStorage: Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.306 . Memory (MB): peak = 2391.980 ; gain = 21.535
+Wrote PlaceStorage: Time (s): cpu = 00:00:02 ; elapsed = 00:00:00.943 . Memory (MB): peak = 2391.980 ; gain = 0.000
+Wrote Netlist Cache: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.042 . Memory (MB): peak = 2391.980 ; gain = 0.000
+Wrote Device Cache: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.009 . Memory (MB): peak = 2391.980 ; gain = 0.000
+Write Physdb Complete: Time (s): cpu = 00:00:03 ; elapsed = 00:00:01 . Memory (MB): peak = 2391.980 ; gain = 21.535
+INFO: [Common 17-1381] The checkpoint 'C:/Vivado/droneLink/drone_overlay/drone_overlay.runs/impl_1/drone_block_design_wrapper_routed.dcp' has been generated.
+Command: write_bitstream -force drone_block_design_wrapper.bit
+Attempting to get a license for feature 'Implementation' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7z020'
+Running DRC as a precondition to command write_bitstream
+INFO: [IP_Flow 19-1839] IP Catalog is up to date.
+INFO: [DRC 23-27] Running DRC with 2 threads
+INFO: [Vivado 12-3199] DRC finished with 0 Errors
+INFO: [Vivado 12-3200] Please refer to the DRC report (report_drc) for more information.
+Integrating Hard IP ELF/MEM with the PDI.
+INFO: [Designutils 20-2272] Running write_bitstream with 2 threads.
+Loading data files...
+Loading site data...
+Loading route data...
+Processing options...
+Creating bitmap...
+Creating bitstream...
+Writing bitstream ./drone_block_design_wrapper.bit...
+INFO: [Vivado 12-1842] Bitgen Completed Successfully.
+INFO: [Common 17-83] Releasing license: Implementation
+315 Infos, 24 Warnings, 1 Critical Warnings and 0 Errors encountered.
+write_bitstream completed successfully
+write_bitstream: Time (s): cpu = 00:00:21 ; elapsed = 00:00:14 . Memory (MB): peak = 2845.438 ; gain = 453.457
+INFO: [Common 17-206] Exiting Vivado at Sat Oct 24 23:11:42 2026...

@@ -1,0 +1,432 @@
+#-----------------------------------------------------------
+# Vivado v2025.2 (64-bit)
+# SW Build 6299465 on Fri Nov 14 19:35:11 GMT 2025
+# IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
+# SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
+# Start of session at: Sat Oct 24 23:07:26 2026
+# Process ID         : 37652
+# Current directory  : C:/Vivado/droneLink/drone_overlay/drone_overlay.runs/synth_1
+# Command line       : vivado.exe -log drone_block_design_wrapper.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source drone_block_design_wrapper.tcl
+# Log file           : C:/Vivado/droneLink/drone_overlay/drone_overlay.runs/synth_1/drone_block_design_wrapper.vds
+# Journal file       : C:/Vivado/droneLink/drone_overlay/drone_overlay.runs/synth_1\vivado.jou
+# Running On         : Michel-PC
+# Platform           : Windows Server 2016 or Windows 10
+# Operating System   : 26200
+# Processor Detail   : AMD Ryzen 5 9600X 6-Core Processor             
+# CPU Frequency      : 3900 MHz
+# CPU Physical cores : 6
+# CPU Logical cores  : 12
+# Host memory        : 33462 MB
+# Swap memory        : 19327 MB
+# Total Virtual      : 52789 MB
+# Available Virtual  : 19948 MB
+#-----------------------------------------------------------
+source drone_block_design_wrapper.tcl -notrace
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Vivado/droneLink/ip_repo/motor_controller_1_0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Vivado/droneLink/ip_repo/pca9685_controller_1_0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Vivado/droneLink/ip_repo/control_manager_1_0'. The path is contained within another repository.
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Vivado/droneLink/ip_repo'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/AMDDesignTools/2025.2/Vivado/data/ip'.
+WARNING: [BD 41-1661] One or more IPs have been locked in the design 'drone_block_design.bd'. Please run report_ip_status for more details and recommendations on how to fix this issue.
+List of locked IPs:
+drone_block_design_motor_controller_0_0
+
+INFO: [Project 1-5698] Found the below utility IPs instantiated in block design C:/Vivado/droneLink/drone_overlay/drone_overlay.srcs/sources_1/bd/drone_block_design/drone_block_design.bd which have equivalent inline hdl with improved performance and reduced diskspace.
+It is recommended to migrate these utility IPs to inline hdl  using the command upgrade_project -migrate_to_inline_hdl.  The utility IPs may be deprecated in future releases.
+More information on inline hdl is available in UG994.
+Utility IP Component Instances:
+ drone_block_design_xlconstant_0_0
+drone_block_design_xlconstant_1_0
+Command: read_checkpoint -auto_incremental -incremental C:/Vivado/droneLink/drone_overlay/drone_overlay.srcs/utils_1/imports/synth_1/drone_block_design_wrapper.dcp
+INFO: [Vivado 12-5825] Read reference checkpoint from C:/Vivado/droneLink/drone_overlay/drone_overlay.srcs/utils_1/imports/synth_1/drone_block_design_wrapper.dcp for incremental synthesis
+INFO: [Vivado 12-7989] Please ensure there are no constraint changes
+Command: synth_design -top drone_block_design_wrapper -part xc7z020clg400-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Device 21-403] Loading part xc7z020clg400-1
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 2124
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 1351.238 ; gain = 541.418
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'drone_block_design_wrapper' [C:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/hdl/drone_block_design_wrapper.vhd:45]
+INFO: [Synth 8-3491] module 'drone_block_design' declared at 'c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/synth/drone_block_design.vhd:2623' bound to instance 'drone_block_design_i' of component 'drone_block_design' [C:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/hdl/drone_block_design_wrapper.vhd:76]
+INFO: [Synth 8-638] synthesizing module 'drone_block_design' [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/synth/drone_block_design.vhd:2657]
+INFO: [Synth 8-638] synthesizing module 'drone_block_design_axi_mem_intercon_0' [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/synth/drone_block_design.vhd:1907]
+INFO: [Synth 8-638] synthesizing module 'm00_couplers_imp_9TBKLJ' [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/synth/drone_block_design.vhd:597]
+INFO: [Synth 8-3491] module 'drone_block_design_axi_mem_intercon_imp_auto_pc_0' declared at 'C:/Vivado/droneLink/drone_overlay/drone_overlay.runs/synth_1/.Xil/Vivado-37652-Michel-PC/realtime/drone_block_design_axi_mem_intercon_imp_auto_pc_0_stub.vhdl:6' bound to instance 'auto_pc' of component 'drone_block_design_axi_mem_intercon_imp_auto_pc_0' [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/synth/drone_block_design.vhd:673]
+INFO: [Synth 8-638] synthesizing module 'drone_block_design_axi_mem_intercon_imp_auto_pc_0' [C:/Vivado/droneLink/drone_overlay/drone_overlay.runs/synth_1/.Xil/Vivado-37652-Michel-PC/realtime/drone_block_design_axi_mem_intercon_imp_auto_pc_0_stub.vhdl:88]
+INFO: [Synth 8-256] done synthesizing module 'm00_couplers_imp_9TBKLJ' (0#1) [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/synth/drone_block_design.vhd:597]
+INFO: [Synth 8-638] synthesizing module 'm01_couplers_imp_9ORYFU' [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/synth/drone_block_design.vhd:812]
+INFO: [Synth 8-3491] module 'drone_block_design_axi_mem_intercon_imp_auto_ds_0' declared at 'C:/Vivado/droneLink/drone_overlay/drone_overlay.runs/synth_1/.Xil/Vivado-37652-Michel-PC/realtime/drone_block_design_axi_mem_intercon_imp_auto_ds_0_stub.vhdl:6' bound to instance 'auto_ds' of component 'drone_block_design_axi_mem_intercon_imp_auto_ds_0' [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/synth/drone_block_design.vhd:987]
+INFO: [Synth 8-638] synthesizing module 'drone_block_design_axi_mem_intercon_imp_auto_ds_0' [C:/Vivado/droneLink/drone_overlay/drone_overlay.runs/synth_1/.Xil/Vivado-37652-Michel-PC/realtime/drone_block_design_axi_mem_intercon_imp_auto_ds_0_stub.vhdl:90]
+INFO: [Synth 8-3491] module 'drone_block_design_axi_mem_intercon_imp_auto_pc_1' declared at 'C:/Vivado/droneLink/drone_overlay/drone_overlay.runs/synth_1/.Xil/Vivado-37652-Michel-PC/realtime/drone_block_design_axi_mem_intercon_imp_auto_pc_1_stub.vhdl:6' bound to instance 'auto_pc' of component 'drone_block_design_axi_mem_intercon_imp_auto_pc_1' [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/synth/drone_block_design.vhd:1062]
+INFO: [Synth 8-638] synthesizing module 'drone_block_design_axi_mem_intercon_imp_auto_pc_1' [C:/Vivado/droneLink/drone_overlay/drone_overlay.runs/synth_1/.Xil/Vivado-37652-Michel-PC/realtime/drone_block_design_axi_mem_intercon_imp_auto_pc_1_stub.vhdl:74]
+INFO: [Synth 8-256] done synthesizing module 'm01_couplers_imp_9ORYFU' (0#1) [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/synth/drone_block_design.vhd:812]
+INFO: [Synth 8-638] synthesizing module 'm02_couplers_imp_8XP4JH' [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/synth/drone_block_design.vhd:1205]
+INFO: [Synth 8-256] done synthesizing module 'm02_couplers_imp_8XP4JH' (0#1) [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/synth/drone_block_design.vhd:1205]
+INFO: [Synth 8-638] synthesizing module 's00_couplers_imp_1QUQC6S' [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/synth/drone_block_design.vhd:1397]
+INFO: [Synth 8-3491] module 'drone_block_design_axi_mem_intercon_imp_auto_pc_2' declared at 'C:/Vivado/droneLink/drone_overlay/drone_overlay.runs/synth_1/.Xil/Vivado-37652-Michel-PC/realtime/drone_block_design_axi_mem_intercon_imp_auto_pc_2_stub.vhdl:6' bound to instance 'auto_pc' of component 'drone_block_design_axi_mem_intercon_imp_auto_pc_2' [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/synth/drone_block_design.vhd:1603]
+INFO: [Synth 8-638] synthesizing module 'drone_block_design_axi_mem_intercon_imp_auto_pc_2' [C:/Vivado/droneLink/drone_overlay/drone_overlay.runs/synth_1/.Xil/Vivado-37652-Michel-PC/realtime/drone_block_design_axi_mem_intercon_imp_auto_pc_2_stub.vhdl:97]
+INFO: [Synth 8-3491] module 'drone_block_design_axi_mem_intercon_imp_auto_us_0' declared at 'C:/Vivado/droneLink/drone_overlay/drone_overlay.runs/synth_1/.Xil/Vivado-37652-Michel-PC/realtime/drone_block_design_axi_mem_intercon_imp_auto_us_0_stub.vhdl:6' bound to instance 'auto_us' of component 'drone_block_design_axi_mem_intercon_imp_auto_us_0' [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/synth/drone_block_design.vhd:1685]
+INFO: [Synth 8-638] synthesizing module 'drone_block_design_axi_mem_intercon_imp_auto_us_0' [C:/Vivado/droneLink/drone_overlay/drone_overlay.runs/synth_1/.Xil/Vivado-37652-Michel-PC/realtime/drone_block_design_axi_mem_intercon_imp_auto_us_0_stub.vhdl:94]
+INFO: [Synth 8-256] done synthesizing module 's00_couplers_imp_1QUQC6S' (0#1) [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/synth/drone_block_design.vhd:1397]
+INFO: [Synth 8-3491] module 'drone_block_design_axi_mem_intercon_imp_xbar_0' declared at 'C:/Vivado/droneLink/drone_overlay/drone_overlay.runs/synth_1/.Xil/Vivado-37652-Michel-PC/realtime/drone_block_design_axi_mem_intercon_imp_xbar_0_stub.vhdl:6' bound to instance 'xbar' of component 'drone_block_design_axi_mem_intercon_imp_xbar_0' [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/synth/drone_block_design.vhd:2410]
+INFO: [Synth 8-638] synthesizing module 'drone_block_design_axi_mem_intercon_imp_xbar_0' [C:/Vivado/droneLink/drone_overlay/drone_overlay.runs/synth_1/.Xil/Vivado-37652-Michel-PC/realtime/drone_block_design_axi_mem_intercon_imp_xbar_0_stub.vhdl:88]
+INFO: [Synth 8-256] done synthesizing module 'drone_block_design_axi_mem_intercon_0' (0#1) [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/synth/drone_block_design.vhd:1907]
+INFO: [Synth 8-638] synthesizing module 'flight_controller_imp_M8VBTD' [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/synth/drone_block_design.vhd:43]
+INFO: [Synth 8-3491] module 'drone_block_design_control_manager_0_3' declared at 'C:/Vivado/droneLink/drone_overlay/drone_overlay.runs/synth_1/.Xil/Vivado-37652-Michel-PC/realtime/drone_block_design_control_manager_0_3_stub.vhdl:6' bound to instance 'control_manager_0' of component 'drone_block_design_control_manager_0_3' [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/synth/drone_block_design.vhd:321]
+INFO: [Synth 8-638] synthesizing module 'drone_block_design_control_manager_0_3' [C:/Vivado/droneLink/drone_overlay/drone_overlay.runs/synth_1/.Xil/Vivado-37652-Michel-PC/realtime/drone_block_design_control_manager_0_3_stub.vhdl:69]
+INFO: [Synth 8-3491] module 'drone_block_design_mpu6050_axis_ip_0_0' declared at 'C:/Vivado/droneLink/drone_overlay/drone_overlay.runs/synth_1/.Xil/Vivado-37652-Michel-PC/realtime/drone_block_design_mpu6050_axis_ip_0_0_stub.vhdl:6' bound to instance 'imu_axis_ip_0' of component 'drone_block_design_mpu6050_axis_ip_0_0' [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/synth/drone_block_design.vhd:375]
+INFO: [Synth 8-638] synthesizing module 'drone_block_design_mpu6050_axis_ip_0_0' [C:/Vivado/droneLink/drone_overlay/drone_overlay.runs/synth_1/.Xil/Vivado-37652-Michel-PC/realtime/drone_block_design_mpu6050_axis_ip_0_0_stub.vhdl:33]
+INFO: [Synth 8-3491] module 'drone_block_design_mixer_module_0_0' declared at 'C:/Vivado/droneLink/drone_overlay/drone_overlay.runs/synth_1/.Xil/Vivado-37652-Michel-PC/realtime/drone_block_design_mixer_module_0_0_stub.vhdl:6' bound to instance 'mixer_module_0' of component 'drone_block_design_mixer_module_0_0' [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/synth/drone_block_design.vhd:393]
+INFO: [Synth 8-638] synthesizing module 'drone_block_design_mixer_module_0_0' [C:/Vivado/droneLink/drone_overlay/drone_overlay.runs/synth_1/.Xil/Vivado-37652-Michel-PC/realtime/drone_block_design_mixer_module_0_0_stub.vhdl:46]
+INFO: [Synth 8-3491] module 'drone_block_design_motor_controller_0_0' declared at 'C:/Vivado/droneLink/drone_overlay/drone_overlay.runs/synth_1/.Xil/Vivado-37652-Michel-PC/realtime/drone_block_design_motor_controller_0_0_stub.vhdl:6' bound to instance 'motor_controller_0' of component 'drone_block_design_motor_controller_0_0' [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/synth/drone_block_design.vhd:422]
+INFO: [Synth 8-638] synthesizing module 'drone_block_design_motor_controller_0_0' [C:/Vivado/droneLink/drone_overlay/drone_overlay.runs/synth_1/.Xil/Vivado-37652-Michel-PC/realtime/drone_block_design_motor_controller_0_0_stub.vhdl:28]
+INFO: [Synth 8-3491] module 'drone_block_design_pid_controller_0_1' declared at 'C:/Vivado/droneLink/drone_overlay/drone_overlay.runs/synth_1/.Xil/Vivado-37652-Michel-PC/realtime/drone_block_design_pid_controller_0_1_stub.vhdl:6' bound to instance 'pid_controller_0' of component 'drone_block_design_pid_controller_0_1' [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/synth/drone_block_design.vhd:435]
+INFO: [Synth 8-638] synthesizing module 'drone_block_design_pid_controller_0_1' [C:/Vivado/droneLink/drone_overlay/drone_overlay.runs/synth_1/.Xil/Vivado-37652-Michel-PC/realtime/drone_block_design_pid_controller_0_1_stub.vhdl:51]
+INFO: [Synth 8-3491] module 'drone_block_design_sensor_fusion_0_1' declared at 'C:/Vivado/droneLink/drone_overlay/drone_overlay.runs/synth_1/.Xil/Vivado-37652-Michel-PC/realtime/drone_block_design_sensor_fusion_0_1_stub.vhdl:6' bound to instance 'sensor_fusion_0' of component 'drone_block_design_sensor_fusion_0_1' [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/synth/drone_block_design.vhd:469]
+INFO: [Synth 8-638] synthesizing module 'drone_block_design_sensor_fusion_0_1' [C:/Vivado/droneLink/drone_overlay/drone_overlay.runs/synth_1/.Xil/Vivado-37652-Michel-PC/realtime/drone_block_design_sensor_fusion_0_1_stub.vhdl:41]
+INFO: [Synth 8-3491] module 'drone_block_design_util_ds_buf_0_0' declared at 'C:/Vivado/droneLink/drone_overlay/drone_overlay.runs/synth_1/.Xil/Vivado-37652-Michel-PC/realtime/drone_block_design_util_ds_buf_0_0_stub.vhdl:6' bound to instance 'util_ds_buf_0' of component 'drone_block_design_util_ds_buf_0_0' [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/synth/drone_block_design.vhd:493]
+INFO: [Synth 8-638] synthesizing module 'drone_block_design_util_ds_buf_0_0' [C:/Vivado/droneLink/drone_overlay/drone_overlay.runs/synth_1/.Xil/Vivado-37652-Michel-PC/realtime/drone_block_design_util_ds_buf_0_0_stub.vhdl:22]
+INFO: [Synth 8-3491] module 'drone_block_design_util_ds_buf_1_0' declared at 'C:/Vivado/droneLink/drone_overlay/drone_overlay.runs/synth_1/.Xil/Vivado-37652-Michel-PC/realtime/drone_block_design_util_ds_buf_1_0_stub.vhdl:6' bound to instance 'util_ds_buf_1' of component 'drone_block_design_util_ds_buf_1_0' [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/synth/drone_block_design.vhd:500]
+INFO: [Synth 8-638] synthesizing module 'drone_block_design_util_ds_buf_1_0' [C:/Vivado/droneLink/drone_overlay/drone_overlay.runs/synth_1/.Xil/Vivado-37652-Michel-PC/realtime/drone_block_design_util_ds_buf_1_0_stub.vhdl:22]
+INFO: [Synth 8-3491] module 'drone_block_design_xlconstant_0_0' declared at 'c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_xlconstant_0_0/synth/drone_block_design_xlconstant_0_0.v:53' bound to instance 'xlconstant_0' of component 'drone_block_design_xlconstant_0_0' [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/synth/drone_block_design.vhd:507]
+INFO: [Synth 8-6157] synthesizing module 'drone_block_design_xlconstant_0_0' [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_xlconstant_0_0/synth/drone_block_design_xlconstant_0_0.v:53]
+INFO: [Synth 8-6157] synthesizing module 'xlconstant_v1_1_10_xlconstant' [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ipshared/a165/hdl/xlconstant_v1_1_vl_rfs.v:68]
+INFO: [Synth 8-6155] done synthesizing module 'xlconstant_v1_1_10_xlconstant' (0#1) [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ipshared/a165/hdl/xlconstant_v1_1_vl_rfs.v:68]
+INFO: [Synth 8-6155] done synthesizing module 'drone_block_design_xlconstant_0_0' (0#1) [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_xlconstant_0_0/synth/drone_block_design_xlconstant_0_0.v:53]
+INFO: [Synth 8-3491] module 'drone_block_design_xlconstant_1_0' declared at 'c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_xlconstant_1_0/synth/drone_block_design_xlconstant_1_0.v:53' bound to instance 'xlconstant_1' of component 'drone_block_design_xlconstant_1_0' [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/synth/drone_block_design.vhd:511]
+INFO: [Synth 8-6157] synthesizing module 'drone_block_design_xlconstant_1_0' [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_xlconstant_1_0/synth/drone_block_design_xlconstant_1_0.v:53]
+INFO: [Synth 8-6155] done synthesizing module 'drone_block_design_xlconstant_1_0' (0#1) [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_xlconstant_1_0/synth/drone_block_design_xlconstant_1_0.v:53]
+INFO: [Synth 8-256] done synthesizing module 'flight_controller_imp_M8VBTD' (0#1) [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/synth/drone_block_design.vhd:43]
+INFO: [Synth 8-3491] module 'drone_block_design_processing_system7_0_0' declared at 'C:/Vivado/droneLink/drone_overlay/drone_overlay.runs/synth_1/.Xil/Vivado-37652-Michel-PC/realtime/drone_block_design_processing_system7_0_0_stub.vhdl:6' bound to instance 'processing_system7_0' of component 'drone_block_design_processing_system7_0_0' [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/synth/drone_block_design.vhd:3106]
+INFO: [Synth 8-638] synthesizing module 'drone_block_design_processing_system7_0_0' [C:/Vivado/droneLink/drone_overlay/drone_overlay.runs/synth_1/.Xil/Vivado-37652-Michel-PC/realtime/drone_block_design_processing_system7_0_0_stub.vhdl:128]
+INFO: [Synth 8-3491] module 'drone_block_design_rst_ps7_0_100M_2' declared at 'C:/Vivado/droneLink/drone_overlay/drone_overlay.runs/synth_1/.Xil/Vivado-37652-Michel-PC/realtime/drone_block_design_rst_ps7_0_100M_2_stub.vhdl:6' bound to instance 'rst_ps7_0_100M' of component 'drone_block_design_rst_ps7_0_100M_2' [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/synth/drone_block_design.vhd:3219]
+INFO: [Synth 8-638] synthesizing module 'drone_block_design_rst_ps7_0_100M_2' [C:/Vivado/droneLink/drone_overlay/drone_overlay.runs/synth_1/.Xil/Vivado-37652-Michel-PC/realtime/drone_block_design_rst_ps7_0_100M_2_stub.vhdl:28]
+INFO: [Synth 8-256] done synthesizing module 'drone_block_design' (0#1) [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/synth/drone_block_design.vhd:2657]
+INFO: [Synth 8-256] done synthesizing module 'drone_block_design_wrapper' (0#1) [C:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/hdl/drone_block_design_wrapper.vhd:45]
+WARNING: [Synth 8-7129] Port S_AXI_araddr[31] in module flight_controller_imp_M8VBTD is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_araddr[30] in module flight_controller_imp_M8VBTD is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_araddr[29] in module flight_controller_imp_M8VBTD is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_araddr[28] in module flight_controller_imp_M8VBTD is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_araddr[27] in module flight_controller_imp_M8VBTD is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_araddr[26] in module flight_controller_imp_M8VBTD is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_araddr[25] in module flight_controller_imp_M8VBTD is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_araddr[24] in module flight_controller_imp_M8VBTD is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_araddr[23] in module flight_controller_imp_M8VBTD is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_araddr[22] in module flight_controller_imp_M8VBTD is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_araddr[21] in module flight_controller_imp_M8VBTD is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_araddr[20] in module flight_controller_imp_M8VBTD is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_araddr[19] in module flight_controller_imp_M8VBTD is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_araddr[18] in module flight_controller_imp_M8VBTD is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_araddr[17] in module flight_controller_imp_M8VBTD is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_araddr[16] in module flight_controller_imp_M8VBTD is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_araddr[15] in module flight_controller_imp_M8VBTD is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_araddr[14] in module flight_controller_imp_M8VBTD is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_araddr[13] in module flight_controller_imp_M8VBTD is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_araddr[12] in module flight_controller_imp_M8VBTD is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_araddr[11] in module flight_controller_imp_M8VBTD is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_araddr[10] in module flight_controller_imp_M8VBTD is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_araddr[9] in module flight_controller_imp_M8VBTD is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_araddr[8] in module flight_controller_imp_M8VBTD is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_araddr[7] in module flight_controller_imp_M8VBTD is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_awaddr[31] in module flight_controller_imp_M8VBTD is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_awaddr[30] in module flight_controller_imp_M8VBTD is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_awaddr[29] in module flight_controller_imp_M8VBTD is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_awaddr[28] in module flight_controller_imp_M8VBTD is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_awaddr[27] in module flight_controller_imp_M8VBTD is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_awaddr[26] in module flight_controller_imp_M8VBTD is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_awaddr[25] in module flight_controller_imp_M8VBTD is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_awaddr[24] in module flight_controller_imp_M8VBTD is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_awaddr[23] in module flight_controller_imp_M8VBTD is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_awaddr[22] in module flight_controller_imp_M8VBTD is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_awaddr[21] in module flight_controller_imp_M8VBTD is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_awaddr[20] in module flight_controller_imp_M8VBTD is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_awaddr[19] in module flight_controller_imp_M8VBTD is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_awaddr[18] in module flight_controller_imp_M8VBTD is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_awaddr[17] in module flight_controller_imp_M8VBTD is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_awaddr[16] in module flight_controller_imp_M8VBTD is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_awaddr[15] in module flight_controller_imp_M8VBTD is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_awaddr[14] in module flight_controller_imp_M8VBTD is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_awaddr[13] in module flight_controller_imp_M8VBTD is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_awaddr[12] in module flight_controller_imp_M8VBTD is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_awaddr[11] in module flight_controller_imp_M8VBTD is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_awaddr[10] in module flight_controller_imp_M8VBTD is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_awaddr[9] in module flight_controller_imp_M8VBTD is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_awaddr[8] in module flight_controller_imp_M8VBTD is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_awaddr[7] in module flight_controller_imp_M8VBTD is either unconnected or has no load
+WARNING: [Synth 8-7129] Port M_ACLK in module s00_couplers_imp_1QUQC6S is either unconnected or has no load
+WARNING: [Synth 8-7129] Port M_ARESETN in module s00_couplers_imp_1QUQC6S is either unconnected or has no load
+WARNING: [Synth 8-7129] Port M_ACLK in module m02_couplers_imp_8XP4JH is either unconnected or has no load
+WARNING: [Synth 8-7129] Port M_ARESETN in module m02_couplers_imp_8XP4JH is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_ACLK in module m02_couplers_imp_8XP4JH is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_ARESETN in module m02_couplers_imp_8XP4JH is either unconnected or has no load
+WARNING: [Synth 8-7129] Port M_ACLK in module m01_couplers_imp_9ORYFU is either unconnected or has no load
+WARNING: [Synth 8-7129] Port M_ARESETN in module m01_couplers_imp_9ORYFU is either unconnected or has no load
+WARNING: [Synth 8-7129] Port M_ACLK in module m00_couplers_imp_9TBKLJ is either unconnected or has no load
+WARNING: [Synth 8-7129] Port M_ARESETN in module m00_couplers_imp_9TBKLJ is either unconnected or has no load
+WARNING: [Synth 8-7129] Port M00_ACLK in module drone_block_design_axi_mem_intercon_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port M00_ARESETN in module drone_block_design_axi_mem_intercon_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port M01_ACLK in module drone_block_design_axi_mem_intercon_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port M01_ARESETN in module drone_block_design_axi_mem_intercon_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port M02_ACLK in module drone_block_design_axi_mem_intercon_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port M02_ARESETN in module drone_block_design_axi_mem_intercon_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S00_ACLK in module drone_block_design_axi_mem_intercon_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S00_ARESETN in module drone_block_design_axi_mem_intercon_0 is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 1486.941 ; gain = 677.121
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 1486.941 ; gain = 677.121
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 1486.941 ; gain = 677.121
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.022 . Memory (MB): peak = 1486.941 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_processing_system7_0_0/drone_block_design_processing_system7_0_0/drone_block_design_processing_system7_0_0_in_context.xdc] for cell 'drone_block_design_i/processing_system7_0'
+Finished Parsing XDC File [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_processing_system7_0_0/drone_block_design_processing_system7_0_0/drone_block_design_processing_system7_0_0_in_context.xdc] for cell 'drone_block_design_i/processing_system7_0'
+Parsing XDC File [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_axi_mem_intercon_imp_xbar_0/drone_block_design_axi_mem_intercon_imp_xbar_0/drone_block_design_axi_mem_intercon_imp_xbar_0_in_context.xdc] for cell 'drone_block_design_i/axi_mem_intercon/xbar'
+Finished Parsing XDC File [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_axi_mem_intercon_imp_xbar_0/drone_block_design_axi_mem_intercon_imp_xbar_0/drone_block_design_axi_mem_intercon_imp_xbar_0_in_context.xdc] for cell 'drone_block_design_i/axi_mem_intercon/xbar'
+Parsing XDC File [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_axi_mem_intercon_imp_auto_pc_2/drone_block_design_axi_mem_intercon_imp_auto_pc_2/drone_block_design_axi_mem_intercon_imp_auto_pc_2_in_context.xdc] for cell 'drone_block_design_i/axi_mem_intercon/s00_couplers/auto_pc'
+Finished Parsing XDC File [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_axi_mem_intercon_imp_auto_pc_2/drone_block_design_axi_mem_intercon_imp_auto_pc_2/drone_block_design_axi_mem_intercon_imp_auto_pc_2_in_context.xdc] for cell 'drone_block_design_i/axi_mem_intercon/s00_couplers/auto_pc'
+Parsing XDC File [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_axi_mem_intercon_imp_auto_us_0/drone_block_design_axi_mem_intercon_imp_auto_us_0/drone_block_design_axi_mem_intercon_imp_auto_us_0_in_context.xdc] for cell 'drone_block_design_i/axi_mem_intercon/s00_couplers/auto_us'
+Finished Parsing XDC File [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_axi_mem_intercon_imp_auto_us_0/drone_block_design_axi_mem_intercon_imp_auto_us_0/drone_block_design_axi_mem_intercon_imp_auto_us_0_in_context.xdc] for cell 'drone_block_design_i/axi_mem_intercon/s00_couplers/auto_us'
+Parsing XDC File [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_axi_mem_intercon_imp_auto_pc_0/drone_block_design_axi_mem_intercon_imp_auto_pc_0/drone_block_design_axi_mem_intercon_imp_auto_pc_0_in_context.xdc] for cell 'drone_block_design_i/axi_mem_intercon/m00_couplers/auto_pc'
+Finished Parsing XDC File [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_axi_mem_intercon_imp_auto_pc_0/drone_block_design_axi_mem_intercon_imp_auto_pc_0/drone_block_design_axi_mem_intercon_imp_auto_pc_0_in_context.xdc] for cell 'drone_block_design_i/axi_mem_intercon/m00_couplers/auto_pc'
+Parsing XDC File [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_axi_mem_intercon_imp_auto_ds_0/drone_block_design_axi_mem_intercon_imp_auto_ds_0/drone_block_design_axi_mem_intercon_imp_auto_ds_0_in_context.xdc] for cell 'drone_block_design_i/axi_mem_intercon/m01_couplers/auto_ds'
+Finished Parsing XDC File [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_axi_mem_intercon_imp_auto_ds_0/drone_block_design_axi_mem_intercon_imp_auto_ds_0/drone_block_design_axi_mem_intercon_imp_auto_ds_0_in_context.xdc] for cell 'drone_block_design_i/axi_mem_intercon/m01_couplers/auto_ds'
+Parsing XDC File [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_axi_mem_intercon_imp_auto_pc_1/drone_block_design_axi_mem_intercon_imp_auto_pc_1/drone_block_design_axi_mem_intercon_imp_auto_pc_1_in_context.xdc] for cell 'drone_block_design_i/axi_mem_intercon/m01_couplers/auto_pc'
+Finished Parsing XDC File [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_axi_mem_intercon_imp_auto_pc_1/drone_block_design_axi_mem_intercon_imp_auto_pc_1/drone_block_design_axi_mem_intercon_imp_auto_pc_1_in_context.xdc] for cell 'drone_block_design_i/axi_mem_intercon/m01_couplers/auto_pc'
+Parsing XDC File [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_rst_ps7_0_100M_2/drone_block_design_rst_ps7_0_100M_2/drone_block_design_rst_ps7_0_100M_2_in_context.xdc] for cell 'drone_block_design_i/rst_ps7_0_100M'
+Finished Parsing XDC File [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_rst_ps7_0_100M_2/drone_block_design_rst_ps7_0_100M_2/drone_block_design_rst_ps7_0_100M_2_in_context.xdc] for cell 'drone_block_design_i/rst_ps7_0_100M'
+Parsing XDC File [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_mpu6050_axis_ip_0_0/drone_block_design_mpu6050_axis_ip_0_0/drone_block_design_mpu6050_axis_ip_0_0_in_context.xdc] for cell 'drone_block_design_i/flight_controller/imu_axis_ip_0'
+Finished Parsing XDC File [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_mpu6050_axis_ip_0_0/drone_block_design_mpu6050_axis_ip_0_0/drone_block_design_mpu6050_axis_ip_0_0_in_context.xdc] for cell 'drone_block_design_i/flight_controller/imu_axis_ip_0'
+Parsing XDC File [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_sensor_fusion_0_1/drone_block_design_sensor_fusion_0_1/drone_block_design_sensor_fusion_0_1_in_context.xdc] for cell 'drone_block_design_i/flight_controller/sensor_fusion_0'
+Finished Parsing XDC File [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_sensor_fusion_0_1/drone_block_design_sensor_fusion_0_1/drone_block_design_sensor_fusion_0_1_in_context.xdc] for cell 'drone_block_design_i/flight_controller/sensor_fusion_0'
+Parsing XDC File [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_pid_controller_0_1/drone_block_design_pid_controller_0_1/drone_block_design_pid_controller_0_1_in_context.xdc] for cell 'drone_block_design_i/flight_controller/pid_controller_0'
+Finished Parsing XDC File [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_pid_controller_0_1/drone_block_design_pid_controller_0_1/drone_block_design_pid_controller_0_1_in_context.xdc] for cell 'drone_block_design_i/flight_controller/pid_controller_0'
+Parsing XDC File [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_mixer_module_0_0/drone_block_design_mixer_module_0_0/drone_block_design_mixer_module_0_0_in_context.xdc] for cell 'drone_block_design_i/flight_controller/mixer_module_0'
+Finished Parsing XDC File [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_mixer_module_0_0/drone_block_design_mixer_module_0_0/drone_block_design_mixer_module_0_0_in_context.xdc] for cell 'drone_block_design_i/flight_controller/mixer_module_0'
+Parsing XDC File [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_util_ds_buf_0_0/drone_block_design_util_ds_buf_0_0/drone_block_design_util_ds_buf_2_0_in_context.xdc] for cell 'drone_block_design_i/flight_controller/util_ds_buf_0'
+Finished Parsing XDC File [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_util_ds_buf_0_0/drone_block_design_util_ds_buf_0_0/drone_block_design_util_ds_buf_2_0_in_context.xdc] for cell 'drone_block_design_i/flight_controller/util_ds_buf_0'
+Parsing XDC File [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_util_ds_buf_1_0/drone_block_design_util_ds_buf_1_0/drone_block_design_util_ds_buf_2_0_in_context.xdc] for cell 'drone_block_design_i/flight_controller/util_ds_buf_1'
+Finished Parsing XDC File [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_util_ds_buf_1_0/drone_block_design_util_ds_buf_1_0/drone_block_design_util_ds_buf_2_0_in_context.xdc] for cell 'drone_block_design_i/flight_controller/util_ds_buf_1'
+Parsing XDC File [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_control_manager_0_3/drone_block_design_control_manager_0_3/drone_block_design_control_manager_0_3_in_context.xdc] for cell 'drone_block_design_i/flight_controller/control_manager_0'
+Finished Parsing XDC File [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_control_manager_0_3/drone_block_design_control_manager_0_3/drone_block_design_control_manager_0_3_in_context.xdc] for cell 'drone_block_design_i/flight_controller/control_manager_0'
+Parsing XDC File [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_motor_controller_0_0/drone_block_design_motor_controller_0_0/drone_block_design_motor_controller_0_0_in_context.xdc] for cell 'drone_block_design_i/flight_controller/motor_controller_0'
+Finished Parsing XDC File [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_motor_controller_0_0/drone_block_design_motor_controller_0_0/drone_block_design_motor_controller_0_0_in_context.xdc] for cell 'drone_block_design_i/flight_controller/motor_controller_0'
+Parsing XDC File [C:/Vivado/droneLink/drone_overlay/drone_overlay.srcs/constrs_1/new/imu_constraints.xdc]
+Finished Parsing XDC File [C:/Vivado/droneLink/drone_overlay/drone_overlay.srcs/constrs_1/new/imu_constraints.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Vivado/droneLink/drone_overlay/drone_overlay.srcs/constrs_1/new/imu_constraints.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/drone_block_design_wrapper_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/drone_block_design_wrapper_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Parsing XDC File [C:/Vivado/droneLink/drone_overlay/drone_overlay.runs/synth_1/dont_touch.xdc]
+Finished Parsing XDC File [C:/Vivado/droneLink/drone_overlay/drone_overlay.runs/synth_1/dont_touch.xdc]
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1486.941 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.006 . Memory (MB): peak = 1486.941 ; gain = 0.000
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 1486.941 ; gain = 677.121
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7z020clg400-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 1486.941 ; gain = 677.121
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 1486.941 ; gain = 677.121
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 1486.941 ; gain = 677.121
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 220 (col length:60)
+BRAMs: 280 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7129] Port M00_ACLK in module drone_block_design_axi_mem_intercon_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port M00_ARESETN in module drone_block_design_axi_mem_intercon_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port M01_ACLK in module drone_block_design_axi_mem_intercon_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port M01_ARESETN in module drone_block_design_axi_mem_intercon_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port M02_ACLK in module drone_block_design_axi_mem_intercon_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port M02_ARESETN in module drone_block_design_axi_mem_intercon_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S00_ACLK in module drone_block_design_axi_mem_intercon_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S00_ARESETN in module drone_block_design_axi_mem_intercon_0 is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 1487.832 ; gain = 678.012
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 1666.363 ; gain = 856.543
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 1668.059 ; gain = 858.238
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 1680.258 ; gain = 870.438
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1926.832 ; gain = 1117.012
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1926.832 ; gain = 1117.012
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1926.832 ; gain = 1117.012
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1926.832 ; gain = 1117.012
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1926.832 ; gain = 1117.012
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1926.832 ; gain = 1117.012
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++------+--------------------------------------------------+----------+
+|      |BlackBox name                                     |Instances |
++------+--------------------------------------------------+----------+
+|1     |drone_block_design_axi_mem_intercon_imp_xbar_0    |         1|
+|2     |drone_block_design_axi_mem_intercon_imp_auto_pc_0 |         1|
+|3     |drone_block_design_axi_mem_intercon_imp_auto_ds_0 |         1|
+|4     |drone_block_design_axi_mem_intercon_imp_auto_pc_1 |         1|
+|5     |drone_block_design_axi_mem_intercon_imp_auto_pc_2 |         1|
+|6     |drone_block_design_axi_mem_intercon_imp_auto_us_0 |         1|
+|7     |drone_block_design_processing_system7_0_0         |         1|
+|8     |drone_block_design_rst_ps7_0_100M_2               |         1|
+|9     |drone_block_design_control_manager_0_3            |         1|
+|10    |drone_block_design_mpu6050_axis_ip_0_0            |         1|
+|11    |drone_block_design_mixer_module_0_0               |         1|
+|12    |drone_block_design_motor_controller_0_0           |         1|
+|13    |drone_block_design_pid_controller_0_1             |         1|
+|14    |drone_block_design_sensor_fusion_0_1              |         1|
+|15    |drone_block_design_util_ds_buf_0_0                |         1|
+|16    |drone_block_design_util_ds_buf_1_0                |         1|
++------+--------------------------------------------------+----------+
+
+Report Cell Usage: 
++------+-------------------------------------------------------+------+
+|      |Cell                                                   |Count |
++------+-------------------------------------------------------+------+
+|1     |drone_block_design_axi_mem_intercon_imp_auto_ds_0_bbox |     1|
+|2     |drone_block_design_axi_mem_intercon_imp_auto_pc_0_bbox |     1|
+|3     |drone_block_design_axi_mem_intercon_imp_auto_pc_1_bbox |     1|
+|4     |drone_block_design_axi_mem_intercon_imp_auto_pc_2_bbox |     1|
+|5     |drone_block_design_axi_mem_intercon_imp_auto_us_0_bbox |     1|
+|6     |drone_block_design_axi_mem_intercon_imp_xbar_0_bbox    |     1|
+|7     |drone_block_design_control_manager_0_3_bbox            |     1|
+|8     |drone_block_design_mixer_module_0_0_bbox               |     1|
+|9     |drone_block_design_motor_controller_0_0_bbox           |     1|
+|10    |drone_block_design_mpu6050_axis_ip_0_0_bbox            |     1|
+|11    |drone_block_design_pid_controller_0_1_bbox             |     1|
+|12    |drone_block_design_processing_system7_0_0_bbox         |     1|
+|13    |drone_block_design_rst_ps7_0_100M_2_bbox               |     1|
+|14    |drone_block_design_sensor_fusion_0_1_bbox              |     1|
+|15    |drone_block_design_util_ds_buf_0_0_bbox                |     1|
+|16    |drone_block_design_util_ds_buf_1_0_bbox                |     1|
+|17    |IBUF                                                   |     1|
+|18    |OBUF                                                   |     4|
++------+-------------------------------------------------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1926.832 ; gain = 1117.012
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 8 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:10 ; elapsed = 00:00:15 . Memory (MB): peak = 1926.832 ; gain = 1117.012
+Synthesis Optimization Complete : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1926.832 ; gain = 1117.012
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.021 . Memory (MB): peak = 1935.961 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1939.594 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Synth Design complete | Checksum: 2786f481
+INFO: [Common 17-83] Releasing license: Synthesis
+80 Infos, 80 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:18 ; elapsed = 00:00:22 . Memory (MB): peak = 1939.594 ; gain = 1362.664
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1939.594 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'C:/Vivado/droneLink/drone_overlay/drone_overlay.runs/synth_1/drone_block_design_wrapper.dcp' has been generated.
+INFO: [Vivado 12-24828] Executing command : report_utilization -file drone_block_design_wrapper_utilization_synth.rpt -pb drone_block_design_wrapper_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Sat Oct 24 23:07:56 2026...

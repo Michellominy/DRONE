@@ -1,0 +1,156 @@
+<ENTRY>
+{
+ "thisFile": "C:/Users\\lomin\\Documents\\git\\DRONE\\rtl_controller\\hls\\pid_controller\\pid_controller\\pid_controller.hlsrun_package_summary",
+ "connectId": "",
+ "serverToken": "",
+ "timestamp": "0"
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_CmdStep",
+ "dateTimestamp": "10/12/26 12:31:28",
+ "timestampMillis": "1791822688843",
+ "buildStep": {
+  "cmdId": "d2c04625-0db4-4457-8085-6728da60af54",
+  "name": "vitis-run",
+  "logFile": "C:/Users\\lomin\\Documents\\git\\DRONE\\rtl_controller\\hls\\pid_controller\\pid_controller\\logs\\pid_controller.steps.log",
+  "commandLine": "C:/AMDDesignTools/2025.2/Vitis/bin/unwrapped/win64.o/vitis-run.exe  --mode hls --package --config C:\\Users\\lomin\\Documents\\git\\DRONE\\rtl_controller\\hls\\pid_controller\\hls_config.cfg --work_dir pid_controller ",
+  "args": [
+   "--mode",
+   "hls",
+   "--package",
+   "--config",
+   "C:\\Users\\lomin\\Documents\\git\\DRONE\\rtl_controller\\hls\\pid_controller\\hls_config.cfg",
+   "--work_dir",
+   "pid_controller"
+  ],
+  "iniFiles": [],
+  "cwd": "C:\\Users\\lomin\\Documents\\git\\DRONE\\rtl_controller\\hls\\pid_controller"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "10/12/26 12:31:28",
+ "timestampMillis": "1791822688843",
+ "status": {
+  "cmdId": "d2c04625-0db4-4457-8085-6728da60af54",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_FlowMetaData",
+ "dateTimestamp": "10/12/26 12:31:31",
+ "timestampMillis": "1791822691261",
+ "buildSummary": {
+  "hardwarePlatform": "",
+  "hardwareDsa": "",
+  "platformDirectory": "",
+  "runtime": "",
+  "systemConfig": "",
+  "flow": "BF_RUN",
+  "target": "TT_HLS_IP",
+  "kernels": [
+   {
+    "base": {
+     "type": "KERNEL",
+     "name": "pid_controller",
+     "file": "C:/Users\\lomin\\Documents\\git\\DRONE\\rtl_controller\\ip_repo\\pid_controller.zip",
+     "reports": [],
+     "uuid": ""
+    },
+    "sources": [
+     "C:/Users\\lomin\\Documents\\git\\DRONE\\rtl_controller\\hls\\pid_controller\\pid_controller.cpp"
+    ],
+    "psSources": [],
+    "cuNames": [],
+    "type": "HLS",
+    "frequency": 0,
+    "freqUnits": ""
+   }
+  ],
+  "toolVersion": "2025.2"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_SubCmdStep",
+ "dateTimestamp": "10/12/26 12:31:31",
+ "timestampMillis": "1791822691262",
+ "buildStep": {
+  "cmdId": "3cb69711-7df7-4654-9cb3-2e9613e52067",
+  "name": "",
+  "logFile": "C:/Users\\lomin\\Documents\\git\\DRONE\\rtl_controller\\hls\\pid_controller\\pid_controller\\hls\\hls.log",
+  "commandLine": "",
+  "args": [],
+  "iniFiles": [],
+  "cwd": "C:\\Users\\lomin\\Documents\\git\\DRONE\\rtl_controller\\hls\\pid_controller"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "10/12/26 12:31:31",
+ "timestampMillis": "1791822691263",
+ "status": {
+  "cmdId": "3cb69711-7df7-4654-9cb3-2e9613e52067",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "10/12/26 12:31:39",
+ "timestampMillis": "1791822699066",
+ "status": {
+  "cmdId": "3cb69711-7df7-4654-9cb3-2e9613e52067",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "10/12/26 12:31:39",
+ "timestampMillis": "1791822699134",
+ "status": {
+  "cmdId": "d2c04625-0db4-4457-8085-6728da60af54",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "10/12/26 12:31:39",
+ "timestampMillis": "1791822699135",
+ "report": {
+  "path": "",
+  "name": "",
+  "fileType": "HTML",
+  "reportType": "GLOBAL_RULECHECK_GUIDANCE",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "10/12/26 12:31:39",
+ "timestampMillis": "1791822699135",
+ "report": {
+  "path": "",
+  "name": "",
+  "fileType": "BINARY_PROTOBUF",
+  "reportType": "GLOBAL_RULECHECK_GUIDANCE",
+  "cmdId": ""
+ }
+}
+</ENTRY>

@@ -1,0 +1,66 @@
+# Definitional proc to organize widgets for parameters.
+proc init_gui { IPINST } {
+  ipgui::add_param $IPINST -name "Component_Name"
+  #Adding Page
+  ipgui::add_page $IPINST -name "Page 0"
+
+
+}
+
+proc update_PARAM_VALUE.CLK_FREQ { PARAM_VALUE.CLK_FREQ } {
+	# Procedure called to update CLK_FREQ when any of the dependent parameters in the arguments change
+}
+
+proc validate_PARAM_VALUE.CLK_FREQ { PARAM_VALUE.CLK_FREQ } {
+	# Procedure called to validate CLK_FREQ
+	return true
+}
+
+proc update_PARAM_VALUE.MAX_ALLOWED_MOTOR_US { PARAM_VALUE.MAX_ALLOWED_MOTOR_US } {
+	# Procedure called to update MAX_ALLOWED_MOTOR_US when any of the dependent parameters in the arguments change
+}
+
+proc validate_PARAM_VALUE.MAX_ALLOWED_MOTOR_US { PARAM_VALUE.MAX_ALLOWED_MOTOR_US } {
+	# Procedure called to validate MAX_ALLOWED_MOTOR_US
+	return true
+}
+
+proc update_PARAM_VALUE.MIN_ALLOWED_MOTOR_US { PARAM_VALUE.MIN_ALLOWED_MOTOR_US } {
+	# Procedure called to update MIN_ALLOWED_MOTOR_US when any of the dependent parameters in the arguments change
+}
+
+proc validate_PARAM_VALUE.MIN_ALLOWED_MOTOR_US { PARAM_VALUE.MIN_ALLOWED_MOTOR_US } {
+	# Procedure called to validate MIN_ALLOWED_MOTOR_US
+	return true
+}
+
+proc update_PARAM_VALUE.PWM_FREQ { PARAM_VALUE.PWM_FREQ } {
+	# Procedure called to update PWM_FREQ when any of the dependent parameters in the arguments change
+}
+
+proc validate_PARAM_VALUE.PWM_FREQ { PARAM_VALUE.PWM_FREQ } {
+	# Procedure called to validate PWM_FREQ
+	return true
+}
+
+
+proc update_MODELPARAM_VALUE.CLK_FREQ { MODELPARAM_VALUE.CLK_FREQ PARAM_VALUE.CLK_FREQ } {
+	# Procedure called to set VHDL generic/Verilog parameter value(s) based on TCL parameter value
+	set_property value [get_property value ${PARAM_VALUE.CLK_FREQ}] ${MODELPARAM_VALUE.CLK_FREQ}
+}
+
+proc update_MODELPARAM_VALUE.PWM_FREQ { MODELPARAM_VALUE.PWM_FREQ PARAM_VALUE.PWM_FREQ } {
+	# Procedure called to set VHDL generic/Verilog parameter value(s) based on TCL parameter value
+	set_property value [get_property value ${PARAM_VALUE.PWM_FREQ}] ${MODELPARAM_VALUE.PWM_FREQ}
+}
+
+proc update_MODELPARAM_VALUE.MIN_ALLOWED_MOTOR_US { MODELPARAM_VALUE.MIN_ALLOWED_MOTOR_US PARAM_VALUE.MIN_ALLOWED_MOTOR_US } {
+	# Procedure called to set VHDL generic/Verilog parameter value(s) based on TCL parameter value
+	set_property value [get_property value ${PARAM_VALUE.MIN_ALLOWED_MOTOR_US}] ${MODELPARAM_VALUE.MIN_ALLOWED_MOTOR_US}
+}
+
+proc update_MODELPARAM_VALUE.MAX_ALLOWED_MOTOR_US { MODELPARAM_VALUE.MAX_ALLOWED_MOTOR_US PARAM_VALUE.MAX_ALLOWED_MOTOR_US } {
+	# Procedure called to set VHDL generic/Verilog parameter value(s) based on TCL parameter value
+	set_property value [get_property value ${PARAM_VALUE.MAX_ALLOWED_MOTOR_US}] ${MODELPARAM_VALUE.MAX_ALLOWED_MOTOR_US}
+}
+

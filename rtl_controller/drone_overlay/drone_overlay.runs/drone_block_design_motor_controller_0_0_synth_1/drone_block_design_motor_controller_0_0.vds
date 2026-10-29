@@ -1,0 +1,298 @@
+#-----------------------------------------------------------
+# Vivado v2025.2 (64-bit)
+# SW Build 6299465 on Fri Nov 14 19:35:11 GMT 2025
+# IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
+# SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
+# Start of session at: Sat Oct 24 23:05:17 2026
+# Process ID         : 36216
+# Current directory  : C:/Vivado/droneLink/drone_overlay/drone_overlay.runs/drone_block_design_motor_controller_0_0_synth_1
+# Command line       : vivado.exe -log drone_block_design_motor_controller_0_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source drone_block_design_motor_controller_0_0.tcl
+# Log file           : C:/Vivado/droneLink/drone_overlay/drone_overlay.runs/drone_block_design_motor_controller_0_0_synth_1/drone_block_design_motor_controller_0_0.vds
+# Journal file       : C:/Vivado/droneLink/drone_overlay/drone_overlay.runs/drone_block_design_motor_controller_0_0_synth_1\vivado.jou
+# Running On         : Michel-PC
+# Platform           : Windows Server 2016 or Windows 10
+# Operating System   : 26200
+# Processor Detail   : AMD Ryzen 5 9600X 6-Core Processor             
+# CPU Frequency      : 3900 MHz
+# CPU Physical cores : 6
+# CPU Logical cores  : 12
+# Host memory        : 33462 MB
+# Swap memory        : 19327 MB
+# Total Virtual      : 52789 MB
+# Available Virtual  : 20165 MB
+#-----------------------------------------------------------
+source drone_block_design_motor_controller_0_0.tcl -notrace
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Vivado/droneLink/ip_repo/motor_controller_1_0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Vivado/droneLink/ip_repo/pca9685_controller_1_0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'c:/Vivado/droneLink/ip_repo/control_manager_1_0'. The path is contained within another repository.
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Vivado/droneLink/ip_repo'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/AMDDesignTools/2025.2/Vivado/data/ip'.
+Command: synth_design -top drone_block_design_motor_controller_0_0 -part xc7z020clg400-1 -incremental_mode off -mode out_of_context
+Starting synth_design
+INFO: [IP_Flow 19-2162] IP 'drone_block_design_motor_controller_0_0' is locked:
+* IP definition 'motor_controller_v1.0 (1.0)' for IP 'drone_block_design_motor_controller_0_0' has been replaced in the IP Catalog by 'pca9685_controller_v1.0 (1.0)'.
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Device 21-403] Loading part xc7z020clg400-1
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 28888
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 1320.312 ; gain = 540.590
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'drone_block_design_motor_controller_0_0' [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_motor_controller_0_0/synth/drone_block_design_motor_controller_0_0.vhd:71]
+	Parameter CLK_FREQ bound to: 100000000 - type: integer 
+	Parameter PWM_FREQ bound to: 400 - type: integer 
+	Parameter MIN_ALLOWED_MOTOR_US bound to: 1100 - type: integer 
+	Parameter MAX_ALLOWED_MOTOR_US bound to: 1250 - type: integer 
+INFO: [Synth 8-3491] module 'motor_controller' declared at 'c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ipshared/ca3e/hdl/motor_controller.vhd:5' bound to instance 'U0' of component 'motor_controller' [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_motor_controller_0_0/synth/drone_block_design_motor_controller_0_0.vhd:115]
+INFO: [Synth 8-638] synthesizing module 'motor_controller' [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ipshared/ca3e/hdl/motor_controller.vhd:32]
+WARNING: [Synth 8-7193] Integer conversion function is truncating input [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ipshared/ca3e/hdl/motor_controller.vhd:57]
+WARNING: [Synth 8-7193] Integer conversion function is truncating input [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ipshared/ca3e/hdl/motor_controller.vhd:57]
+WARNING: [Synth 8-7193] Integer conversion function is truncating input [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ipshared/ca3e/hdl/motor_controller.vhd:57]
+WARNING: [Synth 8-7193] Integer conversion function is truncating input [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ipshared/ca3e/hdl/motor_controller.vhd:57]
+INFO: [Synth 8-256] done synthesizing module 'motor_controller' (0#1) [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ipshared/ca3e/hdl/motor_controller.vhd:32]
+INFO: [Synth 8-256] done synthesizing module 'drone_block_design_motor_controller_0_0' (0#1) [c:/Vivado/droneLink/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_motor_controller_0_0/synth/drone_block_design_motor_controller_0_0.vhd:71]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 1443.348 ; gain = 663.625
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 1443.348 ; gain = 663.625
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 1443.348 ; gain = 663.625
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.005 . Memory (MB): peak = 1443.348 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1518.512 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.015 . Memory (MB): peak = 1518.512 ; gain = 0.000
+INFO: [Designutils 20-5008] Incremental synthesis strategy off
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 1518.512 ; gain = 738.789
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7z020clg400-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 1518.512 ; gain = 738.789
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 1518.512 ; gain = 738.789
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 1518.512 ; gain = 738.789
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input   31 Bit       Adders := 4     
+	   2 Input   29 Bit       Adders := 1     
++---Registers : 
+	               29 Bit    Registers := 1     
+	               18 Bit    Registers := 4     
+	                4 Bit    Registers := 1     
+	                2 Bit    Registers := 1     
++---Multipliers : 
+	              11x32  Multipliers := 4     
++---Muxes : 
+	   2 Input   32 Bit        Muxes := 8     
+	   4 Input   29 Bit        Muxes := 1     
+	   2 Input   18 Bit        Muxes := 8     
+	   4 Input   18 Bit        Muxes := 4     
+	   4 Input    2 Bit        Muxes := 1     
+	   4 Input    1 Bit        Muxes := 3     
+	   2 Input    1 Bit        Muxes := 2     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 220 (col length:60)
+BRAMs: 280 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+DSP Report: Generating DSP q16_to_ticks, operation Mode is: A*(B:0x64).
+DSP Report: operator q16_to_ticks is absorbed into DSP q16_to_ticks.
+DSP Report: Generating DSP q16_to_ticks, operation Mode is: A*(B:0x64).
+DSP Report: operator q16_to_ticks is absorbed into DSP q16_to_ticks.
+DSP Report: Generating DSP q16_to_ticks, operation Mode is: A*(B:0x64).
+DSP Report: operator q16_to_ticks is absorbed into DSP q16_to_ticks.
+DSP Report: Generating DSP q16_to_ticks, operation Mode is: A*(B:0x64).
+DSP Report: operator q16_to_ticks is absorbed into DSP q16_to_ticks.
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1518.512 ; gain = 738.789
+---------------------------------------------------------------------------------
+ Sort Area is  q16_to_ticks_0 : 0 0 : 436 436 : Used 1 time 0
+ Sort Area is  q16_to_ticks_2 : 0 0 : 436 436 : Used 1 time 0
+ Sort Area is  q16_to_ticks_3 : 0 0 : 436 436 : Used 1 time 0
+ Sort Area is  q16_to_ticks_4 : 0 0 : 436 436 : Used 1 time 0
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+DSP: Preliminary Mapping Report (see note below. The ' indicates corresponding REG is set)
++-----------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name      | DSP Mapping | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
++-----------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|motor_controller | A*(B:0x64)  | 18     | 8      | -      | -      | 26     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|motor_controller | A*(B:0x64)  | 18     | 8      | -      | -      | 26     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|motor_controller | A*(B:0x64)  | 18     | 8      | -      | -      | 26     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|motor_controller | A*(B:0x64)  | 18     | 8      | -      | -      | 26     | 0    | 0    | -    | -    | -     | 0    | 0    | 
++-----------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+
+Note: The table above is a preliminary report that shows the DSPs inferred at the current stage of the synthesis flow. Some DSP may be reimplemented as non DSP primitives later in the synthesis flow. Multiple instantiated DSPs are reported only once.
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1518.512 ; gain = 738.789
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1518.512 ; gain = 738.789
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:14 ; elapsed = 00:00:14 . Memory (MB): peak = 1733.527 ; gain = 953.805
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:14 ; elapsed = 00:00:14 . Memory (MB): peak = 1733.527 ; gain = 953.805
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:14 ; elapsed = 00:00:14 . Memory (MB): peak = 1733.527 ; gain = 953.805
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:14 ; elapsed = 00:00:14 . Memory (MB): peak = 1733.527 ; gain = 953.805
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:14 ; elapsed = 00:00:14 . Memory (MB): peak = 1733.527 ; gain = 953.805
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:14 ; elapsed = 00:00:14 . Memory (MB): peak = 1733.527 ; gain = 953.805
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+DSP Final Report (the ' indicates corresponding REG is set)
++-----------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name      | DSP Mapping | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
++-----------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|motor_controller | A*B         | 17     | 7      | -      | -      | 26     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|motor_controller | A*B         | 17     | 7      | -      | -      | 26     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|motor_controller | A*B         | 17     | 7      | -      | -      | 26     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|motor_controller | A*B         | 17     | 7      | -      | -      | 26     | 0    | 0    | -    | -    | -     | 0    | 0    | 
++-----------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+--------+------+
+|      |Cell    |Count |
++------+--------+------+
+|1     |CARRY4  |   160|
+|2     |DSP48E1 |     4|
+|3     |LUT1    |    34|
+|4     |LUT2    |   259|
+|5     |LUT3    |   440|
+|6     |LUT4    |   283|
+|7     |LUT5    |    84|
+|8     |LUT6    |    98|
+|9     |FDRE    |    89|
+|10    |FDSE    |    36|
++------+--------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:14 ; elapsed = 00:00:14 . Memory (MB): peak = 1733.527 ; gain = 953.805
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:09 ; elapsed = 00:00:13 . Memory (MB): peak = 1733.527 ; gain = 878.641
+Synthesis Optimization Complete : Time (s): cpu = 00:00:14 ; elapsed = 00:00:14 . Memory (MB): peak = 1733.527 ; gain = 953.805
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.007 . Memory (MB): peak = 1745.535 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 164 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+WARNING: [Netlist 29-101] Netlist 'drone_block_design_motor_controller_0_0' is not ideal for floorplanning, since the cellview 'motor_controller' contains a large number of primitives.  Please consider enabling hierarchy in synthesis if you want to do floorplanning.
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1851.660 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Synth Design complete | Checksum: 328e61ba
+INFO: [Common 17-83] Releasing license: Synthesis
+24 Infos, 8 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:16 ; elapsed = 00:00:18 . Memory (MB): peak = 1851.660 ; gain = 1301.777
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1851.660 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'C:/Vivado/droneLink/drone_overlay/drone_overlay.runs/drone_block_design_motor_controller_0_0_synth_1/drone_block_design_motor_controller_0_0.dcp' has been generated.
+INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP drone_block_design_motor_controller_0_0, cache-ID = 4a04e7f9cbc22c9e
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1851.660 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'C:/Vivado/droneLink/drone_overlay/drone_overlay.runs/drone_block_design_motor_controller_0_0_synth_1/drone_block_design_motor_controller_0_0.dcp' has been generated.
+INFO: [Vivado 12-24828] Executing command : report_utilization -file drone_block_design_motor_controller_0_0_utilization_synth.rpt -pb drone_block_design_motor_controller_0_0_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Sat Oct 24 23:05:42 2026...

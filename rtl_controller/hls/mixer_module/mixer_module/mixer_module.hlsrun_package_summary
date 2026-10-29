@@ -1,0 +1,156 @@
+<ENTRY>
+{
+ "thisFile": "C:/Users\\lomin\\Documents\\git\\DRONE\\rtl_controller\\hls\\mixer_module\\mixer_module\\mixer_module.hlsrun_package_summary",
+ "connectId": "",
+ "serverToken": "",
+ "timestamp": "0"
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_CmdStep",
+ "dateTimestamp": "10/18/26 20:36:52",
+ "timestampMillis": "1792370212061",
+ "buildStep": {
+  "cmdId": "0496db5c-e783-478a-b3bf-9be9dee8dcad",
+  "name": "vitis-run",
+  "logFile": "C:/Users\\lomin\\Documents\\git\\DRONE\\rtl_controller\\hls\\mixer_module\\mixer_module\\logs\\mixer_module.steps.log",
+  "commandLine": "C:/AMDDesignTools/2025.2/Vitis/bin/unwrapped/win64.o/vitis-run.exe  --mode hls --package --config C:\\Users\\lomin\\Documents\\git\\DRONE\\rtl_controller\\hls\\mixer_module\\hls_config.cfg --work_dir mixer_module ",
+  "args": [
+   "--mode",
+   "hls",
+   "--package",
+   "--config",
+   "C:\\Users\\lomin\\Documents\\git\\DRONE\\rtl_controller\\hls\\mixer_module\\hls_config.cfg",
+   "--work_dir",
+   "mixer_module"
+  ],
+  "iniFiles": [],
+  "cwd": "C:\\Users\\lomin\\Documents\\git\\DRONE\\rtl_controller\\hls\\mixer_module"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "10/18/26 20:36:52",
+ "timestampMillis": "1792370212062",
+ "status": {
+  "cmdId": "0496db5c-e783-478a-b3bf-9be9dee8dcad",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_FlowMetaData",
+ "dateTimestamp": "10/18/26 20:36:55",
+ "timestampMillis": "1792370215044",
+ "buildSummary": {
+  "hardwarePlatform": "",
+  "hardwareDsa": "",
+  "platformDirectory": "",
+  "runtime": "",
+  "systemConfig": "",
+  "flow": "BF_RUN",
+  "target": "TT_HLS_IP",
+  "kernels": [
+   {
+    "base": {
+     "type": "KERNEL",
+     "name": "mixer_module",
+     "file": "C:/Users\\lomin\\Documents\\git\\DRONE\\rtl_controller\\ip_repo\\mixer_module.zip",
+     "reports": [],
+     "uuid": ""
+    },
+    "sources": [
+     "C:/Users\\lomin\\Documents\\git\\DRONE\\rtl_controller\\hls\\mixer_module\\mixer_module.cpp"
+    ],
+    "psSources": [],
+    "cuNames": [],
+    "type": "HLS",
+    "frequency": 0,
+    "freqUnits": ""
+   }
+  ],
+  "toolVersion": "2025.2"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_SubCmdStep",
+ "dateTimestamp": "10/18/26 20:36:55",
+ "timestampMillis": "1792370215045",
+ "buildStep": {
+  "cmdId": "19c14b01-a7f4-4eaf-8f3b-452635e69195",
+  "name": "",
+  "logFile": "C:/Users\\lomin\\Documents\\git\\DRONE\\rtl_controller\\hls\\mixer_module\\mixer_module\\hls\\hls.log",
+  "commandLine": "",
+  "args": [],
+  "iniFiles": [],
+  "cwd": "C:\\Users\\lomin\\Documents\\git\\DRONE\\rtl_controller\\hls\\mixer_module"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "10/18/26 20:36:55",
+ "timestampMillis": "1792370215045",
+ "status": {
+  "cmdId": "19c14b01-a7f4-4eaf-8f3b-452635e69195",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "10/18/26 20:37:04",
+ "timestampMillis": "1792370224370",
+ "status": {
+  "cmdId": "19c14b01-a7f4-4eaf-8f3b-452635e69195",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "10/18/26 20:37:04",
+ "timestampMillis": "1792370224454",
+ "status": {
+  "cmdId": "0496db5c-e783-478a-b3bf-9be9dee8dcad",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "10/18/26 20:37:04",
+ "timestampMillis": "1792370224455",
+ "report": {
+  "path": "",
+  "name": "",
+  "fileType": "HTML",
+  "reportType": "GLOBAL_RULECHECK_GUIDANCE",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "10/18/26 20:37:04",
+ "timestampMillis": "1792370224455",
+ "report": {
+  "path": "",
+  "name": "",
+  "fileType": "BINARY_PROTOBUF",
+  "reportType": "GLOBAL_RULECHECK_GUIDANCE",
+  "cmdId": ""
+ }
+}
+</ENTRY>
