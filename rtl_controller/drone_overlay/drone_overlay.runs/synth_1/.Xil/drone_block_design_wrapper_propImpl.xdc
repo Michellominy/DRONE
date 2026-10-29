@@ -1,0 +1,7 @@
+set_property SRC_FILE_INFO {cfile:C:/Users/lomin/Documents/git/DRONE/rtl_controller/drone_overlay/drone_overlay.srcs/constrs_1/new/mpu6050_constraints.xdc rfile:../../../drone_overlay.srcs/constrs_1/new/mpu6050_constraints.xdc id:1} [current_design]
+set_property src_info {type:XDC file:1 line:5 export:INPUT save:INPUT read:READ} [current_design]
+set_property PACKAGE_PIN W19 [get_ports {i2c_scl}]
+set_property src_info {type:XDC file:1 line:9 export:INPUT save:INPUT read:READ} [current_design]
+set_property PACKAGE_PIN W18 [get_ports {i2c_sda}]
+set_property src_info {type:XDC file:1 line:13 export:INPUT save:INPUT read:READ} [current_design]
+set_property PACKAGE_PIN Y18 [get_ports {mpu_int_0}]

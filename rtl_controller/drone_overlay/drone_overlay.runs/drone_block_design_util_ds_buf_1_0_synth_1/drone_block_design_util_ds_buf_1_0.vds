@@ -1,0 +1,345 @@
+#-----------------------------------------------------------
+# Vivado v2025.2 (64-bit)
+# SW Build 6299465 on Fri Nov 14 19:35:11 GMT 2025
+# IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
+# SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
+# Start of session at: Sun Jun 21 22:16:53 2026
+# Process ID         : 39024
+# Current directory  : C:/Users/lomin/Documents/git/DRONE/rtl_controller/drone_overlay/drone_overlay.runs/drone_block_design_util_ds_buf_1_0_synth_1
+# Command line       : vivado.exe -log drone_block_design_util_ds_buf_1_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source drone_block_design_util_ds_buf_1_0.tcl
+# Log file           : C:/Users/lomin/Documents/git/DRONE/rtl_controller/drone_overlay/drone_overlay.runs/drone_block_design_util_ds_buf_1_0_synth_1/drone_block_design_util_ds_buf_1_0.vds
+# Journal file       : C:/Users/lomin/Documents/git/DRONE/rtl_controller/drone_overlay/drone_overlay.runs/drone_block_design_util_ds_buf_1_0_synth_1\vivado.jou
+# Running On         : Michel-PC
+# Platform           : Windows Server 2016 or Windows 10
+# Operating System   : 26200
+# Processor Detail   : AMD Ryzen 5 9600X 6-Core Processor             
+# CPU Frequency      : 3900 MHz
+# CPU Physical cores : 6
+# CPU Logical cores  : 12
+# Host memory        : 33462 MB
+# Swap memory        : 10832 MB
+# Total Virtual      : 44295 MB
+# Available Virtual  : 7063 MB
+#-----------------------------------------------------------
+source drone_block_design_util_ds_buf_1_0.tcl -notrace
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/lomin/Documents/git/DRONE/rtl_controller/ip_repo/mpu6050_axis_ip_1_0'.
+WARNING: [IP_Flow 19-2207] Repository 'c:/Users/lomin/Documents/git/DRONE/rtl_controller/ip_repo/mpu6050_axis_ip_1_0' already exists; ignoring attempt to add it again.
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/lomin/Documents/git/DRONE/rtl_controller/ip_repo/mpu6050_axis_ip_1_0'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/AMDDesignTools/2025.2/Vivado/data/ip'.
+WARNING: [IP_Flow 19-4995] The host OS only allows 260 characters in a normal path. The IP cache path is more than 80 characters. If you experience issues with IP caching, please consider changing the IP cache to a location with a shorter path. Alternately consider using the OS subst command to map part of the path to a drive letter. 
+Current IP cache path is c:/Users/lomin/Documents/git/DRONE/rtl_controller/drone_overlay/drone_overlay.cache/ip 
+Command: synth_design -top drone_block_design_util_ds_buf_1_0 -part xc7z020clg400-1 -incremental_mode off -mode out_of_context
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Device 21-403] Loading part xc7z020clg400-1
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 9524
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 1313.512 ; gain = 539.238
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'drone_block_design_util_ds_buf_1_0' [c:/Users/lomin/Documents/git/DRONE/rtl_controller/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_util_ds_buf_1_0/synth/drone_block_design_util_ds_buf_1_0.vhd:65]
+	Parameter C_SIZE bound to: 1 - type: integer 
+	Parameter C_BUF_TYPE bound to: IOBUF - type: string 
+	Parameter C_BUFGCE_DIV bound to: 1 - type: integer 
+	Parameter C_BUFG_GT_SYNC bound to: 0 - type: integer 
+	Parameter C_OBUFDS_GTE5_ADV bound to: 2'b00 
+	Parameter C_REFCLK_ICNTL_TX bound to: 5'b00000 
+	Parameter C_SIM_DEVICE bound to: VERSAL_AI_CORE_ES1 - type: string 
+	Parameter C_DIVBY2 bound to: 0 - type: integer 
+INFO: [Synth 8-3491] module 'util_ds_buf' declared at 'c:/Users/lomin/Documents/git/DRONE/rtl_controller/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_util_ds_buf_1_0/util_ds_buf.vhd:73' bound to instance 'U0' of component 'util_ds_buf' [c:/Users/lomin/Documents/git/DRONE/rtl_controller/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_util_ds_buf_1_0/synth/drone_block_design_util_ds_buf_1_0.vhd:246]
+INFO: [Synth 8-638] synthesizing module 'util_ds_buf' [c:/Users/lomin/Documents/git/DRONE/rtl_controller/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_util_ds_buf_1_0/util_ds_buf.vhd:303]
+INFO: [Synth 8-113] binding component instance 'IOBUF_I' to cell 'IOBUF' [c:/Users/lomin/Documents/git/DRONE/rtl_controller/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_util_ds_buf_1_0/util_ds_buf.vhd:840]
+INFO: [Synth 8-256] done synthesizing module 'util_ds_buf' (0#1) [c:/Users/lomin/Documents/git/DRONE/rtl_controller/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_util_ds_buf_1_0/util_ds_buf.vhd:303]
+INFO: [Synth 8-256] done synthesizing module 'drone_block_design_util_ds_buf_1_0' (0#1) [c:/Users/lomin/Documents/git/DRONE/rtl_controller/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_util_ds_buf_1_0/synth/drone_block_design_util_ds_buf_1_0.vhd:65]
+INFO: [Synth 8-7129] Port IBUF_DS_P[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port IBUF_DS_N[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port IBUF_DS_CEB[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port OBUF_IN[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port BUFG_I[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port BUFGCE_I[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port BUFGCE_CE[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port BUFGCE_CLR[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port BUFH_I[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port BUFHCE_I[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port BUFHCE_CE[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port BUFG_FABRIC_I[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port OBUFDS_GTE5_CEB[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port OBUFDS_GTE5_I[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port OBUFDS_GTE5_ADV_CEB[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port OBUFDS_GTE5_ADV_I[3] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port OBUFDS_GTE5_ADV_I[2] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port OBUFDS_GTE5_ADV_I[1] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port OBUFDS_GTE5_ADV_I[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port OBUFDS_GTE5_ADV_RXRECCLKSEL[1] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port OBUFDS_GTE5_ADV_RXRECCLKSEL[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port OBUFDS_GTE3_CEB[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port OBUFDS_GTE3_I[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port OBUFDS_GTE3_ADV_CEB[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port OBUFDS_GTE3_ADV_I[3] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port OBUFDS_GTE3_ADV_I[2] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port OBUFDS_GTE3_ADV_I[1] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port OBUFDS_GTE3_ADV_I[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port RXRECCLK_SEL_GTE3_ADV[1] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port RXRECCLK_SEL_GTE3_ADV[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port OBUFDS_GTE4_CEB[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port OBUFDS_GTE4_I[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port OBUFDS_GTE4_ADV_CEB[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port OBUFDS_GTE4_ADV_I[3] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port OBUFDS_GTE4_ADV_I[2] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port OBUFDS_GTE4_ADV_I[1] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port OBUFDS_GTE4_ADV_I[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port RXRECCLK_SEL_GTE4_ADV[1] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port RXRECCLK_SEL_GTE4_ADV[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port IBUFDS_GTM_CEB[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port IBUFDS_GTM_I[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port IBUFDS_GTM_IB[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port OBUFDS_GTM_CEB[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port OBUFDS_GTM_I[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port OBUFDS_GTM_ADV_CEB[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port OBUFDS_GTM_ADV_I[3] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port OBUFDS_GTM_ADV_I[2] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port OBUFDS_GTM_ADV_I[1] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port OBUFDS_GTM_ADV_I[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port IBUFDS_GTME5_CEB[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port IBUFDS_GTME5_I[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port IBUFDS_GTME5_IB[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port OBUFDS_GTME5_CEB[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port OBUFDS_GTME5_I[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port OBUFDS_GTME5_ADV_CEB[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port OBUFDS_GTME5_ADV_I[3] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port OBUFDS_GTME5_ADV_I[2] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port OBUFDS_GTME5_ADV_I[1] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port OBUFDS_GTME5_ADV_I[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port OBUFDS_GTME5_ADV_RXRECCLKSEL[1] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port OBUFDS_GTME5_ADV_RXRECCLKSEL[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port BUFG_GT_I[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port BUFG_GT_CE[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port BUFG_GT_CEMASK[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port BUFG_GT_CLR[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port BUFG_GT_CLRMASK[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port BUFG_GT_DIV[2] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port BUFG_GT_DIV[1] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port BUFG_GT_DIV[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port BUFG_PS_I[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port MBUFG_GT_I[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port MBUFG_GT_CE[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port MBUFG_GT_CEMASK[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port MBUFG_GT_CLR[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port MBUFG_GT_CLRB_LEAF[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port MBUFG_GT_CLRMASK[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port MBUFG_GT_DIV[2] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port MBUFG_GT_DIV[1] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port MBUFG_GT_DIV[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port MBUFG_PS_I[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port MBUFG_PS_CLRB_LEAF[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port MBUFGCE_CE[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port MBUFGCE_CLRB_LEAF[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port MBUFGCE_I[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port MBUFGCE_DIV_CE[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port MBUFGCE_DIV_CLRB_LEAF[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port MBUFGCE_DIV_CLR[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port MBUFGCE_DIV_I[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port MBUFGCTRL_CE0[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port MBUFGCTRL_CE1[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port MBUFGCTRL_CLRB_LEAF[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port MBUFGCTRL_IGNORE0[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port MBUFGCTRL_IGNORE1[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port MBUFGCTRL_I0[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port MBUFGCTRL_I1[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port MBUFGCTRL_S0[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port MBUFGCTRL_S1[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port IBUFDS_GTM2_I[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port IBUFDS_GTM2_IB[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Synth 8-7129] Port BUFGCTRL_CE0[0] in module util_ds_buf is either unconnected or has no load
+INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1439.934 ; gain = 665.660
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1439.934 ; gain = 665.660
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1439.934 ; gain = 665.660
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1439.934 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 1 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+WARNING: [Netlist 29-1115] Found multi-term driver net: U0/<const0>.
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [c:/Users/lomin/Documents/git/DRONE/rtl_controller/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_util_ds_buf_1_0/drone_block_design_util_ds_buf_1_0_ooc.xdc] for cell 'U0'
+Finished Parsing XDC File [c:/Users/lomin/Documents/git/DRONE/rtl_controller/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_util_ds_buf_1_0/drone_block_design_util_ds_buf_1_0_ooc.xdc] for cell 'U0'
+Parsing XDC File [c:/Users/lomin/Documents/git/DRONE/rtl_controller/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_util_ds_buf_1_0/drone_block_design_util_ds_buf_1_0_board.xdc] for cell 'U0'
+Finished Parsing XDC File [c:/Users/lomin/Documents/git/DRONE/rtl_controller/drone_overlay/drone_overlay.gen/sources_1/bd/drone_block_design/ip/drone_block_design_util_ds_buf_1_0/drone_block_design_util_ds_buf_1_0_board.xdc] for cell 'U0'
+Parsing XDC File [C:/Users/lomin/Documents/git/DRONE/rtl_controller/drone_overlay/drone_overlay.runs/drone_block_design_util_ds_buf_1_0_synth_1/dont_touch.xdc]
+Finished Parsing XDC File [C:/Users/lomin/Documents/git/DRONE/rtl_controller/drone_overlay/drone_overlay.runs/drone_block_design_util_ds_buf_1_0_synth_1/dont_touch.xdc]
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1439.934 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 1 instances were transformed.
+  IOBUF => IOBUF (IBUF, OBUFT): 1 instance 
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.010 . Memory (MB): peak = 1439.934 ; gain = 0.000
+INFO: [Designutils 20-5008] Incremental synthesis strategy off
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1439.934 ; gain = 665.660
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7z020clg400-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1439.934 ; gain = 665.660
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1439.934 ; gain = 665.660
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 1439.934 ; gain = 665.660
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 220 (col length:60)
+BRAMs: 280 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 1439.934 ; gain = 665.660
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:13 ; elapsed = 00:00:13 . Memory (MB): peak = 1611.582 ; gain = 837.309
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:13 ; elapsed = 00:00:13 . Memory (MB): peak = 1611.582 ; gain = 837.309
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:13 ; elapsed = 00:00:13 . Memory (MB): peak = 1621.133 ; gain = 846.859
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 1870.152 ; gain = 1095.879
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 1870.152 ; gain = 1095.879
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 1870.152 ; gain = 1095.879
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 1870.152 ; gain = 1095.879
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 1870.152 ; gain = 1095.879
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 1870.152 ; gain = 1095.879
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+------+------+
+|      |Cell  |Count |
++------+------+------+
+|1     |IOBUF |     1|
++------+------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 1870.152 ; gain = 1095.879
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:10 ; elapsed = 00:00:14 . Memory (MB): peak = 1870.152 ; gain = 1095.879
+Synthesis Optimization Complete : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 1870.152 ; gain = 1095.879
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1870.152 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 1 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+WARNING: [Netlist 29-1115] Found multi-term driver net: U0/<const0>.
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1870.457 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 1 instances were transformed.
+  IOBUF => IOBUF (IBUF, OBUFT): 1 instance 
+
+Synth Design complete | Checksum: 57112abe
+INFO: [Common 17-83] Releasing license: Synthesis
+128 Infos, 4 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:17 ; elapsed = 00:00:19 . Memory (MB): peak = 1870.457 ; gain = 1323.828
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1870.457 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'C:/Users/lomin/Documents/git/DRONE/rtl_controller/drone_overlay/drone_overlay.runs/drone_block_design_util_ds_buf_1_0_synth_1/drone_block_design_util_ds_buf_1_0.dcp' has been generated.
+INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP drone_block_design_util_ds_buf_1_0, cache-ID = e4d4a672616758cd
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1870.457 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'C:/Users/lomin/Documents/git/DRONE/rtl_controller/drone_overlay/drone_overlay.runs/drone_block_design_util_ds_buf_1_0_synth_1/drone_block_design_util_ds_buf_1_0.dcp' has been generated.
+INFO: [Vivado 12-24828] Executing command : report_utilization -file drone_block_design_util_ds_buf_1_0_utilization_synth.rpt -pb drone_block_design_util_ds_buf_1_0_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Sun Jun 21 22:17:17 2026...

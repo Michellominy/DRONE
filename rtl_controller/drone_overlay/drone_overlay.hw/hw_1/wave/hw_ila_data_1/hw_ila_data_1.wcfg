@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="C:/Users/lomin/Documents/git/DRONE/rtl_controller/drone_overlay/drone_overlay.hw/hw_1/wave/hw_ila_data_1/hw_ila_data_1.wdb" id="1">
+         <top_modules>
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0"></ZoomStartTime>
+      <ZoomEndTime time="55"></ZoomEndTime>
+      <Cursor1Time time="0"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="379"></NameColumnWidth>
+      <ValueColumnWidth column_width="121"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="25" />
+   <wave_markers>
+   </wave_markers>
+   <wvobject fp_name="drone_block_design_i/system_ila_0/U0/probe0" type="array">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">drone_block_design_i/system_ila_0/U0/probe0[3:0]</obj_property>
+      <obj_property name="ObjectShortName">probe0[3:0]</obj_property>
+      <obj_property name="label">mpu6050_axis_ip_0_debug_state</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="drone_block_design_i/system_ila_0/U0/probe1" type="array">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">drone_block_design_i/system_ila_0/U0/probe1[0:0]</obj_property>
+      <obj_property name="ObjectShortName">probe1[0:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="label">mpu6050_axis_ip_0_debug_i2c_done</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="drone_block_design_i/system_ila_0/U0/probe2" type="array">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">drone_block_design_i/system_ila_0/U0/probe2[0:0]</obj_property>
+      <obj_property name="ObjectShortName">probe2[0:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="label">mpu6050_axis_ip_0_debug_i2c_error</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="drone_block_design_i/system_ila_0/U0/probe3" type="array">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">drone_block_design_i/system_ila_0/U0/probe3[0:0]</obj_property>
+      <obj_property name="ObjectShortName">probe3[0:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="label">mpu6050_axis_ip_0_debug_i2c_busy</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="drone_block_design_i/system_ila_0/U0/probe4" type="array">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">drone_block_design_i/system_ila_0/U0/probe4[0:0]</obj_property>
+      <obj_property name="ObjectShortName">probe4[0:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="label">mpu6050_axis_ip_0_debug_cmd_valid</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="drone_block_design_i/system_ila_0/U0/probe11" type="array">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">drone_block_design_i/system_ila_0/U0/probe11[0:0]</obj_property>
+      <obj_property name="ObjectShortName">probe11[0:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="label">mpu6050_axis_ip_0_debug_cmd_valid_in</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="drone_block_design_i/system_ila_0/U0/probe5" type="array">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">drone_block_design_i/system_ila_0/U0/probe5[3:0]</obj_property>
+      <obj_property name="ObjectShortName">probe5[3:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="label">mpu6050_axis_ip_0_debug_cmd_ready</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="drone_block_design_i/system_ila_0/U0/probe6" type="array">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">drone_block_design_i/system_ila_0/U0/probe6[0:0]</obj_property>
+      <obj_property name="ObjectShortName">probe6[0:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="label">mpu6050_axis_ip_0_debug_byte_valid</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="drone_block_design_i/system_ila_0/U0/probe7" type="array">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">drone_block_design_i/system_ila_0/U0/probe7[3:0]</obj_property>
+      <obj_property name="ObjectShortName">probe7[3:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="label">mpu6050_axis_ip_0_debug_byte_idx</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="drone_block_design_i/system_ila_0/U0/probe8" type="array">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">drone_block_design_i/system_ila_0/U0/probe8[7:0]</obj_property>
+      <obj_property name="ObjectShortName">probe8[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="label">mpu6050_axis_ip_0_debug_raw_byte</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="drone_block_design_i/system_ila_0/U0/probe9" type="array">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">drone_block_design_i/system_ila_0/U0/probe9[0:0]</obj_property>
+      <obj_property name="ObjectShortName">probe9[0:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="label">mpu_int_0</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="drone_block_design_i/system_ila_0/U0/probe19" type="array">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">drone_block_design_i/system_ila_0/U0/probe19[0:0]</obj_property>
+      <obj_property name="ObjectShortName">probe19[0:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="label">mpu6050_axis_ip_0_debug_mpu_int</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="drone_block_design_i/system_ila_0/U0/probe10" type="array">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">drone_block_design_i/system_ila_0/U0/probe10[2:0]</obj_property>
+      <obj_property name="ObjectShortName">probe10[2:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="label">mpu6050_axis_ip_0_debug_i2c_phase</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="drone_block_design_i/system_ila_0/U0/probe11" type="array">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">drone_block_design_i/system_ila_0/U0/probe11[0:0]</obj_property>
+      <obj_property name="ObjectShortName">probe11[0:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="label">mpu6050_axis_ip_0_debug_cmd_valid_in</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="drone_block_design_i/system_ila_0/U0/probe12" type="array">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">drone_block_design_i/system_ila_0/U0/probe12[0:0]</obj_property>
+      <obj_property name="ObjectShortName">probe12[0:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="label">mpu6050_axis_ip_0_debug_cmd_ready_out</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="drone_block_design_i/system_ila_0/U0/probe13" type="array">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">drone_block_design_i/system_ila_0/U0/probe13[0:0]</obj_property>
+      <obj_property name="ObjectShortName">probe13[0:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="label">mpu6050_axis_ip_0_debug_scl_out</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="drone_block_design_i/system_ila_0/U0/probe14" type="array">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">drone_block_design_i/system_ila_0/U0/probe14[0:0]</obj_property>
+      <obj_property name="ObjectShortName">probe14[0:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="label">mpu6050_axis_ip_0_debug_sda_out</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="drone_block_design_i/system_ila_0/U0/probe15" type="array">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">drone_block_design_i/system_ila_0/U0/probe15[0:0]</obj_property>
+      <obj_property name="ObjectShortName">probe15[0:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="drone_block_design_i/system_ila_0/U0/probe16" type="array">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">drone_block_design_i/system_ila_0/U0/probe16[0:0]</obj_property>
+      <obj_property name="ObjectShortName">probe16[0:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="drone_block_design_i/system_ila_0/U0/probe17" type="array">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">drone_block_design_i/system_ila_0/U0/probe17[2:0]</obj_property>
+      <obj_property name="ObjectShortName">probe17[2:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="label">mpu6050_axis_ip_0_debug_bit_idx</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="drone_block_design_i/system_ila_0/U0/probe18" type="array">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">drone_block_design_i/system_ila_0/U0/probe18[1:0]</obj_property>
+      <obj_property name="ObjectShortName">probe18[1:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="label">mpu6050_axis_ip_0_debug_q_cnt</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="drone_block_design_i/system_ila_0/U0/probe5" type="array">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">drone_block_design_i/system_ila_0/U0/probe5[3:0]</obj_property>
+      <obj_property name="ObjectShortName">probe5[3:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="label">mpu6050_axis_ip_0_debug_cmd_ready</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="drone_block_design_i/system_ila_0/U0/probe12" type="array">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">drone_block_design_i/system_ila_0/U0/probe12[0:0]</obj_property>
+      <obj_property name="ObjectShortName">probe12[0:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="label">mpu6050_axis_ip_0_debug_cmd_ready_out</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="drone_block_design_i/system_ila_0/U0/probe0" type="array">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">drone_block_design_i/system_ila_0/U0/probe0[3:0]</obj_property>
+      <obj_property name="ObjectShortName">probe0[3:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="label">mpu6050_axis_ip_0_debug_state</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="group210" type="group">
+      <obj_property name="label">slot_0 : mpu6050_axis_ip_0_m_axis : Interface</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="Detail_Data">Interface_(i1:s0)_(mpu6050_axis_ip_0_m_axis)_tooltip</obj_property>
+      <obj_property name="Render_Data">Interface_(i1:s0)_(mpu6050_axis_ip_0_m_axis)</obj_property>
+      <obj_property name="EnumTransactionColorTable">0=blank</obj_property>
+      <obj_property name="CustomSignalColor">Cornsilk</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_ENUM_TRANSACTION</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="group211" type="group">
+         <obj_property name="label">slot_0 : mpu6050_axis_ip_0_m_axis : T Channel</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="Detail_Data">T_Channel_(i1:s0)_(mpu6050_axis_ip_0_m_axis)_tooltip</obj_property>
+         <obj_property name="Render_Data">T_Channel_(i1:s0)_(mpu6050_axis_ip_0_m_axis)</obj_property>
+         <obj_property name="EnumTransactionColorTable">0=blank</obj_property>
+         <obj_property name="CustomSignalColor">Purple</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="WaveformStyle">STYLE_ENUM_TRANSACTION</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject fp_name="drone_block_design_i/system_ila_0/U0/net_slot_0_axis_tvalid" type="logic">
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="ElementShortName">drone_block_design_i/system_ila_0/U0/net_slot_0_axis_tvalid</obj_property>
+            <obj_property name="ObjectShortName">net_slot_0_axis_tvalid</obj_property>
+            <obj_property name="label">slot_0 : mpu6050_axis_ip_0_m_axis : TVALID</obj_property>
+            <obj_property name="LABELRADIX">true</obj_property>
+            <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+         </wvobject>
+         <wvobject fp_name="drone_block_design_i/system_ila_0/U0/net_slot_0_axis_tready" type="logic">
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="ElementShortName">drone_block_design_i/system_ila_0/U0/net_slot_0_axis_tready</obj_property>
+            <obj_property name="ObjectShortName">net_slot_0_axis_tready</obj_property>
+            <obj_property name="label">slot_0 : mpu6050_axis_ip_0_m_axis : TREADY</obj_property>
+            <obj_property name="LABELRADIX">true</obj_property>
+            <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+         </wvobject>
+         <wvobject fp_name="drone_block_design_i/system_ila_0/U0/net_slot_0_axis_tlast" type="logic">
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="ElementShortName">drone_block_design_i/system_ila_0/U0/net_slot_0_axis_tlast</obj_property>
+            <obj_property name="ObjectShortName">net_slot_0_axis_tlast</obj_property>
+            <obj_property name="label">slot_0 : mpu6050_axis_ip_0_m_axis : TLAST</obj_property>
+            <obj_property name="LABELRADIX">true</obj_property>
+            <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+         </wvobject>
+         <wvobject fp_name="drone_block_design_i/system_ila_0/U0/net_slot_0_axis_tdata" type="array">
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="ElementShortName">drone_block_design_i/system_ila_0/U0/net_slot_0_axis_tdata[127:0]</obj_property>
+            <obj_property name="ObjectShortName">net_slot_0_axis_tdata[127:0]</obj_property>
+            <obj_property name="label">slot_0 : mpu6050_axis_ip_0_m_axis : TDATA</obj_property>
+            <obj_property name="Radix">HEXRADIX</obj_property>
+            <obj_property name="LABELRADIX">true</obj_property>
+            <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+         </wvobject>
+         <wvobject fp_name="drone_block_design_i/system_ila_0/U0/net_slot_0_axis_tkeep" type="array">
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="ElementShortName">drone_block_design_i/system_ila_0/U0/net_slot_0_axis_tkeep[15:0]</obj_property>
+            <obj_property name="ObjectShortName">net_slot_0_axis_tkeep[15:0]</obj_property>
+            <obj_property name="label">slot_0 : mpu6050_axis_ip_0_m_axis : TKEEP</obj_property>
+            <obj_property name="Radix">HEXRADIX</obj_property>
+            <obj_property name="LABELRADIX">true</obj_property>
+            <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+         </wvobject>
+      </wvobject>
+   </wvobject>
+</wave_config>

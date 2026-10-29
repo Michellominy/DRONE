@@ -1,0 +1,17 @@
+vhdl xil_defaultlib  \
+"../../../bd/drone_block_design/ip/drone_block_design_axi_dma_0_0/sim/drone_block_design_axi_dma_0_0.vhd" \
+"../../../bd/drone_block_design/ipshared/6d08/bc9d/i2c_master.vhd" \
+"../../../../drone_overlay.gen/sources_1/bd/drone_block_design/ipshared/6d08/bc9d/mpu6050_axis.vhd" \
+"../../../bd/drone_block_design/ip/drone_block_design_mpu6050_axis_ip_0_0/sim/drone_block_design_mpu6050_axis_ip_0_0.vhd" \
+"../../../bd/drone_block_design/ip/drone_block_design_axi_smc_1/bd_0/ip/ip_1/sim/bd_6acc_psr_aclk_0.vhd" \
+"../../../bd/drone_block_design/ip/drone_block_design_rst_ps7_0_100M_1/sim/drone_block_design_rst_ps7_0_100M_1.vhd" \
+"../../../bd/drone_block_design/ip/drone_block_design_system_ila_0_0/bd_0/sim/bd_ea65.vhd" \
+"../../../bd/drone_block_design/ip/drone_block_design_system_ila_0_0/bd_0/ip/ip_0/sim/bd_ea65_ila_lib_0.vhd" \
+"../../../bd/drone_block_design/ip/drone_block_design_system_ila_0_0/sim/drone_block_design_system_ila_0_0.vhd" \
+"../../../bd/drone_block_design/ip/drone_block_design_util_ds_buf_0_0/util_ds_buf.vhd" \
+"../../../bd/drone_block_design/ip/drone_block_design_util_ds_buf_0_0/sim/drone_block_design_util_ds_buf_0_0.vhd" \
+"../../../bd/drone_block_design/ip/drone_block_design_util_ds_buf_1_0/sim/drone_block_design_util_ds_buf_1_0.vhd" \
+"../../../bd/drone_block_design/sim/drone_block_design.vhd" \
+
+# Do not sort compile order
+nosort
